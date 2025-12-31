@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RychmonstaR - Global Business Strategic Partner</title>
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        beige: {
+                            50: '#FBF9F5',
+                            100: '#F5F2EB', // Warm luxurious BG
+                            200: '#E6E0D0',
+                            300: '#D5CDB8',
+                        },
+                        brown: {
+                            800: '#5D4037',
+                            900: '#2A1F1D', // Darker, sharper brown
+                        },
+                        terracotta: {
+                            DEFAULT: '#C17C74',
+                            dark: '#A35E56',
+                            light: '#EBCBC8'
+                        },
+                        navy: {
+                            900: '#0F172A',
+                            800: '#1E293B'
+                        },
+                        cream: {
+                            100: '#FFFDD0',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Poppins"', '"ONE Mobile Gothic"', '"M PLUS Rounded 1c"', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 8s ease-in-out infinite',
+                        'float-delayed': 'float 8s ease-in-out 4s infinite',
+                        'scroll': 'scroll 40s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Iconify (Solar Icons) -->
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=M+PLUS+Rounded+1c:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ONE Mobile Gothic 한글 폰트 */
+        @font-face {
+            font-family: 'ONE Mobile Gothic';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONEMobileGothic-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F5F1E8;
+            color: #3E2723;
+            overflow-x: hidden;
+        }
+
+        /* Smooth Scroll Reveal Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-100 {
+            transition-delay: 0.1s;
+        }
+
+        .reveal-delay-200 {
+            transition-delay: 0.2s;
+        }
+
+        .reveal-delay-300 {
+            transition-delay: 0.3s;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #F5F2EB;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #D5CDB8;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C17C74;
+        }
+
+        /* Marquee */
+        .marquee-mask {
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+    </style>
+    <link rel="stylesheet" href="/index.css">
+</head>
+
+<body class="bg-beige-100 text-brown-900 selection:bg-terracotta/20 selection:text-brown-900 relative">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-6 bg-navy-900">
+        <div class="container mx-auto px-6 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <span
+                    class="text-2xl md:text-3xl font-bold tracking-tight text-cream-100 group-hover:text-terracotta transition-colors">
+                    RychmonstaR
+                </span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-12">
+                <ul class="flex items-center gap-10">
+                    <li><a href="#about"
+                            class="text-xs font-medium text-white/70 hover:text-white transition-colors tracking-[0.15em] uppercase hover:underline underline-offset-4 decoration-terracotta decoration-2">About</a>
+                    </li>
+                    <li><a href="#services"
+                            class="text-xs font-medium text-white/70 hover:text-white transition-colors tracking-[0.15em] uppercase hover:underline underline-offset-4 decoration-terracotta decoration-2">Services</a>
+                    </li>
+                    <li><a href="#topics"
+                            class="text-xs font-medium text-white/70 hover:text-white transition-colors tracking-[0.15em] uppercase hover:underline underline-offset-4 decoration-terracotta decoration-2">Topics</a>
+                    </li>
+                    <li><a href="#contact"
+                            class="text-xs font-medium text-white/70 hover:text-white transition-colors tracking-[0.15em] uppercase hover:underline underline-offset-4 decoration-terracotta decoration-2">Contact</a>
+                    </li>
+                </ul>
+
+                <div class="flex items-center gap-5">
+                    <a href="#contact"
+                        class="px-7 py-3 text-[10px] font-bold uppercase tracking-[0.2em] border border-white/20 text-white rounded-full hover:bg-white hover:text-navy-900 hover:border-white transition-all duration-500 hover:scale-105">
+                        Get Started
+                    </a>
+
+                    <!-- Language Selector -->
+                    <div class="relative group">
+                        <button id="lang-btn"
+                            class="flex items-center gap-1 text-xs font-medium text-white/60 hover:text-white transition-colors px-2 py-1">
+                            <span class="iconify text-lg" data-icon="solar:global-outline"></span>
+                            <span id="current-lang">KR</span>
+                        </button>
+                        <div
+                            class="absolute right-0 mt-2 w-24 bg-navy-900 border border-white/10 rounded-xl shadow-2xl overflow-hidden hidden group-hover:block animate-in fade-in zoom-in-95 duration-200">
+                            <button onclick="changeLang('KR')"
+                                class="w-full text-left px-4 py-3 text-xs hover:bg-white/10 text-terracotta font-bold tracking-wider">KR</button>
+                            <button onclick="changeLang('JP')"
+                                class="w-full text-left px-4 py-3 text-xs hover:bg-white/10 text-white/70 tracking-wider">JP</button>
+                            <button onclick="changeLang('EN')"
+                                class="w-full text-left px-4 py-3 text-xs hover:bg-white/10 text-white/70 tracking-wider">EN</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors">
+                <span class="iconify text-2xl" data-icon="solar:hamburger-menu-linear"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <div id="home" class="relative w-full min-h-screen flex flex-col justify-center overflow-hidden bg-beige-100">
+
+
+            <!-- City Background Video -->
+            <div class="absolute inset-0 z-0 pointer-events-none">
+                <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-30"
+                    style="filter: blur(1px);">
+                    <source src="asset/background.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <!-- Noise Texture -->
+            <div class="absolute inset-0 z-0 opacity-[0.04] pointer-events-none mix-blend-overlay"
+                style="background-image: url('https://grainy-gradients.vercel.app/noise.svg');"></div>
+
+            <!-- Content -->
+            <div class="relative z-10 container mx-auto px-6 pt-24 flex flex-col items-center text-center">
+                <!-- Badge -->
+                <div
+                    class="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brown-900/10 bg-white/40 backdrop-blur-md mb-10 shadow-sm">
+                    <span class="w-1.5 h-1.5 rounded-full bg-terracotta animate-pulse"></span>
+                    <span class="text-brown-900/80 font-semibold tracking-[0.2em] text-[10px] uppercase">Since
+                        2021</span>
+                </div>
+
+                <!-- Headline -->
+                <h1 class="reveal reveal-delay-100 text-6xl md:text-8xl lg:text-[7rem] font-medium text-brown-900 mb-10 leading-[1.05] tracking-tight"
+                    style="font-family: 'Poppins', sans-serif;">
+                    Bridge to the<br />
+                    <span class="relative inline-block text-brown-900">
+                        <span class="relative z-10 italic font-light pr-4">Global Stage.</span>
+                        <!-- Decorative underline -->
+                        <svg class="absolute bottom-4 left-0 w-full h-3 text-terracotta/50 -z-10" viewBox="0 0 100 10"
+                            preserveAspectRatio="none">
+                            <path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="4" fill="none" />
+                        </svg>
+                    </span>
+                </h1>
+
+                <!-- Description -->
+                <p
+                    class="reveal reveal-delay-200 text-lg md:text-xl text-brown-800/70 max-w-2xl mx-auto mb-16 font-light leading-relaxed">
+                    글로벌 비즈니스의 리스크를 경감하기 위한 가장 현명한 전략.<br class="hidden md:block" />
+                    고객사의 <strong class="text-brown-900 font-semibold border-b border-terracotta/40 pb-0.5">‘길잡이
+                        별(Guiding Star)’</strong>이 되겠습니다.
+                </p>
+
+                <!-- Buttons -->
+                <div class="reveal reveal-delay-300 flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <a href="#services"
+                        class="group relative px-10 py-5 bg-brown-900 text-beige-50 rounded-full font-medium transition-all duration-300 shadow-xl shadow-brown-900/20 hover:shadow-2xl hover:shadow-terracotta/20 hover:-translate-y-1 overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-terracotta translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+                        </div>
+                        <span class="relative z-10 flex items-center gap-3 tracking-wide">
+                            Our Services <span class="iconify group-hover:translate-x-1 transition-transform"
+                                data-icon="solar:arrow-right-linear"></span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Floating Abstract Elements -->
+            <div
+                class="absolute top-1/4 left-[10%] w-72 h-72 bg-terracotta/10 rounded-full blur-[80px] -z-10 animate-float">
+            </div>
+            <div
+                class="absolute bottom-1/4 right-[10%] w-96 h-96 bg-navy-900/10 rounded-full blur-[100px] -z-10 animate-float-delayed">
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <section id="about" class="py-32 bg-white relative z-20">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col lg:flex-row gap-20 items-center">
+                    <div class="w-full lg:w-1/2 reveal relative">
+                        <!-- Image -->
+                        <div class="aspect-[4/3] rounded-sm overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1600"
+                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                                alt="Meeting">
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-1/2 reveal reveal-delay-100">
+                        <span class="text-terracotta font-bold tracking-[0.2em] text-xs uppercase mb-6 block">About
+                            Us</span>
+                        <h2 class="text-4xl md:text-5xl font-medium text-brown-900 mb-8 leading-tight">
+                            Execution Experts<br />for Global Growth.
+                        </h2>
+                        <p class="text-brown-800/70 text-lg leading-relaxed font-light mb-10">
+                            단순한 조언이 아닌, 법인 설립, 안정화, 위기 대응까지 직접 실행한 <strong>'실행형' 전문가 그룹</strong>입니다.<br /><br />
+                            높아진 시장 비용 속에서 실패 확률을 줄이고, 미국, 유럽, 아시아 등 광범위한 글로벌 네트워크를 통해 최적의 전략을 도출합니다.
+                        </p>
+
+                        <!-- Company Info Grid -->
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-6 border-t border-brown-900/10 pt-8">
+                            <div>
+                                <div class="text-xs text-terracotta font-bold uppercase tracking-wider mb-2">Company
+                                </div>
+                                <div class="text-sm text-brown-900 font-medium">주식회사 리치몬스타</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-terracotta font-bold uppercase tracking-wider mb-2">Founded
+                                </div>
+                                <div class="text-sm text-brown-900 font-medium">2021.03.03</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-terracotta font-bold uppercase tracking-wider mb-2">Team Size
+                                </div>
+                                <div class="text-sm text-brown-900 font-medium">10명 이하</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-terracotta font-bold uppercase tracking-wider mb-2">CEO</div>
+                                <div class="text-sm text-brown-900 font-medium">Ryu Eunji</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-terracotta font-bold uppercase tracking-wider mb-2">CSO</div>
+                                <div class="text-sm text-brown-900 font-medium">Choi HS</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-terracotta font-bold uppercase tracking-wider mb-2">Offices
+                                </div>
+                                <div class="text-sm text-brown-900 font-medium">Seoul, Tokyo</div>
+                            </div>
+                        </div>
+
+                        <!-- Business Description -->
+                        <div class="mt-8 p-6 bg-beige-50 rounded-sm border-l-4 border-terracotta">
+                            <div class="text-xs text-terracotta font-bold uppercase tracking-wider mb-3">Business</div>
+                            <div class="text-sm text-brown-800/80 leading-relaxed">
+                                해외사업 컨설팅, 각 종 대행 & 외주 업무
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marquee Section (Partners) -->
+
+        <!-- Detailed Services Section -->
+        <section id="services" class="py-32 bg-beige-100 relative overflow-hidden">
+            <!-- Background Elements -->
+            <div
+                class="absolute top-0 right-0 w-[600px] h-[600px] bg-terracotta/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2">
+            </div>
+
+            <div class="container mx-auto px-6 relative z-10">
+                <div
+                    class="flex flex-col md:flex-row justify-between items-end mb-32 gap-12 border-b border-brown-900/10 pb-12 reveal">
+                    <div class="max-w-3xl">
+                        <span class="text-terracotta font-bold tracking-[0.2em] text-xs uppercase mb-6 block pl-1">Our
+                            Expertise</span>
+                        <h2 class="text-5xl md:text-7xl font-medium text-brown-900 leading-[1.1]">
+                            Total Business<br />
+                            <span class="italic font-light text-brown-800/60">Solutions.</span>
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="space-y-40">
+                    <!-- Service 1: Global Consulting -->
+                    <a href="service-consulting.html"
+                        class="flex flex-col lg:flex-row gap-16 lg:gap-28 items-center group reveal block">
+                        <!-- Image Area -->
+                        <div class="w-full lg:w-1/2 relative order-2 lg:order-1">
+                            <div
+                                class="aspect-[4/3] rounded-sm overflow-hidden relative shadow-2xl shadow-brown-900/10 transition-transform duration-700 hover:shadow-terracotta/20">
+                                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=1600"
+                                    alt="Consulting"
+                                    class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                                <div
+                                    class="absolute inset-0 bg-brown-900/10 group-hover:bg-brown-900/0 transition-colors duration-500">
+                                </div>
+                            </div>
+                            <div
+                                class="absolute -top-12 -left-4 text-[8rem] font-bold text-brown-900/5 leading-none select-none z-0">
+                                01</div>
+                        </div>
+
+                        <!-- Text Area -->
+                        <div class="w-full lg:w-1/2 order-1 lg:order-2 relative z-10">
+                            <div class="mb-10">
+                                <h3
+                                    class="text-4xl md:text-5xl font-bold text-brown-900 mb-6 group-hover:text-terracotta transition-colors duration-300">
+                                    Global Consulting</h3>
+                                <p class="text-xl text-brown-800/80 leading-relaxed font-light mb-8">
+                                    현지 시장 분석부터 법인 설립, 파트너십 구축까지<br />
+                                    성공적인 해외 진출을 위한 원스톱 솔루션
+                                </p>
+                            </div>
+                            <div class="space-y-6 pl-6 border-l border-brown-900/10">
+                                <div class="text-brown-800/70"><span class="font-bold text-brown-900">현지 법인 설립</span> 및
+                                    초기 안정화 지원</div>
+                                <div class="text-brown-800/70"><span class="font-bold text-brown-900">시장 특성 분석</span> 및
+                                    경쟁사/소비자 동향 파악</div>
+                                <div class="text-brown-800/70"><span class="font-bold text-brown-900">AX 컨설팅</span>
+                                    (SaaS 도입, 플랫폼화)</div>
+                                <div class="text-brown-800/70"><span class="font-bold text-brown-900">투자 유치</span> 및
+                                    비즈니스 네트워크 연계</div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Service 2: PR & Marketing -->
+                    <a href="service-marketing.html"
+                        class="flex flex-col lg:flex-row-reverse gap-16 lg:gap-28 items-center group reveal block">
+                        <!-- Image Area -->
+                        <div class="w-full lg:w-1/2 relative order-2 lg:order-1">
+                            <div
+                                class="aspect-[4/3] rounded-sm overflow-hidden relative shadow-2xl shadow-brown-900/10 transition-transform duration-700 hover:shadow-terracotta/20">
+                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1600"
+                                    alt="Marketing"
+                                    class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                                <div
+                                    class="absolute inset-0 bg-navy-900/10 group-hover:bg-navy-900/0 transition-colors duration-500">
+                                </div>
+                            </div>
+                            <div
+                                class="absolute -top-12 -right-4 text-[8rem] font-bold text-brown-900/5 leading-none select-none z-0">
+                                02</div>
+                        </div>
+
+                        <!-- Text Area -->
+                        <div class="w-full lg:w-1/2 order-1 lg:order-2 relative z-10">
+                            <div class="mb-10">
+                                <h3
+                                    class="text-4xl md:text-5xl font-bold text-brown-900 mb-6 group-hover:text-terracotta transition-colors duration-300">
+                                    PR & Marketing</h3>
+                                <p class="text-xl text-brown-800/80 leading-relaxed font-light mb-8">
+                                    타겟팅(Targeting)부터 최적화(Optimizing)까지,<br />
+                                    브랜드 가치를 높이는 통합 마케팅 전략
+                                </p>
+                            </div>
+                            <div class="space-y-6 pl-6 border-l border-brown-900/10">
+                                <div class="text-brown-800/70"><span class="font-bold text-brown-900">타겟 마케팅</span> 및 현지
+                                    PR 전략</div>
+                                <div class="text-brown-800/70"><span class="font-bold text-brown-900">브랜딩</span>
+                                    (On/Offline 이벤트, 팝업스토어)</div>
+                                <div class="text-brown-800/70"><span class="font-bold text-brown-900">퍼포먼스 마케팅</span> &
+                                    ASO/SEO 최적화</div>
+                                <div class="text-brown-800/70"><span class="font-bold text-brown-900">Global
+                                        GameShow</span> 및 컨퍼런스 대응</div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Service 3: Dev & Production -->
+                    <a href="service-development.html"
+                        class="flex flex-col lg:flex-row gap-16 lg:gap-28 items-center group reveal block">
+                        <!-- Image Area -->
+                        <div class="w-full lg:w-1/2 relative order-2 lg:order-1">
+                            <div
+                                class="aspect-[4/3] rounded-sm overflow-hidden relative shadow-2xl shadow-brown-900/10 transition-transform duration-700 hover:shadow-terracotta/20">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600"
+                                    alt="Development"
+                                    class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0">
+                                <div
+                                    class="absolute inset-0 bg-brown-900/10 group-hover:bg-brown-900/0 transition-colors duration-500">
+                                </div>
+                            </div>
+                            <div
+                                class="absolute -top-12 -left-4 text-[8rem] font-bold text-brown-900/5 leading-none select-none z-0">
+                                03</div>
+                        </div>
+
+                        <!-- Text Area -->
+                        <div class="w-full lg:w-1/2 order-1 lg:order-2 relative z-10">
+                            <div class="mb-10">
+                                <h3
+                                    class="text-4xl md:text-5xl font-bold text-brown-900 mb-6 group-hover:text-terracotta transition-colors duration-300">
+                                    Dev & Operation</h3>
+                                <p class="text-xl text-brown-800/80 leading-relaxed font-light mb-8">
+                                    비즈니스를 실현하는 기술과<br />
+                                    안정적인 글로벌 운영 지원
+                                </p>
+                            </div>
+                            <div class="space-y-6 pl-6 border-l border-brown-900/10">
+                                <div class="text-brown-800/70"><span class="font-bold text-brown-900">플랫폼 개발</span> (PC,
+                                    Mobile, Roblox)</div>
+                                <div class="text-brown-800/70"><span class="font-bold text-brown-900">그래픽 디자인</span>
+                                    (2D/3D, UI/UX, Effect)</div>
+                                <div class="text-brown-800/70"><span class="font-bold text-brown-900">번역 및 로컬라이즈</span>
+                                    (L10N)</div>
+                                <div class="text-brown-800/70"><span class="font-bold text-brown-900">글로벌 CS</span> 및
+                                    SNS 운영 대행</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- <section class="py-20 bg-beige-50 border-y border-brown-900/5 overflow-hidden marquee-mask">
+            <div class="container mx-auto px-6 mb-10 text-center">
+                <span class="text-[10px] font-bold tracking-[0.3em] text-brown-900/30 uppercase">Global Alliance</span>
+            </div>
+
+            <div
+                class="flex w-max animate-scroll hover:pause grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+                <div class="flex items-center gap-24 px-10 text-xl font-bold text-brown-900/80">
+                    <span>4Gamer.net</span>
+                    <span>GAMEVU</span>
+                    <span>TikTok</span>
+                    <span>Kakao Page</span>
+                    <span>WEBTOON</span>
+                    <span>Colopl</span>
+                    <span>KiwiWalks</span>
+                    <span>Glohow</span>
+                    <span>Nexon</span>
+                    <span>Yoozoo</span>
+                    <span>Kong Studios</span>
+                    <span>Digital Hearts</span>
+                </div>
+                <div class="flex items-center gap-24 px-10 text-xl font-bold text-brown-900/80"
+                    aria-hidden="true">
+                    <span>4Gamer.net</span>
+                    <span>GAMEVU</span>
+                    <span>TikTok</span>
+                    <span>Kakao Page</span>
+                    <span>WEBTOON</span>
+                    <span>Colopl</span>
+                    <span>KiwiWalks</span>
+                    <span>Glohow</span>
+                    <span>Nexon</span>
+                    <span>Yoozoo</span>
+                    <span>Kong Studios</span>
+                    <span>Digital Hearts</span>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- Topics / News -->
+        <section id="topics" class="py-32 bg-white relative">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
+                    <div class="max-w-3xl">
+                        <span
+                            class="text-terracotta font-bold tracking-[0.2em] text-xs uppercase mb-6 block pl-1">Topics</span>
+                        <h2 class="text-4xl md:text-6xl font-medium text-brown-900">Latest News</h2>
+                    </div>
+                    <a href="topics.html"
+                        class="text-terracotta hover:text-brown-900 transition-colors text-sm font-bold uppercase tracking-wider flex items-center gap-2">
+                        [more]
+                        <span class="iconify" data-icon="solar:arrow-right-linear"></span>
+                    </a>
+                </div>
+
+                <div class="max-w-4xl">
+                    <!-- News Item -->
+                    <a href="topics.html?id=news-1"
+                        class="border-b border-brown-900/10 py-6 hover:bg-beige-50 transition-colors px-6 -mx-6 reveal block cursor-pointer">
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="text-brown-500 text-sm font-mono min-w-[140px]">
+                                2025년 10월 17일
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-brown-800 leading-relaxed hover:text-brown-900 transition-colors">
+                                    프리아웃 코리아, 그룹사 'UUUM'과 연계하여 국내기업 일본 시장 진출 및 인플루언서 마케팅 지원 강화
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="topics.html?id=news-2"
+                        class="border-b border-brown-900/10 py-6 hover:bg-beige-50 transition-colors px-6 -mx-6 reveal reveal-delay-100 block cursor-pointer">
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="text-brown-500 text-sm font-mono min-w-[140px]">
+                                2025년 03월 07일
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-brown-800 leading-relaxed hover:text-brown-900 transition-colors">
+                                    프리아웃 코리아, 유튜브 멀티채널 이용 행태 조사 발표 - 광고 시청률 높은 인벤토리, 시청 태도는 미흡.
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="topics.html?id=news-3"
+                        class="border-b border-brown-900/10 py-6 hover:bg-beige-50 transition-colors px-6 -mx-6 reveal reveal-delay-200 block cursor-pointer">
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="text-brown-500 text-sm font-mono min-w-[140px]">
+                                2025년 01월 10일
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-brown-800 leading-relaxed hover:text-brown-900 transition-colors">
+                                    프리아웃 코리아, 유튜브 멀티채널 이용 행태 조사 발표
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-32 relative overflow-hidden bg-beige-100 reveal">
+            <div class="absolute inset-0 z-0">
+                <!-- Simple decorative background pattern -->
+                <div
+                    class="absolute inset-0 bg-[radial-gradient(#C17C74_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.08]">
+                </div>
+            </div>
+            <div class="container mx-auto px-6 relative z-10 text-center">
+                <span class="iconify text-6xl text-terracotta mb-6 mx-auto animate-float"
+                    data-icon="solar:confetti-minimalistic-linear"></span>
+                <h2 class="text-5xl md:text-7xl font-bold text-brown-900 mb-8 tracking-tight">Ready to
+                    expand?</h2>
+                <p class="text-brown-800/70 mb-12 max-w-2xl mx-auto text-xl font-light">일본과 세계를 잇는 비즈니스,
+                    <br />RichmonstaR와 함께 시작하세요.
+                </p>
+                <button
+                    class="group px-14 py-6 bg-brown-900 text-beige-100 rounded-full font-medium hover:bg-terracotta transition-all duration-300 flex items-center gap-3 mx-auto text-lg shadow-2xl shadow-brown-900/20 hover:shadow-terracotta/30 hover:-translate-y-1">
+                    <span class="iconify text-xl" data-icon="solar:chat-round-dots-linear"></span> 무료 상담 신청하기
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="relative bg-brown-900 text-beige-100 pt-24 pb-12 overflow-hidden">
+        <!-- Map Background -->
+        <div class="absolute inset-0 opacity-25">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.0976574154547!2d127.05285631531753!3d37.50280797980846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca3f4e7e3e3e3%3A0x0!2zMzfCsDMwJzEwLjEiTiAxMjfCsDAzJzE4LjQiRQ!5e0!3m2!1sen!2skr!4v1234567890"
+                width="100%" height="100%" style="border:0;filter:grayscale(100%) sepia(50%);" allowfullscreen=""
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-brown-900/80 via-brown-900/90 to-brown-900"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <!-- Contact Title -->
+            <div class="text-center mb-20">
+                <h2 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">Contact</h2>
+                <!-- <p class="text-beige-100/70 text-xl max-w-2xl mx-auto">Ready to expand your business globally? Let's
+                    start the conversation.</p> -->
+            </div>
+
+            <!-- Contact Cards -->
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
+                <!-- Email Card -->
+                <div
+                    class="bg-white/5 backdrop-blur-sm p-10 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 group">
+                    <div
+                        class="w-16 h-16 rounded-full bg-gradient-to-br from-terracotta to-brown-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="iconify text-3xl text-white" data-icon="solar:letter-bold"></span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Email Us</h3>
+                    <a href="mailto:contact@rychmonstar.com"
+                        class="text-beige-100 hover:text-terracotta transition-colors text-lg block">
+                        contact@rychmonstar.com
+                    </a>
+                </div>
+
+                <!-- Seoul Office Card -->
+                <div
+                    class="bg-white/5 backdrop-blur-sm p-10 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 group">
+                    <div
+                        class="w-16 h-16 rounded-full bg-gradient-to-br from-terracotta to-brown-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="iconify text-3xl text-white" data-icon="solar:map-point-bold"></span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Seoul Office</h3>
+                    <p class="text-beige-100 leading-relaxed">
+                        7, Teheran-ro 8-gil, 902ho<br />
+                        Gangnam-gu, Seoul<br />
+                        South Korea (크레신타워2)
+                    </p>
+                </div>
+
+                <!-- Tokyo Office Card -->
+                <div
+                    class="bg-white/5 backdrop-blur-sm p-10 rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 group">
+                    <div
+                        class="w-16 h-16 rounded-full bg-gradient-to-br from-terracotta to-brown-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="iconify text-3xl text-white" data-icon="solar:buildings-bold"></span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Tokyo Office</h3>
+                    <p class="text-beige-100 leading-relaxed">
+                        THE LINKPILLAR 1 SOUTH 8F<br />
+                        2-21-2 Takanawa, Minato-ku<br />
+                        Tokyo, Japan
+                    </p>
+                </div>
+            </div>
+
+            <!-- Map Section -->
+            <div class="max-w-6xl mx-auto mb-16">
+                <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10">
+                    <h3 class="text-2xl font-bold text-white mb-6 text-center">Our Locations</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Seoul Map -->
+                        <div>
+                            <h4 class="text-white font-bold mb-3 text-sm uppercase tracking-wider">Seoul, Korea</h4>
+                            <div class="aspect-video rounded-lg overflow-hidden">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.238692835654!2d127.05285631531753!3d37.50280797980846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca159a7d4b36d%3A0x6a61a7e8e9c8e8e8!2z7ISc7Jq47Yq567OE7IucIOqwleuCqOq1rCDthYztl6TrnoDroZwgMTI4!5e0!3m2!1sko!2skr!4v1735537027123!5m2!1sko!2skr"
+                                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
+
+                        <!-- Tokyo Map -->
+                        <div>
+                            <h4 class="text-white font-bold mb-3 text-sm uppercase tracking-wider">Tokyo, Japan</h4>
+                            <div class="aspect-video rounded-lg overflow-hidden">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3242.4074524891647!2d139.73754631525895!3d35.63856098020155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b563b00109f%3A0x337328def1e2ab26!2z5p2x5Lqs6YO95riv5Yy66auY6Ly2MuS4geebru-8kuKIkjIx4oiSMg!5e0!3m2!1sja!2sjp!4v1735537027124!5m2!1sja!2sjp"
+                                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Media -->
+            <div class="text-center mb-16">
+                <h3 class="text-2xl font-bold text-white mb-8">Follow Our Journey</h3>
+                <div class="flex justify-center gap-6">
+                    <a href="#" target="_blank" rel="noopener noreferrer"
+                        class="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:bg-gradient-to-br hover:from-terracotta hover:to-brown-800 hover:text-white hover:border-transparent transition-all duration-300 hover:scale-110">
+                        <span class="iconify text-xl" data-icon="ri:facebook-fill"></span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"
+                        class="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:bg-gradient-to-br hover:from-terracotta hover:to-brown-800 hover:text-white hover:border-transparent transition-all duration-300 hover:scale-110">
+                        <span class="iconify text-xl" data-icon="ri:linkedin-fill"></span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"
+                        class="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:bg-gradient-to-br hover:from-terracotta hover:to-brown-800 hover:text-white hover:border-transparent transition-all duration-300 hover:scale-110">
+                        <span class="iconify text-xl" data-icon="ri:instagram-fill"></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div
+                class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-beige-100/30">
+                <p>&copy; 2021-2024 RychmonstaR Inc. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Unicorn Studio Script -->
+    <script
+        src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.5.2/dist/unicornStudio.umd.js"></script>
+    <script>
+        // Init Unicorn Studio
+        window.addEventListener('load', function () {
+            if (window.UnicornStudio) {
+                UnicornStudio.init();
+            }
+        });
+
+        // Navbar Scroll Effect (Optimized for performance)
+        const navbar = document.getElementById('navbar');
+        let isScrolled = false;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                if (!isScrolled) {
+                    navbar.classList.remove('py-6');
+                    navbar.classList.add('bg-navy-900/95', 'backdrop-blur-md', 'py-4', 'shadow-2xl');
+                    isScrolled = true;
+                }
+            } else {
+                if (isScrolled) {
+                    navbar.classList.add('bg-navy-900', 'py-6');
+                    navbar.classList.remove('bg-navy-900/95', 'backdrop-blur-md', 'py-4', 'shadow-2xl');
+                    isScrolled = false;
+                }
+            }
+        }, { passive: true });
+
+        // Simple Language Toggle Logic
+        function changeLang(lang) {
+            document.getElementById('current-lang').innerText = lang;
+        }
+
+        // Scroll Reveal Animation (New)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+    <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>

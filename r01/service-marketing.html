@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PR & Marketing - RychmonstaR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        beige: {
+                            50: '#FDFCFA',
+                            100: '#F8F5F0',
+                            200: '#F0EBE3',
+                        },
+                        brown: {
+                            500: '#8B7355',
+                            800: '#4A3F35',
+                            900: '#2D2520',
+                        },
+                        terracotta: {
+                            DEFAULT: '#C17C74',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Poppins"', '"ONE Mobile Gothic"', '"M PLUS Rounded 1c"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=M+PLUS+Rounded+1c:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'ONE Mobile Gothic';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONEMobileGothic-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Poppins', 'ONE Mobile Gothic', 'M PLUS Rounded 1c', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-beige-100">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-beige-100/95 backdrop-blur-sm border-b border-brown-900/10">
+        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="index.html"
+                class="text-2xl md:text-3xl font-serif font-bold text-brown-900 hover:text-terracotta transition-colors">RychmonstaR</a>
+            <div class="hidden md:flex items-center gap-8">
+                <ul class="flex items-center gap-6">
+                    <li><a href="index.html#about"
+                            class="text-xs font-medium text-brown-800/70 hover:text-brown-900 transition-colors tracking-[0.15em] uppercase hover:underline underline-offset-4 decoration-terracotta decoration-2">About</a>
+                    </li>
+                    <li><a href="index.html#services"
+                            class="text-xs font-medium text-brown-800/70 hover:text-brown-900 transition-colors tracking-[0.15em] uppercase hover:underline underline-offset-4 decoration-terracotta decoration-2">Services</a>
+                    </li>
+                    <li><a href="index.html#portfolio"
+                            class="text-xs font-medium text-brown-800/70 hover:text-brown-900 transition-colors tracking-[0.15em] uppercase hover:underline underline-offset-4 decoration-terracotta decoration-2">Portfolio</a>
+                    </li>
+                    <li><a href="index.html#contact"
+                            class="text-xs font-medium text-brown-800/70 hover:text-brown-900 transition-colors tracking-[0.15em] uppercase hover:underline underline-offset-4 decoration-terracotta decoration-2">Contact</a>
+                    </li>
+                </ul>
+                <a href="index.html#contact"
+                    class="px-7 py-3 text-[10px] font-bold uppercase tracking-[0.2em] border border-brown-900/20 text-brown-900 rounded-full hover:bg-brown-900 hover:text-white transition-all duration-500">Get
+                    Started</a>
+            </div>
+            <button class="md:hidden text-brown-900 p-2"><span class="iconify text-2xl"
+                    data-icon="solar:hamburger-menu-linear"></span></button>
+        </div>
+    </nav>
+
+    <div class="min-h-screen py-32 px-6">
+        <div class="max-w-5xl mx-auto">
+            <a href="index.html"
+                class="inline-flex items-center gap-2 text-brown-500 hover:text-brown-900 mb-12 transition-colors">
+                <span class="iconify text-xl" data-icon="solar:arrow-left-linear"></span>
+                <span class="text-sm uppercase tracking-wider">Back to Home</span>
+            </a>
+
+            <div class="bg-white rounded-lg shadow-xl p-12 md:p-16 border border-brown-900/5">
+                <div class="flex items-center gap-6 mb-8">
+                    <span class="iconify text-7xl text-terracotta" data-icon="solar:speaker-bold-duotone"></span>
+                    <div>
+                        <div class="text-xs text-terracotta uppercase tracking-widest mb-2 font-bold">Service Detail
+                        </div>
+                        <h1 class="text-4xl md:text-5xl font-serif font-bold text-brown-900">PR & Marketing</h1>
+                    </div>
+                </div>
+
+                <p class="text-xl text-brown-800/80 mb-16 leading-relaxed border-l-4 border-terracotta pl-6">
+                    타겟팅(Targeting)부터 최적화(Optimizing)까지,<br />
+                    브랜드 가치를 높이는 통합 마케팅 전략
+                </p>
+
+                <div class="space-y-12">
+                    <div
+                        class="bg-beige-50 p-8 rounded-lg border border-brown-900/5 hover:border-terracotta/30 transition-colors">
+                        <div class="flex items-start gap-4 mb-4">
+                            <span class="iconify text-3xl text-terracotta mt-1"
+                                data-icon="solar:target-bold-duotone"></span>
+                            <div>
+                                <h3 class="text-2xl font-bold text-brown-900 mb-3">타겟 마케팅 (Targeting)</h3>
+                                <p class="text-brown-800/70 leading-relaxed">
+                                    정확한 타겟 고객 분석을 통해 효과적인 마케팅 전략을 수립합니다.
+                                    데이터 기반의 인사이트로 최적의 타겟 세그먼트를 발굴하고 맞춤형 메시지를 전달합니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-beige-50 p-8 rounded-lg border border-brown-900/5 hover:border-terracotta/30 transition-colors">
+                        <div class="flex items-start gap-4 mb-4">
+                            <span class="iconify text-3xl text-terracotta mt-1"
+                                data-icon="solar:palette-bold-duotone"></span>
+                            <div>
+                                <h3 class="text-2xl font-bold text-brown-900 mb-3">브랜딩 (On/Offline)</h3>
+                                <p class="text-brown-800/70 leading-relaxed">
+                                    온라인과 오프라인을 아우르는 통합 브랜딩 전략을 제공합니다.
+                                    이벤트, 팝업스토어, 디지털 캠페인 등 다양한 채널을 통해 브랜드 가치를 극대화합니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-beige-50 p-8 rounded-lg border border-brown-900/5 hover:border-terracotta/30 transition-colors">
+                        <div class="flex items-start gap-4 mb-4">
+                            <span class="iconify text-3xl text-terracotta mt-1"
+                                data-icon="solar:chart-2-bold-duotone"></span>
+                            <div>
+                                <h3 class="text-2xl font-bold text-brown-900 mb-3">퍼포먼스 마케팅 & ASO/SEO</h3>
+                                <p class="text-brown-800/70 leading-relaxed">
+                                    데이터 기반의 퍼포먼스 마케팅으로 ROI를 극대화합니다.
+                                    앱 스토어 최적화(ASO)와 검색 엔진 최적화(SEO)를 통해 자연 유입을 증대시킵니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-beige-50 p-8 rounded-lg border border-brown-900/5 hover:border-terracotta/30 transition-colors">
+                        <div class="flex items-start gap-4 mb-4">
+                            <span class="iconify text-3xl text-terracotta mt-1"
+                                data-icon="solar:users-group-rounded-bold-duotone"></span>
+                            <div>
+                                <h3 class="text-2xl font-bold text-brown-900 mb-3">인플루언서 및 콜라보레이션</h3>
+                                <p class="text-brown-800/70 leading-relaxed">
+                                    영향력 있는 인플루언서와의 협업을 통해 브랜드 인지도를 높입니다.
+                                    전략적 파트너십을 통한 시너지 효과를 창출합니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-beige-50 p-8 rounded-lg border border-brown-900/5 hover:border-terracotta/30 transition-colors">
+                        <div class="flex items-start gap-4 mb-4">
+                            <span class="iconify text-3xl text-terracotta mt-1"
+                                data-icon="solar:gameboy-bold-duotone"></span>
+                            <div>
+                                <h3 class="text-2xl font-bold text-brown-900 mb-3">Global GameShow & Event 대행</h3>
+                                <p class="text-brown-800/70 leading-relaxed">
+                                    글로벌 게임쇼 및 컨퍼런스 참가를 전문적으로 지원합니다.
+                                    부스 운영, 프레젠테이션, 네트워킹 등 전 과정을 관리합니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="mt-16 pt-8 border-t border-brown-900/10 flex flex-col md:flex-row gap-6 items-center justify-between">
+                    <div class="text-brown-800/70 text-sm">
+                        <p>궁금하신 점이 있으시면 언제든지 문의해주세요.</p>
+                    </div>
+                    <a href="mailto:contact@richmonstar.com"
+                        class="px-10 py-4 bg-terracotta text-white rounded-full font-bold hover:bg-brown-900 transition-all shadow-lg">
+                        문의하기
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

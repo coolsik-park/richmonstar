@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Topics - RychmonstaR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        beige: {
+                            50: '#FDFCFA',
+                            100: '#F8F5F0',
+                            200: '#F0EBE3',
+                        },
+                        brown: {
+                            500: '#8B7355',
+                            800: '#4A3F35',
+                            900: '#2D2520',
+                        },
+                        terracotta: {
+                            DEFAULT: '#C17C74',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Poppins"', '"ONE Mobile Gothic"', '"M PLUS Rounded 1c"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=M+PLUS+Rounded+1c:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'ONE Mobile Gothic';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONEMobileGothic-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Poppins', 'ONE Mobile Gothic', 'M PLUS Rounded 1c', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-beige-100">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-beige-100/95 backdrop-blur-sm border-b border-brown-900/10">
+        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="index.html"
+                class="text-2xl md:text-3xl font-serif font-bold text-brown-900 hover:text-terracotta transition-colors">RychmonstaR</a>
+            <div class="hidden md:flex items-center gap-8">
+                <ul class="flex items-center gap-6">
+                    <li><a href="index.html#about"
+                            class="text-xs font-medium text-brown-800/70 hover:text-brown-900 transition-colors tracking-[0.15em] uppercase hover:underline underline-offset-4 decoration-terracotta decoration-2">About</a>
+                    </li>
+                    <li><a href="index.html#services"
+                            class="text-xs font-medium text-brown-800/70 hover:text-brown-900 transition-colors tracking-[0.15em] uppercase hover:underline underline-offset-4 decoration-terracotta decoration-2">Services</a>
+                    </li>
+                    <li><a href="index.html#topics"
+                            class="text-xs font-medium text-brown-800/70 hover:text-brown-900 transition-colors tracking-[0.15em] uppercase hover:underline underline-offset-4 decoration-terracotta decoration-2">Topics</a>
+                    </li>
+                    <li><a href="index.html#contact"
+                            class="text-xs font-medium text-brown-800/70 hover:text-brown-900 transition-colors tracking-[0.15em] uppercase hover:underline underline-offset-4 decoration-terracotta decoration-2">Contact</a>
+                    </li>
+                </ul>
+                <a href="index.html#contact"
+                    class="px-7 py-3 text-[10px] font-bold uppercase tracking-[0.2em] border border-brown-900/20 text-brown-900 rounded-full hover:bg-brown-900 hover:text-white transition-all duration-500">Get
+                    Started</a>
+            </div>
+            <button class="md:hidden text-brown-900 p-2"><span class="iconify text-2xl"
+                    data-icon="solar:hamburger-menu-linear"></span></button>
+        </div>
+    </nav>
+
+    <div class="min-h-screen py-32 px-6">
+        <div class="max-w-5xl mx-auto">
+            <a href="index.html"
+                class="inline-flex items-center gap-2 text-brown-500 hover:text-brown-900 mb-12 transition-colors">
+                <span class="iconify text-xl" data-icon="solar:arrow-left-linear"></span>
+                <span class="text-sm uppercase tracking-wider">Back to Home</span>
+            </a>
+
+            <div class="bg-white rounded-lg shadow-xl p-12 md:p-16 border border-brown-900/5">
+                <div class="mb-12">
+                    <span class="text-terracotta font-bold tracking-[0.2em] text-xs uppercase mb-3 block">All
+                        News</span>
+                    <h1 class="text-4xl md:text-5xl font-serif font-bold text-brown-900">Topics</h1>
+                </div>
+
+                <div class="space-y-0">
+                    <!-- 2025년 뉴스 -->
+                    <div class="border-b border-brown-900/10 accordion-item" data-id="news-1">
+                        <button
+                            class="w-full py-6 hover:bg-beige-50 transition-colors px-6 -mx-6 text-left flex items-center justify-between group">
+                            <div class="flex flex-col md:flex-row gap-6 flex-1">
+                                <div class="text-brown-500 text-sm font-mono min-w-[140px]">2025년 10월 17일</div>
+                                <div class="flex-1">
+                                    <p
+                                        class="text-brown-800 leading-relaxed group-hover:text-brown-900 transition-colors">
+                                        프리아웃 코리아, 그룹사 'UUUM'과 연계하여 국내기업 일본 시장 진출 및 인플루언서 마케팅 지원 강화
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="iconify text-terracotta text-xl ml-4 accordion-icon transition-transform"
+                                data-icon="solar:alt-arrow-down-linear"></span>
+                        </button>
+                        <div class="accordion-content hidden px-6 pb-6">
+                            <div class="ml-0 md:ml-[156px] text-brown-800/70 leading-relaxed space-y-4">
+                                <p>RychmonstaR Inc.는 일본 최대 MCN 기업인 UUUM과의 전략적 파트너십을 통해 국내 기업의 일본 시장 진출을 지원합니다.</p>
+                                <p>UUUM의 광범위한 인플루언서 네트워크와 RychmonstaR의 글로벌 비즈니스 전문성을 결합하여, 효과적인 마케팅 전략을 제공합니다.</p>
+                                <p>주요 서비스로는 현지 인플루언서 매칭, 콘텐츠 제작 지원, 마케팅 캠페인 기획 및 실행 등이 있습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-b border-brown-900/10 accordion-item" data-id="news-2">
+                        <button
+                            class="w-full py-6 hover:bg-beige-50 transition-colors px-6 -mx-6 text-left flex items-center justify-between group">
+                            <div class="flex flex-col md:flex-row gap-6 flex-1">
+                                <div class="text-brown-500 text-sm font-mono min-w-[140px]">2025년 03월 07일</div>
+                                <div class="flex-1">
+                                    <p
+                                        class="text-brown-800 leading-relaxed group-hover:text-brown-900 transition-colors">
+                                        프리아웃 코리아, 유튜브 멀티채널 이용 행태 조사 발표 - 광고 시청률 높은 인벤토리, 시청 태도는 미흡.
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="iconify text-terracotta text-xl ml-4 accordion-icon transition-transform"
+                                data-icon="solar:alt-arrow-down-linear"></span>
+                        </button>
+                        <div class="accordion-content hidden px-6 pb-6">
+                            <div class="ml-0 md:ml-[156px] text-brown-800/70 leading-relaxed space-y-4">
+                                <p>유튜브 멀티채널 네트워크(MCN) 이용자들의 광고 시청 행태에 대한 심층 조사 결과를 발표했습니다.</p>
+                                <p>조사 결과, 인벤토리 광고의 시청률은 높으나 실제 시청 태도는 상대적으로 낮은 것으로 나타났습니다.</p>
+                                <p>이는 향후 광고 전략 수립에 중요한 인사이트를 제공할 것으로 기대됩니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-b border-brown-900/10 accordion-item" data-id="news-3">
+                        <button
+                            class="w-full py-6 hover:bg-beige-50 transition-colors px-6 -mx-6 text-left flex items-center justify-between group">
+                            <div class="flex flex-col md:flex-row gap-6 flex-1">
+                                <div class="text-brown-500 text-sm font-mono min-w-[140px]">2025년 01월 10일</div>
+                                <div class="flex-1">
+                                    <p
+                                        class="text-brown-800 leading-relaxed group-hover:text-brown-900 transition-colors">
+                                        프리아웃 코리아, 유튜브 멀티채널 이용 행태 조사 발표
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="iconify text-terracotta text-xl ml-4 accordion-icon transition-transform"
+                                data-icon="solar:alt-arrow-down-linear"></span>
+                        </button>
+                        <div class="accordion-content hidden px-6 pb-6">
+                            <div class="ml-0 md:ml-[156px] text-brown-800/70 leading-relaxed space-y-4">
+                                <p>2025년 첫 조사 결과로, 유튜브 멀티채널 이용자들의 콘텐츠 소비 패턴을 분석했습니다.</p>
+                                <p>다양한 채널을 동시에 구독하는 이용자들의 특성과 선호도를 파악하여, MCN 사업자들에게 유용한 데이터를 제공합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2026년 뉴스 (연도와 월 구분) -->
+                    <div class="pt-12 pb-4">
+                        <h3 class="text-2xl font-serif font-bold text-brown-900">2026</h3>
+                    </div>
+
+                    <div class="border-b border-brown-900/10 accordion-item" data-id="news-4">
+                        <button
+                            class="w-full py-6 hover:bg-beige-50 transition-colors px-6 -mx-6 text-left flex items-center justify-between group">
+                            <div class="flex flex-col md:flex-row gap-6 flex-1">
+                                <div class="text-brown-500 text-sm font-mono min-w-[140px]">01월 01일</div>
+                                <div class="flex-1">
+                                    <p
+                                        class="text-brown-800 leading-relaxed group-hover:text-brown-900 transition-colors">
+                                        새해 첫 뉴스 - RychmonstaR, 글로벌 비즈니스 확장 계획 발표
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="iconify text-terracotta text-xl ml-4 accordion-icon transition-transform"
+                                data-icon="solar:alt-arrow-down-linear"></span>
+                        </button>
+                        <div class="accordion-content hidden px-6 pb-6">
+                            <div class="ml-0 md:ml-[156px] text-brown-800/70 leading-relaxed space-y-4">
+                                <p>2026년 새해를 맞아 RychmonstaR의 글로벌 비즈니스 확장 계획을 발표했습니다.</p>
+                                <p>미국, 유럽, 동남아시아 시장으로의 진출을 계획하고 있으며, 현지 파트너사와의 협력을 강화할 예정입니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-b border-brown-900/10 accordion-item" data-id="news-5">
+                        <button
+                            class="w-full py-6 hover:bg-beige-50 transition-colors px-6 -mx-6 text-left flex items-center justify-between group">
+                            <div class="flex flex-col md:flex-row gap-6 flex-1">
+                                <div class="text-brown-500 text-sm font-mono min-w-[140px]">01월 15일</div>
+                                <div class="flex-1">
+                                    <p
+                                        class="text-brown-800 leading-relaxed group-hover:text-brown-900 transition-colors">
+                                        RychmonstaR, 일본 도쿄 오피스 확장 이전
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="iconify text-terracotta text-xl ml-4 accordion-icon transition-transform"
+                                data-icon="solar:alt-arrow-down-linear"></span>
+                        </button>
+                        <div class="accordion-content hidden px-6 pb-6">
+                            <div class="ml-0 md:ml-[156px] text-brown-800/70 leading-relaxed space-y-4">
+                                <p>사업 확장에 따라 일본 도쿄 오피스를 더 넓은 공간으로 이전했습니다.</p>
+                                <p>신규 오피스는 시부야 중심가에 위치하며, 직원 수용 인원을 2배 이상 늘렸습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Accordion functionality
+        document.querySelectorAll('.accordion-item button').forEach(button => {
+            button.addEventListener('click', function () {
+                const item = this.closest('.accordion-item');
+                const content = item.querySelector('.accordion-content');
+                const icon = this.querySelector('.accordion-icon');
+                const isOpen = !content.classList.contains('hidden');
+
+                // Close all other accordions
+                document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.querySelector('.accordion-content').classList.add('hidden');
+                        otherItem.querySelector('.accordion-icon').style.transform = 'rotate(0deg)';
+                    }
+                });
+
+                // Toggle current accordion
+                if (isOpen) {
+                    content.classList.add('hidden');
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    content.classList.remove('hidden');
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // Open specific news item from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const newsId = urlParams.get('id');
+        if (newsId) {
+            const targetItem = document.querySelector(`[data-id="${newsId}"]`);
+            if (targetItem) {
+                const content = targetItem.querySelector('.accordion-content');
+                const icon = targetItem.querySelector('.accordion-icon');
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+                // Scroll to the item
+                setTimeout(() => {
+                    targetItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+            }
+        }
+    </script>
+</body>
+
+</html>

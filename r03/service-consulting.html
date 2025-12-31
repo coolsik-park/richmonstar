@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global Consulting - RychmonstaR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            950: '#020617',
+                            900: '#0F172A',
+                            800: '#1E293B',
+                        },
+                        gold: {
+                            500: '#EAB308',
+                        },
+                        terracotta: {
+                            DEFAULT: '#C17C74',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Poppins"', '"ONE Mobile Gothic"', '"M PLUS Rounded 1c"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=M+PLUS+Rounded+1c:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'ONE Mobile Gothic';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONEMobileGothic-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Poppins', 'ONE Mobile Gothic', 'M PLUS Rounded 1c', sans-serif;
+            background-color: #060E24;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-nav {
+            background: rgba(6, 14, 36, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body class="bg-white text-slate-200">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-6 glass-nav">
+        <div class="container mx-auto px-6 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <span
+                    class="text-2xl md:text-3xl font-serif font-bold tracking-tight group-hover:text-terracotta transition-colors duration-300"
+                    style="color: #FBF2D9;">RychmonstaR</span>
+            </a>
+            <div class="hidden md:flex items-center gap-12">
+                <ul class="flex items-center gap-8">
+                    <li><a href="index.html#about"
+                            class="text-xs font-medium text-gray-600 hover:text-gray-900 transition-colors tracking-[0.15em] uppercase hover:underline underline-offset-8 decoration-terracotta/50 decoration-1">About</a>
+                    </li>
+                    <li><a href="index.html#services"
+                            class="text-xs font-medium text-gray-600 hover:text-gray-900 transition-colors tracking-[0.15em] uppercase hover:underline underline-offset-8 decoration-terracotta/50 decoration-1">Services</a>
+                    </li>
+                    <li><a href="index.html#portfolio"
+                            class="text-xs font-medium text-gray-600 hover:text-gray-900 transition-colors tracking-[0.15em] uppercase hover:underline underline-offset-8 decoration-terracotta/50 decoration-1">Portfolio</a>
+                    </li>
+                    <li><a href="index.html#contact"
+                            class="text-xs font-medium text-gray-600 hover:text-gray-900 transition-colors tracking-[0.15em] uppercase hover:underline underline-offset-8 decoration-terracotta/50 decoration-1">Contact</a>
+                    </li>
+                </ul>
+                <div class="flex items-center gap-6">
+                    <div class="relative group">
+                        <button
+                            class="flex items-center gap-1 text-[10px] font-bold text-gray-600 hover:text-gray-900 transition-colors px-2 py-1 uppercase tracking-widest border border-gray-200 rounded hover:border-white/30">KR</button>
+                        <div
+                            class="absolute right-0 mt-2 w-20 bg-gray-50 border border-gray-200 rounded-lg overflow-hidden hidden group-hover:block shadow-xl">
+                            <button
+                                class="w-full text-left px-3 py-2 text-[10px] font-bold hover:bg-white/5 text-terracotta tracking-wider">KR</button>
+                            <button
+                                class="w-full text-left px-3 py-2 text-[10px] font-bold hover:bg-white/5 text-gray-600 tracking-wider">JP</button>
+                            <button
+                                class="w-full text-left px-3 py-2 text-[10px] font-bold hover:bg-white/5 text-gray-600 tracking-wider">EN</button>
+                        </div>
+                    </div>
+                    <a href="index.html#contact"
+                        class="px-6 py-2 bg-cream-100 text-navy-950 rounded-sm font-bold text-xs uppercase tracking-widest hover:bg-terracotta hover:text-gray-900 transition-all duration-300">Get
+                        Started</a>
+                </div>
+            </div>
+            <button class="md:hidden text-gray-900 p-2" aria-label="Menu"><span class="iconify text-2xl"
+                    data-icon="solar:hamburger-menu-linear"></span></button>
+        </div>
+    </nav>
+    <div class="min-h-screen py-20 px-6">
+        <div class="max-w-5xl mx-auto">
+            <a href="index.html"
+                class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-12 transition-colors">
+                <span class="iconify text-xl" data-icon="solar:arrow-left-linear"></span>
+                <span class="text-sm uppercase tracking-wider">Back to Home</span>
+            </a>
+
+            <div class="glass rounded-lg p-12 md:p-16">
+                <div class="flex items-center gap-6 mb-8">
+                    <span class="iconify text-7xl text-terracotta" data-icon="solar:chart-square-bold-duotone"></span>
+                    <div>
+                        <div class="text-xs text-terracotta uppercase tracking-widest mb-2">Service Detail</div>
+                        <h1 class="text-4xl md:text-5xl font-serif font-bold text-gray-900">Global Consulting</h1>
+                    </div>
+                </div>
+
+                <p class="text-xl text-gray-700 mb-16 leading-relaxed border-l-4 border-terracotta pl-6">
+                    현지 시장 분석부터 법인 설립, 파트너십 구축까지<br />
+                    성공적인 해외 진출을 위한 원스톱 솔루션
+                </p>
+
+                <div class="space-y-12">
+                    <div
+                        class="bg-gray-50/50 p-8 rounded-lg border border-white/5 hover:border-terracotta/30 transition-colors">
+                        <div class="flex items-start gap-4 mb-4">
+                            <span class="iconify text-3xl text-gold-500 mt-1"
+                                data-icon="solar:buildings-2-bold-duotone"></span>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-3">현지 법인 설립 및 초기 안정화 지원</h3>
+                                <p class="text-gray-600 leading-relaxed">
+                                    해외 시장 진출의 첫 단계인 법인 설립부터 초기 운영 안정화까지 전 과정을 지원합니다.
+                                    현지 법률, 세무, 회계 전문가와의 네트워크를 통해 신속하고 정확한 법인 설립을 도와드립니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-gray-50/50 p-8 rounded-lg border border-white/5 hover:border-terracotta/30 transition-colors">
+                        <div class="flex items-start gap-4 mb-4">
+                            <span class="iconify text-3xl text-gold-500 mt-1"
+                                data-icon="solar:graph-up-bold-duotone"></span>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-3">시장 특성 분석 및 경쟁사/소비자 동향 파악</h3>
+                                <p class="text-gray-600 leading-relaxed">
+                                    진출하고자 하는 시장의 특성을 면밀히 분석하고, 경쟁사 및 소비자 동향을 파악하여
+                                    최적의 시장 진입 전략을 수립합니다. 데이터 기반의 인사이트를 제공합니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-gray-50/50 p-8 rounded-lg border border-white/5 hover:border-terracotta/30 transition-colors">
+                        <div class="flex items-start gap-4 mb-4">
+                            <span class="iconify text-3xl text-gold-500 mt-1"
+                                data-icon="solar:settings-bold-duotone"></span>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-3">AX 컨설팅 (SaaS 도입, 플랫폼화)</h3>
+                                <p class="text-gray-600 leading-relaxed">
+                                    비즈니스 자동화(AX)를 통해 효율성을 극대화합니다. SaaS 도입, 플랫폼화 전략 수립 등
+                                    디지털 트랜스포메이션을 지원하여 글로벌 경쟁력을 강화합니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-gray-50/50 p-8 rounded-lg border border-white/5 hover:border-terracotta/30 transition-colors">
+                        <div class="flex items-start gap-4 mb-4">
+                            <span class="iconify text-3xl text-gold-500 mt-1"
+                                data-icon="solar:hand-money-bold-duotone"></span>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-3">투자 유치 및 비즈니스 네트워크 연계</h3>
+                                <p class="text-gray-600 leading-relaxed">
+                                    글로벌 투자자 및 파트너사와의 네트워크를 통해 투자 유치 기회를 제공하고,
+                                    비즈니스 성장에 필요한 전략적 파트너십을 구축합니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="mt-16 pt-8 border-t border-gray-200 flex flex-col md:flex-row gap-6 items-center justify-between">
+                    <div class="text-gray-600 text-sm">
+                        <p>궁금하신 점이 있으시면 언제든지 문의해주세요.</p>
+                    </div>
+                    <a href="mailto:contact@richmonstar.com"
+                        class="px-10 py-4 bg-terracotta text-gray-900 rounded-full font-bold hover:bg-white hover:text-navy-950 transition-all shadow-lg">
+                        문의하기
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
