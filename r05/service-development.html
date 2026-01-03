@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dev & Operation - RychmonstaR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            950: '#020617',
+                            900: '#0F172A',
+                            800: '#1E293B',
+                        },
+                        gold: {
+                            500: '#EAB308',
+                        },
+                        terracotta: {
+                            DEFAULT: '#C17C74',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Poppins"', '"ONE Mobile Gothic"', '"M PLUS Rounded 1c"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=M+PLUS+Rounded+1c:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'ONE Mobile Gothic';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONEMobileGothic-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Poppins', 'ONE Mobile Gothic', 'M PLUS Rounded 1c', sans-serif;
+            background: linear-gradient(135deg, #020617 0%, #0F172A 50%, #1E293B 100%);
+        }
+
+        .glass-strong {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #EAB308, #C17C74, #EAB308);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient 3s linear infinite;
+        }
+
+        @keyframes gradient {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .card-3d:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+    </style>
+</head>
+
+<body class="bg-navy-950 text-slate-200">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 py-4 glass-strong">
+        <div class="container mx-auto px-6 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <span class="text-2xl md:text-3xl font-bold tracking-tight gradient-text">RychmonstaR</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <ul class="flex items-center gap-6">
+                    <li><a href="index.html#about"
+                            class="text-xs font-semibold text-slate-300 hover:text-gold-500 transition-colors tracking-wider uppercase">About</a>
+                    </li>
+                    <li><a href="index.html#services"
+                            class="text-xs font-semibold text-slate-300 hover:text-gold-500 transition-colors tracking-wider uppercase">Services</a>
+                    </li>
+                    <li><a href="index.html#contact"
+                            class="text-xs font-semibold text-slate-300 hover:text-gold-500 transition-colors tracking-wider uppercase">Contact</a>
+                    </li>
+                </ul>
+                <a href="index.html#contact"
+                    class="px-6 py-2.5 bg-gradient-to-r from-gold-500 to-terracotta text-white rounded-full font-bold text-xs uppercase tracking-widest hover:shadow-lg transition-all">Get
+                    Started</a>
+            </div>
+            <button class="md:hidden text-white p-2" aria-label="Menu"><span class="iconify text-2xl"
+                    data-icon="solar:hamburger-menu-linear"></span></button>
+        </div>
+    </nav>
+
+    <div class="min-h-screen py-32 px-6">
+        <div class="max-w-6xl mx-auto">
+            <a href="index.html"
+                class="inline-flex items-center gap-2 text-slate-400 hover:text-white mb-12 transition-colors group">
+                <span class="iconify text-xl group-hover:-translate-x-1 transition-transform"
+                    data-icon="solar:arrow-left-linear"></span>
+                <span class="text-sm uppercase tracking-wider font-semibold">Back to Home</span>
+            </a>
+
+            <!-- Hero Section -->
+            <div class="glass-strong rounded-3xl p-12 md:p-16 mb-12">
+                <div class="flex flex-col md:flex-row items-start gap-8 mb-12">
+                    <div
+                        class="w-24 h-24 rounded-2xl bg-gradient-to-br from-terracotta/20 to-gold-500/20 flex items-center justify-center flex-shrink-0">
+                        <span class="iconify text-6xl text-terracotta"
+                            data-icon="solar:code-square-bold-duotone"></span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="text-xs text-terracotta uppercase tracking-widest mb-3 font-bold">Service Detail
+                        </div>
+                        <h1 class="text-5xl md:text-6xl font-black text-white mb-6">Dev & Operation</h1>
+                        <p class="text-xl text-slate-300 leading-relaxed border-l-4 border-terracotta pl-6">
+                            비즈니스를 실현하는 기술과<br />
+                            안정적인 글로벌 운영 지원
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service Features -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div
+                        class="bg-navy-900/50 p-8 rounded-2xl border border-white/5 hover:border-terracotta/30 transition-all card-3d">
+                        <div class="flex items-start gap-4">
+                            <span class="iconify text-4xl text-gold-500 mt-1 flex-shrink-0"
+                                data-icon="solar:laptop-bold-duotone"></span>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-3">플랫폼 개발 (PC/Mobile, Roblox)</h3>
+                                <p class="text-slate-400 leading-relaxed">
+                                    PC, 모바일, Roblox 등 다양한 플랫폼에서 동작하는 서비스를 개발합니다.
+                                    최신 기술 스택을 활용하여 안정적이고 확장 가능한 시스템을 구축합니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-navy-900/50 p-8 rounded-2xl border border-white/5 hover:border-terracotta/30 transition-all card-3d">
+                        <div class="flex items-start gap-4">
+                            <span class="iconify text-4xl text-gold-500 mt-1 flex-shrink-0"
+                                data-icon="solar:palette-2-bold-duotone"></span>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-3">그래픽 디자인 (2D/3D/UI/Effect)</h3>
+                                <p class="text-slate-400 leading-relaxed">
+                                    2D, 3D 그래픽 디자인부터 UI/UX, 이펙트까지 전문 디자이너가
+                                    브랜드 아이덴티티에 맞는 비주얼을 제작합니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-navy-900/50 p-8 rounded-2xl border border-white/5 hover:border-terracotta/30 transition-all card-3d">
+                        <div class="flex items-start gap-4">
+                            <span class="iconify text-4xl text-gold-500 mt-1 flex-shrink-0"
+                                data-icon="solar:translation-bold-duotone"></span>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-3">번역 및 로컬라이즈 (L10N)</h3>
+                                <p class="text-slate-400 leading-relaxed">
+                                    전문 번역가와 현지 전문가가 협업하여 정확하고 자연스러운 로컬라이제이션을 제공합니다.
+                                    문화적 맥락을 고려한 현지화로 글로벌 시장에서의 성공을 지원합니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-navy-900/50 p-8 rounded-2xl border border-white/5 hover:border-terracotta/30 transition-all card-3d">
+                        <div class="flex items-start gap-4">
+                            <span class="iconify text-4xl text-gold-500 mt-1 flex-shrink-0"
+                                data-icon="solar:chat-round-dots-bold-duotone"></span>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-3">글로벌 CS 및 SNS 운영</h3>
+                                <p class="text-slate-400 leading-relaxed">
+                                    다국어 고객 지원 서비스와 글로벌 SNS 채널 운영을 대행합니다.
+                                    24/7 고객 응대로 브랜드 신뢰도를 높입니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="md:col-span-2 bg-navy-900/50 p-8 rounded-2xl border border-white/5 hover:border-terracotta/30 transition-all card-3d">
+                        <div class="flex items-start gap-4">
+                            <span class="iconify text-4xl text-gold-500 mt-1 flex-shrink-0"
+                                data-icon="solar:document-text-bold-duotone"></span>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-3">각종 사업 실무 대행</h3>
+                                <p class="text-slate-400 leading-relaxed">
+                                    비즈니스 운영에 필요한 다양한 실무를 대행합니다.
+                                    행정, 회계, 인사 등 핵심 업무에 집중할 수 있도록 지원합니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div
+                    class="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row gap-6 items-center justify-between">
+                    <div class="text-slate-400">
+                        <p class="text-lg">궁금하신 점이 있으시면 언제든지 문의해주세요.</p>
+                    </div>
+                    <a href="mailto:contact@rychmonstar.com"
+                        class="px-10 py-4 bg-gradient-to-r from-terracotta to-gold-500 text-white rounded-full font-bold hover:shadow-2xl hover:shadow-terracotta/50 transition-all text-sm uppercase tracking-wider">
+                        문의하기
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

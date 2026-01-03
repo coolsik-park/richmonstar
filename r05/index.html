@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RychmonstaR - Global Business Strategic Partner</title>
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            950: '#020617',
+                            900: '#0F172A',
+                            800: '#1E293B',
+                            700: '#334155',
+                        },
+                        gold: {
+                            400: '#FACC15',
+                            500: '#EAB308',
+                            600: '#CA8A04',
+                        },
+                        cream: {
+                            100: '#FFFDD0',
+                        },
+                        terracotta: {
+                            DEFAULT: '#C17C74',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Poppins"', '"ONE Mobile Gothic"', '"M PLUS Rounded 1c"', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'slide-left': 'slideLeft 1s ease-out forwards',
+                        'slide-right': 'slideRight 1s ease-out forwards',
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
+                        'scale-in': 'scaleIn 0.6s ease-out forwards',
+                        'gradient': 'gradient 8s ease infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        slideLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        slideRight: {
+                            '0%': { opacity: '0', transform: 'translateX(50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        gradient: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=M+PLUS+Rounded+1c:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ONE Mobile Gothic 한글 폰트 */
+        @font-face {
+            font-family: 'ONE Mobile Gothic';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONEMobileGothic-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'ONE Mobile Gothic', 'M PLUS Rounded 1c', sans-serif;
+            background-color: #020617;
+            color: #F3F4F6;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #C17C74, #EAB308);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #EAB308, #C17C74);
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-strong {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* Gradient Mesh Background */
+        .gradient-mesh {
+            background: linear-gradient(135deg, #020617 0%, #0F172A 50%, #1E293B 100%);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 3D Card Effect */
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .card-3d:hover {
+            transform: rotateY(5deg) rotateX(5deg) scale(1.05);
+        }
+
+        /* Magnetic Button */
+        .magnetic-btn {
+            position: relative;
+            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .magnetic-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Horizontal Scroll Container */
+        .horizontal-scroll {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .horizontal-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .horizontal-scroll>* {
+            scroll-snap-align: start;
+            flex-shrink: 0;
+        }
+
+        /* Animated Gradient Text */
+        .gradient-text {
+            background: linear-gradient(90deg, #EAB308, #C17C74, #EAB308);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient 3s linear infinite;
+        }
+
+        /* Bento Box Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Floating Animation */
+        @keyframes float-slow {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-30px) rotate(5deg);
+            }
+        }
+
+        .float-slow {
+            animation: float-slow 8s ease-in-out infinite;
+        }
+
+        /* Neon Glow */
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(234, 179, 8, 0.5),
+                0 0 40px rgba(234, 179, 8, 0.3),
+                0 0 60px rgba(234, 179, 8, 0.1);
+        }
+
+        /* Split Screen Hero */
+        .split-diagonal {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        @media (min-width: 768px) {
+            .split-diagonal {
+                clip-path: polygon(0 0, 60% 0, 50% 100%, 0 100%);
+            }
+        }
+    </style>
+</head>
+
+<body class="gradient-mesh">
+    <!-- Sticky Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-4 glass-strong">
+        <div class="container mx-auto px-6 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 group">
+                <span class="text-2xl md:text-3xl font-bold tracking-tight transition-all duration-300 gradient-text">
+                    RychmonstaR
+                </span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <ul class="flex items-center gap-6">
+                    <li><a href="#about"
+                            class="text-xs font-semibold text-slate-300 hover:text-gold-500 transition-colors tracking-wider uppercase">About</a>
+                    </li>
+                    <li><a href="#why"
+                            class="text-xs font-semibold text-slate-300 hover:text-gold-500 transition-colors tracking-wider uppercase">Why</a>
+                    </li>
+                    <li><a href="#services"
+                            class="text-xs font-semibold text-slate-300 hover:text-gold-500 transition-colors tracking-wider uppercase">Services</a>
+                    </li>
+                    <li><a href="#topics"
+                            class="text-xs font-semibold text-slate-300 hover:text-gold-500 transition-colors tracking-wider uppercase">Topics</a>
+                    </li>
+                    <li><a href="#contact"
+                            class="text-xs font-semibold text-slate-300 hover:text-gold-500 transition-colors tracking-wider uppercase">Contact</a>
+                    </li>
+                </ul>
+
+                <div class="flex items-center gap-4">
+                    <!-- Language Selector -->
+                    <div class="relative group">
+                        <button id="lang-btn"
+                            class="flex items-center gap-1 text-[10px] font-bold text-slate-300 hover:text-white transition-colors px-3 py-1.5 uppercase tracking-widest border border-white/20 rounded-full hover:border-gold-500/50 hover:bg-white/5">
+                            KR
+                        </button>
+                        <div
+                            class="absolute right-0 mt-2 w-20 glass-strong rounded-lg overflow-hidden hidden group-hover:block shadow-xl">
+                            <button onclick="changeLang('KR')"
+                                class="w-full text-left px-3 py-2 text-[10px] font-bold hover:bg-white/10 text-gold-500 tracking-wider">KR</button>
+                            <button onclick="changeLang('JP')"
+                                class="w-full text-left px-3 py-2 text-[10px] font-bold hover:bg-white/10 text-slate-400 tracking-wider">JP</button>
+                            <button onclick="changeLang('EN')"
+                                class="w-full text-left px-3 py-2 text-[10px] font-bold hover:bg-white/10 text-slate-400 tracking-wider">EN</button>
+                        </div>
+                    </div>
+
+                    <a href="#contact"
+                        class="magnetic-btn px-6 py-2.5 bg-gradient-to-r from-gold-500 to-terracotta text-white rounded-full font-bold text-xs uppercase tracking-widest hover:shadow-lg hover:shadow-gold-500/50 transition-all neon-glow">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white p-2" aria-label="Menu">
+                <span class="iconify text-2xl" data-icon="solar:hamburger-menu-linear"></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Split-Screen Hero Section -->
+        <section id="home" class="relative min-h-screen flex items-center overflow-hidden pt-20">
+            <!-- Left Side - Video Background -->
+            <div class="absolute inset-0 z-0">
+                <div class="absolute inset-0 split-diagonal">
+                    <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-30">
+                        <source src="asset/background.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-gradient-to-r from-navy-950/90 to-transparent"></div>
+                </div>
+            </div>
+
+            <!-- Floating Orbs -->
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gold-500/20 rounded-full blur-[120px] float-slow">
+            </div>
+            <div
+                class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-terracotta/20 rounded-full blur-[100px] animate-float">
+            </div>
+
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <!-- Left Content -->
+                    <div class="space-y-8">
+                        <!-- Badge -->
+                        <div
+                            class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border-gold-500/30 animate-slide-left">
+                            <span class="w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
+                            <span class="text-gold-500 font-bold tracking-[0.25em] text-[10px] uppercase">Since
+                                2021</span>
+                        </div>
+
+                        <!-- Headline -->
+                        <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[1.1] tracking-tight animate-slide-left"
+                            style="animation-delay: 0.1s;">
+                            Bridge to the<br />
+                            <span class="gradient-text italic font-light">Global Stage.</span>
+                        </h1>
+
+                        <!-- Description -->
+                        <p class="text-lg md:text-xl text-slate-300 leading-relaxed animate-slide-left"
+                            style="animation-delay: 0.2s;">
+                            글로벌 비즈니스의 리스크를 경감하기 위한 가장 현명한 전략.<br />
+                            고객사의 <strong class="text-white font-bold">'길잡이 별(Guiding Star)'</strong>이 되겠습니다.
+                        </p>
+
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-wrap gap-4 animate-slide-left" style="animation-delay: 0.3s;">
+                            <a href="#services"
+                                class="group magnetic-btn px-8 py-4 bg-gradient-to-r from-terracotta to-gold-500 text-white rounded-full font-bold text-sm uppercase tracking-wider hover:shadow-2xl hover:shadow-terracotta/50 transition-all flex items-center gap-3 neon-glow">
+                                View Services
+                                <span class="iconify group-hover:translate-x-1 transition-transform"
+                                    data-icon="solar:arrow-right-linear"></span>
+                            </a>
+                            <a href="#about"
+                                class="px-8 py-4 glass-strong text-white rounded-full font-bold text-sm uppercase tracking-wider hover:bg-white/10 transition-all border border-white/20">
+                                Learn More
+                            </a>
+                        </div>
+
+                        <!-- Stats Pills -->
+                        <div class="flex flex-wrap gap-4 animate-slide-left" style="animation-delay: 0.4s;">
+                            <div class="glass px-6 py-3 rounded-full flex items-center gap-3">
+                                <span class="iconify text-gold-500 text-2xl" data-icon="solar:global-linear"></span>
+                                <div>
+                                    <div class="text-white font-bold text-lg">20+</div>
+                                    <div class="text-slate-400 text-xs uppercase tracking-wider">Years Exp</div>
+                                </div>
+                            </div>
+                            <div class="glass px-6 py-3 rounded-full flex items-center gap-3">
+                                <span class="iconify text-gold-500 text-2xl"
+                                    data-icon="solar:shield-check-linear"></span>
+                                <div>
+                                    <div class="text-white font-bold text-lg">100%</div>
+                                    <div class="text-slate-400 text-xs uppercase tracking-wider">Success</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side - Floating Cards -->
+                    <div class="hidden md:block relative h-[600px] animate-slide-right">
+                        <div class="absolute top-0 right-0 w-80 glass-strong p-8 rounded-2xl card-3d">
+                            <span class="iconify text-5xl text-gold-500 mb-4"
+                                data-icon="solar:chart-square-bold-duotone"></span>
+                            <h3 class="text-xl font-bold text-white mb-2">Global Consulting</h3>
+                            <p class="text-slate-400 text-sm">현지 시장 분석부터 법인 설립까지</p>
+                        </div>
+                        <div class="absolute top-40 right-20 w-80 glass-strong p-8 rounded-2xl card-3d"
+                            style="animation-delay: 0.2s;">
+                            <span class="iconify text-5xl text-terracotta mb-4"
+                                data-icon="solar:speaker-bold-duotone"></span>
+                            <h3 class="text-xl font-bold text-white mb-2">PR & Marketing</h3>
+                            <p class="text-slate-400 text-sm">타겟 마케팅과 브랜딩 전략</p>
+                        </div>
+                        <div class="absolute top-80 right-10 w-80 glass-strong p-8 rounded-2xl card-3d"
+                            style="animation-delay: 0.4s;">
+                            <span class="iconify text-5xl text-gold-500 mb-4"
+                                data-icon="solar:code-square-bold-duotone"></span>
+                            <h3 class="text-xl font-bold text-white mb-2">Dev & Operation</h3>
+                            <p class="text-slate-400 text-sm">플랫폼 개발과 글로벌 운영</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section - Bento Box Layout -->
+        <section id="about" class="py-32 relative overflow-hidden">
+            <div class="container mx-auto px-6">
+                <!-- Section Header -->
+                <div class="text-center mb-20 reveal">
+                    <span class="text-gold-500 font-bold tracking-[0.25em] text-xs uppercase mb-4 block">Who We
+                        Are</span>
+                    <h2 class="text-4xl md:text-6xl font-black text-white mb-6">
+                        We are the <span class="gradient-text">Execution Experts.</span>
+                    </h2>
+                    <p class="text-slate-400 text-lg max-w-3xl mx-auto leading-relaxed">
+                        RychmonstaR Inc.는 해외 시장 진출을 고려하는 일본 국내 기업 또는 일본 시장 진입을 목표로 하는 해외 기업을 위한
+                        <strong class="text-white">글로벌 비즈니스 전략 파트너</strong>입니다.
+                    </p>
+                </div>
+
+                <!-- Bento Grid -->
+                <div class="grid md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+                    <!-- Large Feature Card - 2 columns, 3 rows -->
+                    <div
+                        class="md:col-span-2 md:row-span-3 glass-strong p-10 rounded-3xl reveal card-3d group hover:border-gold-500/50 transition-all">
+                        <div class="h-full flex flex-col justify-between">
+                            <div>
+                                <span
+                                    class="iconify text-6xl text-gold-500 mb-6 inline-block group-hover:scale-110 transition-transform"
+                                    data-icon="solar:case-round-minimalistic-bold-duotone"></span>
+                                <h3 class="text-3xl font-bold text-white mb-4">20+ Years Experience</h3>
+                                <p class="text-slate-300 leading-relaxed mb-6">
+                                    단순한 조언이 아닌, 법인 설립부터 안정화, 위기 대응까지 직접 실행한
+                                    <strong class="text-white">'실행형' 전문가 그룹</strong>입니다.
+                                </p>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="glass p-4 rounded-xl">
+                                    <div class="text-gold-500 text-2xl font-bold mb-1">2021</div>
+                                    <div class="text-slate-400 text-xs uppercase tracking-wider">Founded</div>
+                                </div>
+                                <div class="glass p-4 rounded-xl">
+                                    <div class="text-gold-500 text-2xl font-bold mb-1">10+</div>
+                                    <div class="text-slate-400 text-xs uppercase tracking-wider">Team Members</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Company Info Cards - Right column -->
+                    <div class="glass-strong p-8 rounded-3xl reveal card-3d hover:border-terracotta/50 transition-all">
+                        <span class="iconify text-4xl text-terracotta mb-4 inline-block"
+                            data-icon="solar:buildings-bold-duotone"></span>
+                        <div class="text-[10px] text-gold-500 uppercase tracking-widest mb-2">Company</div>
+                        <div class="text-lg text-white font-bold">주식회사<br />리치몬스타</div>
+                    </div>
+
+                    <div class="glass-strong p-8 rounded-3xl reveal card-3d hover:border-terracotta/50 transition-all">
+                        <span class="iconify text-4xl text-terracotta mb-4 inline-block"
+                            data-icon="solar:user-bold-duotone"></span>
+                        <div class="text-[10px] text-gold-500 uppercase tracking-widest mb-2">CEO</div>
+                        <div class="text-lg text-white font-bold">Ryu Eunji</div>
+                    </div>
+
+                    <div class="glass-strong p-8 rounded-3xl reveal card-3d hover:border-terracotta/50 transition-all">
+                        <span class="iconify text-4xl text-terracotta mb-4 inline-block"
+                            data-icon="solar:star-bold-duotone"></span>
+                        <div class="text-[10px] text-gold-500 uppercase tracking-widest mb-2">CSO</div>
+                        <div class="text-lg text-white font-bold">Choi HS</div>
+                    </div>
+
+                    <!-- Bottom row - 2 cards -->
+                    <div
+                        class="md:col-span-2 glass-strong p-8 rounded-3xl reveal card-3d border-l-4 border-gold-500 hover:border-gold-500 transition-all">
+                        <div class="text-[10px] text-gold-500 uppercase tracking-widest mb-3">Business</div>
+                        <div class="text-xl text-white font-semibold">
+                            해외사업 컨설팅, 각 종 대행 & 외주 업무
+                        </div>
+                    </div>
+
+                    <div class="glass-strong p-8 rounded-3xl reveal card-3d hover:border-terracotta/50 transition-all">
+                        <span class="iconify text-4xl text-terracotta mb-4 inline-block"
+                            data-icon="solar:map-point-bold-duotone"></span>
+                        <div class="text-[10px] text-gold-500 uppercase tracking-widest mb-2">Offices</div>
+                        <div class="text-lg text-white font-bold">Seoul<br />Tokyo</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why RychmonstaR - Floating Cards -->
+        <section id="why" class="py-32 relative overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-20 reveal">
+                    <span class="text-terracotta font-bold tracking-[0.25em] text-xs uppercase mb-4 block">Why
+                        RychmonstaR?</span>
+                    <h2 class="text-4xl md:text-6xl font-black text-white">
+                        Proven <span class="gradient-text">Success Formula</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    <!-- Card 1 -->
+                    <div
+                        class="reveal glass-strong p-10 rounded-3xl card-3d group hover:border-terracotta/50 transition-all relative overflow-hidden">
+                        <div
+                            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-terracotta to-gold-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
+                        </div>
+                        <div
+                            class="w-20 h-20 bg-gradient-to-br from-terracotta/20 to-gold-500/20 rounded-2xl flex items-center justify-center text-terracotta text-4xl mb-6 group-hover:scale-110 transition-transform">
+                            <span class="iconify" data-icon="solar:case-round-minimalistic-bold-duotone"></span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">20+ Years Experience</h3>
+                        <p class="text-slate-400 leading-relaxed">
+                            단순한 조언이 아닌, 법인 설립, 안정화, 위기 대응까지 직접 실행한 20년 이상의 풍부한 실무 경험을 보유하고 있습니다.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="reveal glass-strong p-10 rounded-3xl card-3d group hover:border-gold-500/50 transition-all relative overflow-hidden"
+                        style="animation-delay: 0.1s;">
+                        <div
+                            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold-500 to-terracotta transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
+                        </div>
+                        <div
+                            class="w-20 h-20 bg-gradient-to-br from-gold-500/20 to-terracotta/20 rounded-2xl flex items-center justify-center text-gold-500 text-4xl mb-6 group-hover:scale-110 transition-transform">
+                            <span class="iconify" data-icon="solar:shield-check-bold-duotone"></span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Risk-Reducing Strategy</h3>
+                        <p class="text-slate-400 leading-relaxed">
+                            높아진 시장 비용 속에서 실패 확률을 최소화하고, 클라이언트의 비즈니스 모델에 최적화된 시장 진입 전략을 도출합니다.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="reveal glass-strong p-10 rounded-3xl card-3d group hover:border-terracotta/50 transition-all relative overflow-hidden"
+                        style="animation-delay: 0.2s;">
+                        <div
+                            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-terracotta to-gold-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
+                        </div>
+                        <div
+                            class="w-20 h-20 bg-gradient-to-br from-terracotta/20 to-gold-500/20 rounded-2xl flex items-center justify-center text-terracotta text-4xl mb-6 group-hover:scale-110 transition-transform">
+                            <span class="iconify" data-icon="solar:earth-bold-duotone"></span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Efficient Global Network</h3>
+                        <p class="text-slate-400 leading-relaxed">
+                            미국, 유럽, 아시아 등 광범위한 글로벌 네트워크를 통해 불필요한 시행착오 없이 신속하고 효율적인 솔루션을 제공합니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services - Horizontal Scroll -->
+        <section id="services" class="py-32 relative overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 reveal">
+                    <span class="text-gold-500 font-bold tracking-[0.25em] text-xs uppercase mb-4 block">Our
+                        Services</span>
+                    <h2 class="text-4xl md:text-6xl font-black text-white mb-6">
+                        Total Business <span class="gradient-text">Solution</span>
+                    </h2>
+                    <p class="text-slate-400 max-w-2xl mx-auto text-lg">
+                        성공적인 글로벌 비즈니스를 위한 전방위적 맞춤형 솔루션을 제공합니다.
+                    </p>
+                </div>
+
+                <!-- Service Cards Grid -->
+                <div class="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    <!-- Service 1 -->
+                    <a href="service-consulting.html"
+                        class="glass-strong p-10 rounded-3xl card-3d group hover:border-terracotta/50 transition-all cursor-pointer">
+                        <div class="text-terracotta mb-8 group-hover:scale-110 transition-transform">
+                            <span class="iconify text-7xl" data-icon="solar:chart-square-bold-duotone"></span>
+                        </div>
+                        <h3 class="text-3xl font-bold text-white mb-6 group-hover:text-terracotta transition-colors">
+                            Global Consulting
+                        </h3>
+                        <ul class="space-y-3 text-slate-400">
+                            <li class="flex items-start gap-3">
+                                <span class="iconify text-gold-500 mt-1" data-icon="solar:check-circle-bold"></span>
+                                국내/외 시장 진출 전략 수립
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="iconify text-gold-500 mt-1" data-icon="solar:check-circle-bold"></span>
+                                현지 법인 설립 및 초기 안정화
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="iconify text-gold-500 mt-1" data-icon="solar:check-circle-bold"></span>
+                                조직 설정 (채용, 오피스 등)
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="iconify text-gold-500 mt-1" data-icon="solar:check-circle-bold"></span>
+                                AX 컨설팅 (SaaS, PF화)
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="iconify text-gold-500 mt-1" data-icon="solar:check-circle-bold"></span>
+                                투자 및 비즈니스 네트워크 연계
+                            </li>
+                        </ul>
+                        <div
+                            class="mt-8 flex items-center gap-2 text-gold-500 font-bold group-hover:gap-4 transition-all">
+                            Learn More
+                            <span class="iconify" data-icon="solar:arrow-right-linear"></span>
+                        </div>
+                    </a>
+
+                    <!-- Service 2 -->
+                    <a href="service-marketing.html"
+                        class="glass-strong p-10 rounded-3xl card-3d group hover:border-gold-500/50 transition-all cursor-pointer">
+                        <div class="text-gold-500 mb-8 group-hover:scale-110 transition-transform">
+                            <span class="iconify text-7xl" data-icon="solar:speaker-bold-duotone"></span>
+                        </div>
+                        <h3 class="text-3xl font-bold text-white mb-6 group-hover:text-gold-500 transition-colors">
+                            PR & Marketing
+                        </h3>
+                        <ul class="space-y-3 text-slate-400">
+                            <li class="flex items-start gap-3">
+                                <span class="iconify text-gold-500 mt-1" data-icon="solar:check-circle-bold"></span>
+                                타겟 마케팅 (Targeting)
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="iconify text-gold-500 mt-1" data-icon="solar:check-circle-bold"></span>
+                                브랜딩 (On/Offline)
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="iconify text-gold-500 mt-1" data-icon="solar:check-circle-bold"></span>
+                                퍼포먼스 마케팅 & ASO/SEO
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="iconify text-gold-500 mt-1" data-icon="solar:check-circle-bold"></span>
+                                인플루언서 및 콜라보레이션
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="iconify text-gold-500 mt-1" data-icon="solar:check-circle-bold"></span>
+                                Global GameShow & Event 대행
+                            </li>
+                        </ul>
+                        <div
+                            class="mt-8 flex items-center gap-2 text-gold-500 font-bold group-hover:gap-4 transition-all">
+                            Learn More
+                            <span class="iconify" data-icon="solar:arrow-right-linear"></span>
+                        </div>
+                    </a>
+
+                    <!-- Service 3 -->
+                    <a href="service-development.html"
+                        class="glass-strong p-10 rounded-3xl card-3d group hover:border-terracotta/50 transition-all cursor-pointer">
+                        <div class="text-terracotta mb-8 group-hover:scale-110 transition-transform">
+                            <span class="iconify text-7xl" data-icon="solar:code-square-bold-duotone"></span>
+                        </div>
+                        <h3 class="text-3xl font-bold text-white mb-6 group-hover:text-terracotta transition-colors">
+                            Dev & Operation
+                        </h3>
+                        <ul class="space-y-3 text-slate-400">
+                            <li class="flex items-start gap-3">
+                                <span class="iconify text-gold-500 mt-1" data-icon="solar:check-circle-bold"></span>
+                                플랫폼 개발 (PC/Mobile, Roblox)
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="iconify text-gold-500 mt-1" data-icon="solar:check-circle-bold"></span>
+                                그래픽 디자인 (2D/3D/UI/Effect)
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="iconify text-gold-500 mt-1" data-icon="solar:check-circle-bold"></span>
+                                번역 및 로컬라이즈 (L10N)
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="iconify text-gold-500 mt-1" data-icon="solar:check-circle-bold"></span>
+                                글로벌 CS 및 SNS 운영
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="iconify text-gold-500 mt-1" data-icon="solar:check-circle-bold"></span>
+                                각종 사업 실무 대행
+                            </li>
+                        </ul>
+                        <div
+                            class="mt-8 flex items-center gap-2 text-gold-500 font-bold group-hover:gap-4 transition-all">
+                            Learn More
+                            <span class="iconify" data-icon="solar:arrow-right-linear"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Topics / News -->
+        <section id="topics" class="py-32 relative overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 reveal">
+                    <span class="text-terracotta font-bold tracking-[0.25em] text-xs uppercase mb-4 block">Topics</span>
+                    <h2 class="text-4xl md:text-6xl font-black text-white mb-6">
+                        Latest <span class="gradient-text">News</span>
+                    </h2>
+                    <a href="topics.html"
+                        class="inline-flex items-center gap-2 text-gold-500 hover:text-white transition-colors font-bold uppercase tracking-wider text-sm">
+                        View All News
+                        <span class="iconify" data-icon="solar:arrow-right-linear"></span>
+                    </a>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+                    <!-- News Item 1 -->
+                    <a href="topics.html?id=news-1"
+                        class="reveal glass-strong p-8 rounded-3xl hover:border-gold-500/50 transition-all card-3d group cursor-pointer">
+                        <div class="text-slate-500 text-xs font-mono mb-4">2025년 10월 17일</div>
+                        <p class="text-white leading-relaxed group-hover:text-gold-500 transition-colors font-medium">
+                            프리아웃 코리아, 그룹사 'UUUM'과 연계하여 국내기업 일본 시장 진출 및 인플루언서 마케팅 지원 강화
+                        </p>
+                        <div
+                            class="mt-6 flex items-center gap-2 text-gold-500 text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                            Read More
+                            <span class="iconify" data-icon="solar:arrow-right-linear"></span>
+                        </div>
+                    </a>
+
+                    <!-- News Item 2 -->
+                    <a href="topics.html?id=news-2"
+                        class="reveal glass-strong p-8 rounded-3xl hover:border-gold-500/50 transition-all card-3d group cursor-pointer"
+                        style="animation-delay: 0.1s;">
+                        <div class="text-slate-500 text-xs font-mono mb-4">2025년 03월 07일</div>
+                        <p class="text-white leading-relaxed group-hover:text-gold-500 transition-colors font-medium">
+                            프리아웃 코리아, 유튜브 멀티채널 이용 행태 조사 발표 - 광고 시청률 높은 인벤토리, 시청 태도는 미흡.
+                        </p>
+                        <div
+                            class="mt-6 flex items-center gap-2 text-gold-500 text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                            Read More
+                            <span class="iconify" data-icon="solar:arrow-right-linear"></span>
+                        </div>
+                    </a>
+
+                    <!-- News Item 3 -->
+                    <a href="topics.html?id=news-3"
+                        class="reveal glass-strong p-8 rounded-3xl hover:border-gold-500/50 transition-all card-3d group cursor-pointer"
+                        style="animation-delay: 0.2s;">
+                        <div class="text-slate-500 text-xs font-mono mb-4">2025년 01월 10일</div>
+                        <p class="text-white leading-relaxed group-hover:text-gold-500 transition-colors font-medium">
+                            프리아웃 코리아, 유튜브 멀티채널 이용 행태 조사 발표
+                        </p>
+                        <div
+                            class="mt-6 flex items-center gap-2 text-gold-500 text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                            Read More
+                            <span class="iconify" data-icon="solar:arrow-right-linear"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-32 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-gold-500/10 via-terracotta/10 to-navy-950"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(234,179,8,0.1),transparent_50%)]">
+            </div>
+
+            <div class="container mx-auto px-6 relative z-10 text-center reveal">
+                <h2 class="text-5xl md:text-7xl font-black text-white mb-8">
+                    Start Global Business<br />with <span class="gradient-text">RychmonstaR</span>
+                </h2>
+                <p class="text-slate-300 mb-12 text-xl">당신의 비즈니스를 세계로 연결합니다.</p>
+                <a href="#contact"
+                    class="inline-block magnetic-btn px-16 py-6 bg-gradient-to-r from-gold-500 to-terracotta text-white rounded-full font-bold text-lg uppercase tracking-widest hover:shadow-2xl hover:shadow-gold-500/50 transition-all neon-glow">
+                    Get in Touch
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="relative bg-navy-950 pt-24 pb-12 overflow-hidden border-t border-white/10">
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-navy-900/50 to-navy-950"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <!-- Contact Title -->
+            <div class="text-center mb-20">
+                <h2 class="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight gradient-text">Contact</h2>
+            </div>
+
+            <!-- Contact Cards -->
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
+                <!-- Email Card -->
+                <div class="glass-strong p-10 rounded-3xl hover:border-gold-500/50 transition-all card-3d group">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold-500 to-terracotta flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="iconify text-3xl text-white" data-icon="solar:letter-bold"></span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Email Us</h3>
+                    <a href="mailto:contact@rychmonstar.com"
+                        class="text-slate-300 hover:text-gold-500 transition-colors text-lg block">
+                        contact@rychmonstar.com
+                    </a>
+                </div>
+
+                <!-- Seoul Office Card -->
+                <div class="glass-strong p-10 rounded-3xl hover:border-gold-500/50 transition-all card-3d group">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold-500 to-terracotta flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="iconify text-3xl text-white" data-icon="solar:map-point-bold"></span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Seoul Office</h3>
+                    <p class="text-slate-300 leading-relaxed">
+                        7, Teheran-ro 8-gil, 902ho<br />
+                        Gangnam-gu, Seoul<br />
+                        South Korea (크레신타워2)
+                    </p>
+                </div>
+
+                <!-- Tokyo Office Card -->
+                <div class="glass-strong p-10 rounded-3xl hover:border-gold-500/50 transition-all card-3d group">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold-500 to-terracotta flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="iconify text-3xl text-white" data-icon="solar:buildings-bold"></span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Tokyo Office</h3>
+                    <p class="text-slate-300 leading-relaxed">
+                        THE LINKPILLAR 1 SOUTH 8F<br />
+                        2-21-2 Takanawa, Minato-ku<br />
+                        Tokyo, Japan
+                    </p>
+                </div>
+            </div>
+
+            <!-- Social Media -->
+            <div class="text-center mb-16">
+                <h3 class="text-2xl font-bold text-white mb-8">Follow Our Journey</h3>
+                <div class="flex justify-center gap-6">
+                    <a href="#" target="_blank" rel="noopener noreferrer"
+                        class="w-14 h-14 rounded-full glass-strong flex items-center justify-center text-slate-400 hover:bg-gradient-to-br hover:from-gold-500 hover:to-terracotta hover:text-white transition-all hover:scale-110">
+                        <span class="iconify text-xl" data-icon="ri:facebook-fill"></span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"
+                        class="w-14 h-14 rounded-full glass-strong flex items-center justify-center text-slate-400 hover:bg-gradient-to-br hover:from-gold-500 hover:to-terracotta hover:text-white transition-all hover:scale-110">
+                        <span class="iconify text-xl" data-icon="ri:linkedin-fill"></span>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"
+                        class="w-14 h-14 rounded-full glass-strong flex items-center justify-center text-slate-400 hover:bg-gradient-to-br hover:from-gold-500 hover:to-terracotta hover:text-white transition-all hover:scale-110">
+                        <span class="iconify text-xl" data-icon="ri:instagram-fill"></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div
+                class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-600">
+                <p>&copy; 2021-2024 RychmonstaR Inc. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-2xl');
+            } else {
+                navbar.classList.remove('shadow-2xl');
+            }
+        });
+
+        // Scroll Reveal Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Language Selector
+        function changeLang(lang) {
+            document.querySelector('#lang-btn').innerHTML = lang;
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
