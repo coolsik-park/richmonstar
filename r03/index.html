@@ -336,6 +336,60 @@
             background: #ccc;
             cursor: not-allowed;
         }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 60px 50px;
+        }
+
+        .success-message.active {
+            display: block;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #10B981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 40px;
+            color: white;
+        }
+
+        .success-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #0F172A;
+            margin-bottom: 16px;
+        }
+
+        .success-text {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .success-button {
+            padding: 14px 40px;
+            background: #0F172A;
+            color: white;
+            border: none;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .success-button:hover {
+            background: #C17C74;
+        }
     </style>
 </head>
 
@@ -942,15 +996,29 @@
     <div id="contactModal" class="contact-modal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeContactModal()">&times;</button>
-            <div style="padding: 60px 50px;">
+            
+            <!-- Success Message -->
+            <div id="successMessage" class="success-message">
+                <div class="success-icon">✓</div>
+                <h2 class="success-title">문의 전송 완료!</h2>
+                <p class="success-text">
+                    문의해주셔서 감사합니다.<br>
+                    빠른 시일 내에 담당자가 연락드리겠습니다.
+                </p>
+                <button class="success-button" onclick="closeContactModal()">확인</button>
+            </div>
+
+            <!-- Contact Form -->
+            <div id="contactFormDiv" style="padding: 60px 50px;">
                 <h2 style="font-size: 2.5rem; font-weight: 600; color: #0F172A; margin-bottom: 12px; letter-spacing: -0.02em;">무료 상담 신청</h2>
                 <p style="font-size: 1rem; color: #666; margin-bottom: 40px;">아래 정보를 입력해주시면 빠르게 연락드리겠습니다.</p>
                 
-                <form action="https://formsubmit.co/coolsik.park@gmail.com" method="POST">
+                <form action="https://formsubmit.co/coolsik.park@gmail.com" method="POST" id="contactForm">
                     <!-- FormSubmit Configuration -->
                     <input type="hidden" name="_subject" value="RychmonstaR 홈페이지 문의">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="box">
+                    <input type="hidden" name="_next" value="https://coolsik-park.github.io/richmonstar/r03/index.html#success">
                     
                     <div class="form-group">
                         <label class="form-label" for="consultType">문의 유형 *</label>
@@ -1005,12 +1073,33 @@
         function openContactModal() {
             document.getElementById('contactModal').classList.add('active');
             document.body.style.overflow = 'hidden';
+            // Reset to form view
+            document.getElementById('successMessage').classList.remove('active');
+            document.getElementById('contactFormDiv').style.display = 'block';
         }
 
         function closeContactModal() {
             document.getElementById('contactModal').classList.remove('active');
             document.body.style.overflow = '';
+            // Remove hash from URL
+            if (window.location.hash === '#success') {
+                history.replaceState(null, null, ' ');
+            }
         }
+
+        function showSuccessMessage() {
+            document.getElementById('contactFormDiv').style.display = 'none';
+            document.getElementById('successMessage').classList.add('active');
+        }
+
+        // Check if form was successfully submitted
+        window.addEventListener('load', function() {
+            if (window.location.hash === '#success') {
+                document.getElementById('contactModal').classList.add('active');
+                document.body.style.overflow = 'hidden';
+                showSuccessMessage();
+            }
+        });
 
         // Close modal on outside click
         document.getElementById('contactModal').addEventListener('click', function(e) {
