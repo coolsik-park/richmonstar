@@ -248,7 +248,8 @@
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(6, 14, 36, 0.95);
+            backdrop-filter: blur(8px);
             z-index: 9999;
             overflow-y: auto;
         }
@@ -259,7 +260,7 @@
             justify-content: center;
             padding: 40px 20px;
         }
-        
+
         @media (max-width: 768px) {
             .contact-modal.active {
                 padding: 20px 15px;
@@ -267,40 +268,60 @@
         }
 
         .modal-content {
-            background: white;
-            max-width: 600px;
+            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+            max-width: 650px;
             width: 100%;
             position: relative;
-            animation: slideUp 0.4s ease-out;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #C17C74 0%, #2A1F1D 100%);
         }
 
         @keyframes slideUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(40px) scale(0.95);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
         }
 
         .modal-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
+            top: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
             border: none;
-            background: transparent;
-            font-size: 28px;
+            background: rgba(42, 31, 29, 0.08);
+            border-radius: 50%;
+            font-size: 24px;
             cursor: pointer;
             color: #666;
-            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
         }
 
         .modal-close:hover {
-            color: #C17C74;
+            background: #C17C74;
+            color: white;
+            transform: rotate(90deg);
         }
 
         .form-group {
@@ -321,29 +342,49 @@
         .form-select,
         .form-textarea {
             width: 100%;
-            padding: 14px 16px;
-            border: 1px solid #ddd;
-            font-size: 16px;
+            padding: 16px 20px;
+            border: 2px solid #e8e4df;
+            border-radius: 12px;
+            font-size: 15px;
             font-family: 'Poppins', sans-serif;
-            transition: border-color 0.3s;
-            background: white;
-            color: #0F172A;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #ffffff;
+            color: #2A1F1D;
+        }
+
+        .form-select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%232A1F1D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            padding-right: 50px;
         }
 
         .form-select option {
-            color: #0F172A;
+            color: #2A1F1D;
+            padding: 10px;
         }
 
         .form-input::placeholder,
         .form-textarea::placeholder {
-            color: #999;
+            color: #a89f97;
+        }
+
+        .form-input:hover,
+        .form-select:hover,
+        .form-textarea:hover {
+            border-color: #FBF2D9;
         }
 
         .form-input:focus,
         .form-select:focus,
         .form-textarea:focus {
             outline: none;
-            border-color: #0F172A;
+            border-color: #FBF2D9;
+            box-shadow: 0 0 0 4px rgba(251, 242, 217, 0.3);
+            background: #ffffff;
+            transform: translateY(-1px);
         }
 
         .form-textarea {
@@ -353,20 +394,41 @@
 
         .form-submit {
             width: 100%;
-            padding: 16px;
-            background: #0F172A;
+            padding: 18px;
+            background: linear-gradient(135deg, #2A1F1D 0%, #1a1412 100%);
             color: white;
             border: none;
-            font-size: 16px;
+            border-radius: 12px;
+            font-size: 15px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(42, 31, 29, 0.3);
+        }
+
+        .form-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
         }
 
         .form-submit:hover {
-            background: #C17C74;
+            background: linear-gradient(135deg, #C17C74 0%, #a35e56 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(193, 124, 116, 0.4);
+        }
+
+        .form-submit:hover::before {
+            left: 100%;
         }
 
         .form-submit:disabled {
@@ -384,17 +446,44 @@
             display: block;
         }
 
+        .success-message.active {
+            display: block;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
         .success-icon {
-            width: 80px;
-            height: 80px;
-            background: #10B981;
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 30px;
-            font-size: 40px;
+            font-size: 45px;
             color: white;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            animation: successPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes successPulse {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            }
+            50% {
+                box-shadow: 0 10px 40px rgba(16, 185, 129, 0.5);
+            }
         }
 
         .success-title {
@@ -1116,19 +1205,32 @@
             
             <!-- Success Message -->
             <div id="successMessage" class="success-message">
-                <div class="success-icon">✓</div>
-                <h2 class="success-title">문의 전송 완료!</h2>
+                <div class="success-icon">
+                    <span class="iconify" data-icon="solar:check-circle-bold" style="font-size: 45px;"></span>
+                </div>
+                <h2 class="success-title">문의가 전송되었습니다!</h2>
                 <p class="success-text">
-                    문의해주셔서 감사합니다.<br>
-                    빠른 시일 내에 담당자가 연락드리겠습니다.
+                    소중한 문의에 감사드립니다.<br>
+                    전문 컨설턴트가 영업일 기준 24시간 이내에<br>
+                    입력하신 이메일로 연락드리겠습니다.
                 </p>
-                <button class="success-button" onclick="closeContactModal()">확인</button>
+                <button class="success-button" onclick="closeContactModal()">
+                    <span style="display: inline-flex; align-items: center; gap: 8px;">
+                        확인
+                        <span class="iconify" data-icon="solar:check-read-linear" style="font-size: 18px;"></span>
+                    </span>
+                </button>
             </div>
 
             <!-- Contact Form -->
-            <div id="contactFormDiv" style="padding: 60px 50px;">
-                <h2 style="font-size: 2.5rem; font-weight: 600; color: #0F172A; margin-bottom: 12px; letter-spacing: -0.02em;">무료 상담 신청</h2>
-                <p style="font-size: 1rem; color: #666; margin-bottom: 40px;">아래 정보를 입력해주시면 빠르게 연락드리겠습니다.</p>
+            <div id="contactFormDiv" style="padding: 60px 50px; background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);">
+                <div style="text-align: center; margin-bottom: 45px;">
+                    <div style="display: inline-block; width: 60px; height: 60px; background: linear-gradient(135deg, #C17C74 0%, #a35e56 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 8px 20px rgba(193, 124, 116, 0.25);">
+                        <span class="iconify" data-icon="solar:chat-round-dots-bold" style="font-size: 28px; color: white;"></span>
+                    </div>
+                    <h2 style="font-size: 2.8rem; font-weight: 700; color: #2A1F1D; margin-bottom: 14px; letter-spacing: -0.03em;">무료 상담 신청</h2>
+                    <p style="font-size: 1.05rem; color: #6b6460; line-height: 1.6; max-width: 400px; margin: 0 auto;">아래 정보를 입력해주시면<br/>전문 컨설턴트가 빠르게 연락드리겠습니다.</p>
+                </div>
                 
                 <form action="https://formsubmit.co/contact@rychmonstar.com" method="POST" id="contactForm">
                     <!-- FormSubmit Configuration -->
@@ -1138,38 +1240,46 @@
                     <input type="hidden" name="_next" value="https://coolsik-park.github.io/richmonstar/r05/index.html#success">
                     
                     <div class="form-group">
-                        <label class="form-label" for="consultType">문의 유형 *</label>
+                        <label class="form-label" for="consultType">📋 문의 유형 *</label>
                         <select class="form-select" id="consultType" name="문의유형" required>
-                            <option value="">선택해주세요</option>
-                            <option value="글로벌컨설팅">글로벌컨설팅</option>
-                            <option value="게임쇼/PR/마케팅">게임쇼/PR/마케팅</option>
-                            <option value="개발/디자인/운영">개발/디자인/운영</option>
-                            <option value="사업제휴">사업제휴</option>
-                            <option value="채용문의">채용문의</option>
+                            <option value="">문의 유형을 선택해주세요</option>
+                            <option value="글로벌컨설팅">🌏 글로벌컨설팅</option>
+                            <option value="게임쇼/PR/마케팅">🎮 게임쇼/PR/마케팅</option>
+                            <option value="개발/디자인/운영">💻 개발/디자인/운영</option>
+                            <option value="사업제휴">🤝 사업제휴</option>
+                            <option value="채용문의">👥 채용문의</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label" for="company">회사명 *</label>
-                        <input type="text" class="form-input" id="company" name="회사명" required>
+                        <label class="form-label" for="company">🏢 회사명 *</label>
+                        <input type="text" class="form-input" id="company" name="회사명" placeholder="회사명을 입력해주세요" required>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label" for="name">이름 *</label>
-                        <input type="text" class="form-input" id="name" name="이름" required>
+                        <label class="form-label" for="name">👤 이름 *</label>
+                        <input type="text" class="form-input" id="name" name="이름" placeholder="담당자 성함을 입력해주세요" required>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label" for="email">이메일 *</label>
-                        <input type="email" class="form-input" id="email" name="이메일" required>
+                        <label class="form-label" for="email">✉️ 이메일 *</label>
+                        <input type="email" class="form-input" id="email" name="이메일" placeholder="example@company.com" required>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label" for="message">문의 내용 *</label>
-                        <textarea class="form-textarea" id="message" name="문의내용" required placeholder="문의하실 내용을 자유롭게 작성해주세요."></textarea>
+                        <label class="form-label" for="message">💬 문의 내용 *</label>
+                        <textarea class="form-textarea" id="message" name="문의내용" required placeholder="문의하실 내용을 자유롭게 작성해주세요.&#10;예) 일본 시장 진출 관련 상담을 받고 싶습니다."></textarea>
                     </div>
 
-                    <button type="submit" class="form-submit">문의 전송하기</button>
+                    <button type="submit" class="form-submit">
+                        <span style="display: inline-flex; align-items: center; gap: 10px;">
+                            문의 전송하기
+                            <span class="iconify" data-icon="solar:arrow-right-linear" style="font-size: 20px;"></span>
+                        </span>
+                    </button>
+                    <p style="text-align: center; font-size: 0.85rem; color: #a89f97; margin-top: 20px;">
+                        * 영업일 기준 24시간 이내 답변 드립니다.
+                    </p>
                 </form>
             </div>
         </div>
