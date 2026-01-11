@@ -255,9 +255,15 @@
 
         .contact-modal.active {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
-            padding: 20px;
+            padding: 40px 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-modal.active {
+                padding: 20px 15px;
+            }
         }
 
         .modal-content {
@@ -420,6 +426,21 @@
 
         .success-button:hover {
             background: #C17C74;
+        }
+
+        /* Mobile Form Padding */
+        @media (max-width: 768px) {
+            #contactFormDiv {
+                padding: 40px 25px !important;
+            }
+            
+            .success-message {
+                padding: 40px 25px !important;
+            }
+            
+            .modal-content {
+                margin: 0;
+            }
         }
     </style>
 </head>
