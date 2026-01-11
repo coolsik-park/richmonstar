@@ -305,6 +305,185 @@
         .image-overlay:hover::after {
             opacity: 1;
         }
+
+        /* Contact Modal */
+        .contact-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            overflow-y: auto;
+        }
+
+        .contact-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            animation: slideUp 0.4s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: transparent;
+            font-size: 28px;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: #C17C74;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s;
+            background: white;
+            color: #0F172A;
+        }
+
+        .form-select option {
+            color: #0F172A;
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #999;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #0F172A;
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 16px;
+            background: #0F172A;
+            color: white;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .form-submit:hover {
+            background: #C17C74;
+        }
+
+        .form-submit:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 60px 50px;
+        }
+
+        .success-message.active {
+            display: block;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #10B981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 40px;
+            color: white;
+        }
+
+        .success-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #0F172A;
+            margin-bottom: 16px;
+        }
+
+        .success-text {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .success-button {
+            padding: 14px 40px;
+            background: #0F172A;
+            color: white;
+            border: none;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .success-button:hover {
+            background: #C17C74;
+        }
     </style>
 </head>
 
@@ -720,12 +899,13 @@
                     <span class="text-terracotta">Global Journey</span>
                 </h2>
                 <p class="text-xl text-gray-600 mb-12 font-light">당신의 비즈니스를 세계로 연결합니다</p>
-                <a href="#contact"
-                    class="inline-flex items-center gap-3 px-12 py-5 bg-navy-900 text-white hover:bg-terracotta transition-all duration-300 group">
+                <button
+                    onclick="openContactModal()"
+                    class="inline-flex items-center gap-3 px-12 py-5 bg-navy-900 text-white hover:bg-terracotta transition-all duration-300 group cursor-pointer border-0">
                     <span class="text-sm tracking-wider uppercase">Get in Touch</span>
                     <span class="iconify group-hover:translate-x-1 transition-transform"
                         data-icon="solar:arrow-right-linear"></span>
-                </a>
+                </button>
             </div>
         </section>
     </main>
@@ -852,6 +1032,120 @@
 
         document.querySelectorAll('.reveal').forEach((el) => {
             observer.observe(el);
+        });
+    </script>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="contact-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeContactModal()">&times;</button>
+            
+            <!-- Success Message -->
+            <div id="successMessage" class="success-message">
+                <div class="success-icon">✓</div>
+                <h2 class="success-title">문의 전송 완료!</h2>
+                <p class="success-text">
+                    문의해주셔서 감사합니다.<br>
+                    빠른 시일 내에 담당자가 연락드리겠습니다.
+                </p>
+                <button class="success-button" onclick="closeContactModal()">확인</button>
+            </div>
+
+            <!-- Contact Form -->
+            <div id="contactFormDiv" style="padding: 60px 50px;">
+                <h2 style="font-size: 2.5rem; font-weight: 600; color: #0F172A; margin-bottom: 12px; letter-spacing: -0.02em;">무료 상담 신청</h2>
+                <p style="font-size: 1rem; color: #666; margin-bottom: 40px;">아래 정보를 입력해주시면 빠르게 연락드리겠습니다.</p>
+                
+                <form action="https://formsubmit.co/contact@rychmonstar.com" method="POST" id="contactForm">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="RychmonstaR 홈페이지 문의">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="box">
+                    <input type="hidden" name="_next" value="https://coolsik-park.github.io/richmonstar/r07/index.html#success">
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="consultType">문의 유형 *</label>
+                        <select class="form-select" id="consultType" name="문의유형" required>
+                            <option value="">선택해주세요</option>
+                            <option value="글로벌컨설팅">글로벌컨설팅</option>
+                            <option value="게임쇼/PR/마케팅">게임쇼/PR/마케팅</option>
+                            <option value="개발/디자인/운영">개발/디자인/운영</option>
+                            <option value="사업제휴">사업제휴</option>
+                            <option value="채용문의">채용문의</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="company">회사명 *</label>
+                        <input type="text" class="form-input" id="company" name="회사명" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="name">이름 *</label>
+                        <input type="text" class="form-input" id="name" name="이름" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="email">이메일 *</label>
+                        <input type="email" class="form-input" id="email" name="이메일" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="message">문의 내용 *</label>
+                        <textarea class="form-textarea" id="message" name="문의내용" required placeholder="문의하실 내용을 자유롭게 작성해주세요."></textarea>
+                    </div>
+
+                    <button type="submit" class="form-submit">문의 전송하기</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Contact Modal Functions
+        function openContactModal() {
+            document.getElementById('contactModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            // Reset to form view
+            document.getElementById('successMessage').classList.remove('active');
+            document.getElementById('contactFormDiv').style.display = 'block';
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.remove('active');
+            document.body.style.overflow = '';
+            // Remove hash from URL
+            if (window.location.hash === '#success') {
+                history.replaceState(null, null, ' ');
+            }
+        }
+
+        function showSuccessMessage() {
+            document.getElementById('contactFormDiv').style.display = 'none';
+            document.getElementById('successMessage').classList.add('active');
+        }
+
+        // Check if form was successfully submitted
+        window.addEventListener('load', function() {
+            if (window.location.hash === '#success') {
+                document.getElementById('contactModal').classList.add('active');
+                document.body.style.overflow = 'hidden';
+                showSuccessMessage();
+            }
+        });
+
+        // Close modal on outside click
+        document.getElementById('contactModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeContactModal();
+            }
+        });
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeContactModal();
+            }
         });
     </script>
 </body>
