@@ -209,8 +209,14 @@
 
         /* Hero Title Large Size */
         .hero-title {
-            font-size: clamp(3rem, 8vw, 9rem);
-            line-height: 1;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.3;
+        }
+
+        /* Hero Title Small Size */
+        .hero-title-small {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            line-height: 1.3;
         }
 
         /* Contact Modal */
@@ -430,6 +436,7 @@
                 opacity: 0;
                 transform: scale(0.9);
             }
+
             to {
                 opacity: 1;
                 transform: scale(1);
@@ -452,9 +459,12 @@
         }
 
         @keyframes successPulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
             }
+
             50% {
                 box-shadow: 0 10px 40px rgba(16, 185, 129, 0.5);
             }
@@ -577,7 +587,7 @@
     <main>
         <!-- Hero Section -->
         <section id="home"
-            class="relative w-full min-h-screen flex flex-col justify-center overflow-hidden pt-32 pb-40 bg-white">
+            class="relative w-full min-h-screen flex flex-col justify-center overflow-hidden pt-48 pb-40 bg-white">
             <!-- City Background Video -->
             <div class="absolute inset-0 z-0 pointer-events-none">
                 <video autoplay loop muted playsinline class="w-full h-full object-cover">
@@ -586,63 +596,36 @@
             </div>
 
             <div class="relative z-10 container mx-auto px-8 text-center">
-                <!-- Animated Badge -->
-                <div
-                    class="reveal inline-flex items-center gap-3 mb-12 px-6 py-3 rounded-full border border-navy-900/10 bg-white/80 backdrop-blur-md animate-fade-in-up shadow-sm">
-                    <span class="w-2 h-2 rounded-full bg-navy-900 animate-pulse"></span>
-                    <span class="text-navy-900 font-light tracking-ultra-wide text-xs uppercase">Established 2021</span>
-                </div>
 
                 <!-- Hero Title -->
-                <h1 class="reveal reveal-delay-100 hero-title text-gray-900 mb-16 leading-[0.9] tracking-tight">
-                    Bridge to the<br />
-                    <span class="font-light text-gradient-gold">Global Stage</span>
+                <h1 class="reveal reveal-delay-100 hero-title-small mb-16 leading-[1.3] tracking-tight"
+                    style="color: #FBF2D9;">
+                    실전으로 증명하는
+                    <br />
+                    글로벌 성공 파트너
+                    <br />
+                    <span class="font-light text-gradient-gold hero-title">RychmonstaR</span>
                 </h1>
 
                 <!-- Subtitle -->
-                <p
-                    class="reveal reveal-delay-200 text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-20 font-light leading-relaxed tracking-wide">
+                <p class="reveal reveal-delay-200 text-xl md:text-2xl max-w-3xl mx-auto mb-20 font-light leading-relaxed tracking-wide"
+                    style="color: #FBF2D9;">
                     글로벌 비즈니스의 리스크를 경감하기 위한 가장 현명한 전략.<br class="hidden md:block" />
-                    고객사의 <strong class="text-gray-900 font-medium">'길잡이 별(Guiding Star)'</strong>이 되겠습니다.
+                    고객사의 <strong class="font-medium" style="color: #FBF2D9;">길잡이 별</strong>이 되겠습니다.
                 </p>
 
                 <!-- CTA Buttons -->
                 <div class="reveal reveal-delay-300 flex flex-col md:flex-row justify-center gap-8 items-center mb-24">
                     <a href="#services"
-                        class="btn-premium group px-10 py-5 bg-navy-900 text-white rounded-none font-light text-lg hover:bg-navy-800 transition-all duration-300 shadow-2xl flex items-center gap-4 tracking-wider uppercase">
-                        Explore Services
+                        class="btn-premium group px-10 py-5 bg-navy-900 text-white rounded-none font-light text-lg hover:bg-navy-800 transition-all duration-300 shadow-2xl flex items-center gap-4 tracking-wider">
+                        RychmonstaR 서비스 바로가기
                         <span class="iconify group-hover:translate-x-2 transition-transform duration-300"
                             data-icon="solar:arrow-right-linear"></span>
                     </a>
                 </div>
 
-                <!-- Feature Pills -->
-                <div class="reveal reveal-delay-400 flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
-                    <div
-                        class="px-8 py-4 border border-gray-200 bg-white/80 backdrop-blur-sm hover:border-navy-900/30 transition-all duration-300 cursor-default shadow-sm">
-                        <div class="flex items-center gap-3">
-                            <span class="iconify text-navy-900 text-2xl" data-icon="solar:global-linear"></span>
-                            <span class="text-sm text-gray-700 uppercase tracking-widest font-light">Global
-                                Network</span>
-                        </div>
-                    </div>
-                    <div
-                        class="px-8 py-4 border border-gray-200 bg-white/80 backdrop-blur-sm hover:border-navy-900/30 transition-all duration-300 cursor-default shadow-sm">
-                        <div class="flex items-center gap-3">
-                            <span class="iconify text-navy-900 text-2xl" data-icon="solar:shield-check-linear"></span>
-                            <span class="text-sm text-gray-700 uppercase tracking-widest font-light">Risk
-                                Mitigation</span>
-                        </div>
-                    </div>
-                    <div
-                        class="px-8 py-4 border border-gray-200 bg-white/80 backdrop-blur-sm hover:border-navy-900/30 transition-all duration-300 cursor-default shadow-sm">
-                        <div class="flex items-center gap-3">
-                            <span class="iconify text-navy-900 text-2xl" data-icon="solar:graph-up-linear"></span>
-                            <span class="text-sm text-gray-700 uppercase tracking-widest font-light">Proven
-                                Growth</span>
-                        </div>
-                    </div>
-                </div>
+
+
             </div>
 
             <!-- Floating Abstract Shapes -->
@@ -720,7 +703,7 @@
                                 class="p-6 bg-white border border-gray-200 hover:border-gold-500/30 hover:shadow-lg transition-all duration-300">
                                 <div class="text-xs text-gold-600 uppercase tracking-ultra-wide mb-3 font-light">CSO
                                 </div>
-                                <div class="text-base text-gray-900 font-light">Choi HS</div>
+                                <div class="text-base text-gray-900 font-light">Choi Hyangsook</div>
                             </div>
                             <div
                                 class="p-6 bg-white border border-gray-200 hover:border-gold-500/30 hover:shadow-lg transition-all duration-300">
@@ -1018,7 +1001,7 @@
         <div class="divider-line"></div>
 
         <!-- CTA -->
-        <section class="py-40 relative overflow-hidden bg-white">
+        <!-- <section class="py-40 relative overflow-hidden bg-white">
             <div class="absolute inset-0 bg-gradient-to-b from-gray-50 to-white"></div>
             <div
                 class="absolute inset-0 bg-[radial-gradient(#0F172A_1px,transparent_1px)] [background-size:40px_40px] opacity-[0.03]">
@@ -1035,7 +1018,7 @@
                     Get in Touch
                 </button>
             </div>
-        </section>
+        </section> -->
     </main>
 
     <!-- Footer -->
@@ -1067,9 +1050,13 @@
                     </div>
                     <h3 class="text-2xl font-light text-white mb-5">Email Us</h3>
                     <a href="mailto:contact@rychmonstar.com"
-                        class="text-slate-300 hover:text-gold-400 transition-colors text-lg block font-light">
+                        class="text-slate-300 hover:text-gold-400 transition-colors text-lg block font-light mb-6">
                         contact@rychmonstar.com
                     </a>
+                    <button onclick="openContactModal()"
+                        class="btn-premium w-full py-4 bg-gold-500 text-white font-bold text-xl hover:bg-gold-600 transition-all duration-300 shadow-xl tracking-wide uppercase cursor-pointer">
+                        상담하기
+                    </button>
                 </div>
 
                 <!-- Seoul Office -->
@@ -1217,13 +1204,19 @@
             </div>
 
             <!-- Contact Form -->
-            <div id="contactFormDiv" style="padding: 60px 50px; background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);">
+            <div id="contactFormDiv"
+                style="padding: 60px 50px; background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);">
                 <div style="text-align: center; margin-bottom: 45px;">
-                    <div style="display: inline-block; width: 60px; height: 60px; background: linear-gradient(135deg, #C17C74 0%, #a35e56 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 8px 20px rgba(193, 124, 116, 0.25);">
-                        <span class="iconify" data-icon="solar:chat-round-dots-bold" style="font-size: 28px; color: white;"></span>
+                    <div
+                        style="display: inline-block; width: 60px; height: 60px; background: linear-gradient(135deg, #C17C74 0%, #a35e56 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 8px 20px rgba(193, 124, 116, 0.25);">
+                        <span class="iconify" data-icon="solar:chat-round-dots-bold"
+                            style="font-size: 28px; color: white;"></span>
                     </div>
-                    <h2 style="font-size: 2.8rem; font-weight: 700; color: #2A1F1D; margin-bottom: 14px; letter-spacing: -0.03em;">무료 상담 신청</h2>
-                    <p style="font-size: 1.05rem; color: #6b6460; line-height: 1.6; max-width: 400px; margin: 0 auto;">아래 정보를 입력해주시면<br/>전문 컨설턴트가 빠르게 연락드리겠습니다.</p>
+                    <h2
+                        style="font-size: 2.8rem; font-weight: 700; color: #2A1F1D; margin-bottom: 14px; letter-spacing: -0.03em;">
+                        무료 상담 신청</h2>
+                    <p style="font-size: 1.05rem; color: #6b6460; line-height: 1.6; max-width: 400px; margin: 0 auto;">
+                        아래 정보를 입력해주시면<br />전문 컨설턴트가 빠르게 연락드리겠습니다.</p>
                 </div>
 
                 <form action="https://formsubmit.co/contact@rychmonstar.com" method="POST" id="contactForm">
@@ -1238,17 +1231,18 @@
                         <label class="form-label" for="consultType">📋 문의 유형 *</label>
                         <select class="form-select" id="consultType" name="문의유형" required>
                             <option value="">문의 유형을 선택해주세요</option>
-                            <option value="글로벌컨설팅">🌏 글로벌컨설팅</option>
-                            <option value="게임쇼/PR/마케팅">🎮 게임쇼/PR/마케팅</option>
-                            <option value="개발/디자인/운영">💻 개발/디자인/운영</option>
-                            <option value="사업제휴">🤝 사업제휴</option>
-                            <option value="채용문의">👥 채용문의</option>
+                            <option value="글로벌컨설팅">글로벌컨설팅</option>
+                            <option value="게임쇼/PR/마케팅">게임쇼/PR/마케팅</option>
+                            <option value="개발/디자인/운영">개발/디자인/운영</option>
+                            <option value="사업제휴">사업제휴</option>
+                            <option value="채용문의">채용문의</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label" for="company">🏢 회사명 *</label>
-                        <input type="text" class="form-input" id="company" name="회사명" placeholder="회사명을 입력해주세요" required>
+                        <input type="text" class="form-input" id="company" name="회사명" placeholder="회사명을 입력해주세요"
+                            required>
                     </div>
 
                     <div class="form-group">
@@ -1258,7 +1252,8 @@
 
                     <div class="form-group">
                         <label class="form-label" for="email">✉️ 이메일 *</label>
-                        <input type="email" class="form-input" id="email" name="이메일" placeholder="example@company.com" required>
+                        <input type="email" class="form-input" id="email" name="이메일" placeholder="example@company.com"
+                            required>
                     </div>
 
                     <div class="form-group">
