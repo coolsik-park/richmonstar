@@ -133,6 +133,107 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(0, 0, 0, 0.05);
         }
+
+        /* ============================================
+           MOBILE PREMIUM DESIGN FOR TOPICS PAGE
+           ============================================ */
+
+        @media (max-width: 768px) {
+
+            /* Main Content Area */
+            .min-h-screen {
+                padding-top: 100px !important;
+                padding-bottom: 60px !important;
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+            }
+
+            /* Glass Card Container */
+            .glass {
+                padding: 24px 16px !important;
+                border-radius: 16px !important;
+            }
+
+            /* Page Header */
+            .glass h1 {
+                font-size: 1.75rem !important;
+            }
+
+            /* News Items */
+            .accordion-item button {
+                padding: 16px 12px !important;
+                margin-left: -12px !important;
+                margin-right: -12px !important;
+            }
+
+            .accordion-item .text-sm {
+                font-size: 11px !important;
+                min-width: auto !important;
+                margin-bottom: 4px;
+            }
+
+            .accordion-item p.text-gray-700 {
+                font-size: 14px !important;
+                line-height: 1.6 !important;
+            }
+
+            /* Accordion Content */
+            .accordion-content {
+                padding: 12px !important;
+                margin-left: 0 !important;
+            }
+
+            .accordion-content .ml-0 {
+                margin-left: 0 !important;
+            }
+
+            .accordion-content p {
+                font-size: 13px !important;
+                line-height: 1.7 !important;
+            }
+
+            /* Year Divider */
+            .glass .text-2xl {
+                font-size: 1.25rem !important;
+            }
+
+            /* Back Link */
+            a.inline-flex {
+                margin-bottom: 20px !important;
+            }
+
+            a.inline-flex .text-sm {
+                font-size: 12px !important;
+            }
+
+            /* Navigation */
+            #navbar .container {
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+                padding-top: 12px !important;
+                padding-bottom: 12px !important;
+            }
+
+            #navbar .w-12 {
+                width: 36px !important;
+                height: 36px !important;
+            }
+
+            #navbar .text-2xl:not(.iconify) {
+                font-size: 1.15rem !important;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 375px) {
+            .glass h1 {
+                font-size: 1.5rem !important;
+            }
+
+            .accordion-item p.text-gray-700 {
+                font-size: 13px !important;
+            }
+        }
     </style>
 </head>
 
@@ -173,12 +274,46 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button class="md:hidden mobile-btn transition-colors duration-300">
+                <button id="mobileMenuBtn" class="md:hidden mobile-btn transition-colors duration-300">
                     <span class="iconify text-3xl" data-icon="solar:hamburger-menu-linear"></span>
                 </button>
             </div>
         </div>
     </nav>
+
+    <!-- Mobile Menu Panel -->
+    <div id="mobileMenu"
+        class="fixed inset-0 bg-navy-900 z-[9999] transform translate-x-full transition-transform duration-300 md:hidden">
+        <div class="flex flex-col h-full">
+            <div class="flex items-center justify-between p-8">
+                <span class="text-2xl font-semibold tracking-tight" style="color: #FBF2D9;">RychmonstaR</span>
+                <button id="closeMobileMenu"
+                    class="px-4 py-2 text-3xl font-bold hover:opacity-70 transition-opacity duration-300"
+                    style="color: #FBF2D9;">
+                    X
+                </button>
+            </div>
+            <nav class="flex-1 overflow-y-auto p-8">
+                <ul class="space-y-6">
+                    <li><a href="index.html#about"
+                            class="mobile-menu-link text-xl font-semibold hover:text-gold-500 transition-colors block py-3"
+                            style="color: #FBF2D9;">About</a></li>
+                    <li><a href="index.html#why"
+                            class="mobile-menu-link text-xl font-semibold hover:text-gold-500 transition-colors block py-3"
+                            style="color: #FBF2D9;">Why</a></li>
+                    <li><a href="index.html#services"
+                            class="mobile-menu-link text-xl font-semibold hover:text-gold-500 transition-colors block py-3"
+                            style="color: #FBF2D9;">Services</a></li>
+                    <li><a href="index.html#topics"
+                            class="mobile-menu-link text-xl font-semibold hover:text-gold-500 transition-colors block py-3"
+                            style="color: #FBF2D9;">Topics</a></li>
+                    <li><a href="index.html#contact"
+                            class="mobile-menu-link text-xl font-semibold hover:text-gold-500 transition-colors block py-3"
+                            style="color: #FBF2D9;">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <div class="min-h-screen py-32 px-6">
@@ -212,7 +347,7 @@
 
     <!-- Load News Data -->
     <script src="data/news.js"></script>
-    
+
     <script>
         // Load news from data
         function loadNews() {
@@ -265,17 +400,17 @@
                 });
 
                 container.innerHTML = html;
-                
+
                 // Hide loading and show container
                 document.getElementById('loading').style.display = 'none';
                 container.style.display = 'block';
 
                 // Initialize accordion after loading
                 initializeAccordion();
-                
+
                 // Check for URL parameter to open specific news
                 openNewsFromURL();
-                
+
             } catch (error) {
                 console.error('뉴스 로딩 실패:', error);
                 document.getElementById('loading').innerHTML = '<p class="text-red-500">뉴스를 불러오는 데 실패했습니다.</p>';
@@ -349,6 +484,50 @@
         } else {
             loadNews();
         }
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMobileMenuBtn = document.getElementById('closeMobileMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        function toggleMobileMenu() {
+            const isOpen = !mobileMenu.classList.contains('translate-x-full');
+            if (isOpen) {
+                closeMobileMenuFunc();
+            } else {
+                openMobileMenu();
+            }
+        }
+
+        function openMobileMenu() {
+            mobileMenu.classList.remove('translate-x-full');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenuFunc() {
+            mobileMenu.classList.add('translate-x-full');
+            document.body.style.overflow = '';
+        }
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        }
+        if (closeMobileMenuBtn) {
+            closeMobileMenuBtn.addEventListener('click', closeMobileMenuFunc);
+        }
+
+        // Close mobile menu when clicking on a link
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenuFunc);
+        });
+
+        // Close mobile menu on ESC key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && mobileMenu) {
+                closeMobileMenuFunc();
+            }
+        });
 
     </script>
 </body>
