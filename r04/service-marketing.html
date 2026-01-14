@@ -5,6 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PR & Marketing - RychmonstaR</title>
+
+    <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -15,9 +17,17 @@
                             950: '#020617',
                             900: '#0F172A',
                             800: '#1E293B',
+                            700: '#334155',
                         },
                         gold: {
+                            400: '#FACC15',
                             500: '#EAB308',
+                            600: '#CA8A04',
+                            700: '#A16207',
+                        },
+                        cream: {
+                            100: '#FFFDD0',
+                            200: '#FEF3C7',
                         },
                         terracotta: {
                             DEFAULT: '#C17C74',
@@ -31,11 +41,17 @@
             }
         }
     </script>
+
+    <!-- Iconify -->
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+
+    <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=M+PLUS+Rounded+1c:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
+
     <style>
+        /* ONE Mobile Gothic 한글 폰트 */
         @font-face {
             font-family: 'ONE Mobile Gothic';
             src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONEMobileGothic-Regular.woff') format('woff');
@@ -45,19 +61,395 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #060E24;
+            background-color: white;
+            color: #111827;
+            overflow-x: hidden;
         }
 
+        /* Navbar Default State */
+        #navbar {
+            background-color: transparent;
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-box {
+            background-color: #0F172A;
+        }
+
+        .logo-r {
+            color: #FBF2D9;
+        }
+
+        .logo-text {
+            color: #0F172A;
+        }
+
+        .menu-link {
+            color: #0F172A;
+        }
+
+        .menu-link:hover {
+            color: #C17C74;
+        }
+
+        .mobile-btn {
+            color: #0F172A;
+        }
+
+        /* Navbar Scrolled State */
+        #navbar.scrolled {
+            background-color: rgba(15, 23, 42, 0.98);
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        #navbar.scrolled .logo-box {
+            background-color: #FBF2D9;
+        }
+
+        #navbar.scrolled .logo-r {
+            color: #0F172A;
+        }
+
+        #navbar.scrolled .logo-text {
+            color: #FBF2D9;
+        }
+
+        #navbar.scrolled .menu-link {
+            color: #FBF2D9;
+        }
+
+        #navbar.scrolled .menu-link:hover {
+            color: #FBF2D9;
+        }
+
+        #navbar.scrolled .mobile-btn {
+            color: #FBF2D9;
+        }
+
+        /* Glass Effect */
         .glass {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        .glass-nav {
-            background: rgba(6, 14, 36, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        /* Contact Modal - Premium Design */
+        .contact-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(6, 14, 36, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            overflow-y: auto;
+        }
+
+        .contact-modal.active {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .contact-modal.active {
+                padding: 20px 15px;
+            }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+            max-width: 650px;
+            width: 100%;
+            position: relative;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #C17C74 0%, #2A1F1D 100%);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            border: none;
+            background: rgba(42, 31, 29, 0.08);
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: #C17C74;
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .form-group {
+            margin-bottom: 28px;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #2A1F1D;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #e8e4df;
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #ffffff;
+            color: #2A1F1D;
+        }
+
+        .form-select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%232A1F1D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            padding-right: 50px;
+        }
+
+        .form-select option {
+            color: #2A1F1D;
+            padding: 10px;
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #a89f97;
+        }
+
+        .form-input:hover,
+        .form-select:hover,
+        .form-textarea:hover {
+            border-color: #FBF2D9;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #FBF2D9;
+            box-shadow: 0 0 0 4px rgba(251, 242, 217, 0.3);
+            background: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        .form-textarea {
+            min-height: 140px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #2A1F1D 0%, #1a1412 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(42, 31, 29, 0.3);
+        }
+
+        .form-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .form-submit:hover {
+            background: linear-gradient(135deg, #C17C74 0%, #a35e56 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(193, 124, 116, 0.4);
+        }
+
+        .form-submit:hover::before {
+            left: 100%;
+        }
+
+        .form-submit:active {
+            transform: translateY(0);
+        }
+
+        .form-submit:disabled {
+            background: #d1ccc7;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 70px 50px;
+        }
+
+        .success-message.active {
+            display: block;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .success-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 45px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            animation: successPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes successPulse {
+
+            0%,
+            100% {
+                box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 10px 40px rgba(16, 185, 129, 0.5);
+            }
+        }
+
+        .success-title {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #2A1F1D;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .success-text {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+
+        .success-button {
+            padding: 16px 50px;
+            background: linear-gradient(135deg, #2A1F1D 0%, #1a1412 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(42, 31, 29, 0.25);
+        }
+
+        .success-button:hover {
+            background: linear-gradient(135deg, #C17C74 0%, #a35e56 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(193, 124, 116, 0.35);
+        }
+
+        /* Mobile Form Padding */
+        @media (max-width: 768px) {
+            #contactFormDiv {
+                padding: 40px 30px !important;
+            }
+
+            .success-message {
+                padding: 50px 30px !important;
+            }
+
+            .modal-content {
+                margin: 0;
+                border-radius: 16px;
+            }
+
+            .form-label {
+                font-size: 12px;
+            }
+
+            .form-input,
+            .form-select,
+            .form-textarea {
+                padding: 14px 18px;
+                font-size: 14px;
+            }
+
+            .success-title {
+                font-size: 1.8rem;
+            }
         }
 
         /* ============================================
@@ -139,6 +531,7 @@
                 text-align: center;
             }
 
+            .glass .mt-16 button,
             .glass .mt-16 a {
                 width: 100%;
                 text-align: center;
@@ -156,19 +549,20 @@
             }
 
             /* Navigation */
-            #navbar {
+            #navbar .container {
+                padding-left: 16px !important;
+                padding-right: 16px !important;
                 padding-top: 12px !important;
                 padding-bottom: 12px !important;
             }
 
-            #navbar .container {
-                padding-left: 16px !important;
-                padding-right: 16px !important;
+            #navbar .w-12 {
+                width: 36px !important;
+                height: 36px !important;
             }
 
-            #navbar .text-2xl,
-            #navbar .text-3xl {
-                font-size: 1.25rem !important;
+            #navbar .text-2xl:not(.iconify) {
+                font-size: 1.15rem !important;
             }
         }
 
@@ -185,146 +579,184 @@
     </style>
 </head>
 
-<body class="bg-white text-slate-200">
+<body class="bg-white text-gray-900">
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-6 glass-nav">
-        <div class="container mx-auto px-6 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-2 group">
-                <span
-                    class="text-2xl md:text-3xl font-serif font-bold tracking-tight group-hover:text-terracotta transition-colors duration-300"
-                    style="color: #FBF2D9;">RychmonstaR</span>
-            </a>
-            <div class="hidden md:flex items-center gap-12">
-                <ul class="flex items-center gap-8">
-                    <li><a href="index.html#about"
-                            class="text-xs font-medium text-gray-600 hover:text-gray-900 transition-colors tracking-[0.15em] uppercase hover:underline underline-offset-8 decoration-terracotta/50 decoration-1">About</a>
-                    </li>
-                    <li><a href="index.html#services"
-                            class="text-xs font-medium text-gray-600 hover:text-gray-900 transition-colors tracking-[0.15em] uppercase hover:underline underline-offset-8 decoration-terracotta/50 decoration-1">Services</a>
-                    </li>
-                    <li><a href="index.html#portfolio"
-                            class="text-xs font-medium text-gray-600 hover:text-gray-900 transition-colors tracking-[0.15em] uppercase hover:underline underline-offset-8 decoration-terracotta/50 decoration-1">Portfolio</a>
-                    </li>
-                    <li><a href="index.html#contact"
-                            class="text-xs font-medium text-gray-600 hover:text-gray-900 transition-colors tracking-[0.15em] uppercase hover:underline underline-offset-8 decoration-terracotta/50 decoration-1">Contact</a>
-                    </li>
-                </ul>
-                <div class="flex items-center gap-6">
-                    <div class="relative group">
-                        <button
-                            class="flex items-center gap-1 text-[10px] font-bold text-gray-600 hover:text-gray-900 transition-colors px-2 py-1 uppercase tracking-widest border border-gray-200 rounded hover:border-white/30">KR</button>
-                        <div
-                            class="absolute right-0 mt-2 w-20 bg-gray-50 border border-gray-200 rounded-lg overflow-hidden hidden group-hover:block shadow-xl">
-                            <button
-                                class="w-full text-left px-3 py-2 text-[10px] font-bold hover:bg-white/5 text-terracotta tracking-wider">KR</button>
-                            <button
-                                class="w-full text-left px-3 py-2 text-[10px] font-bold hover:bg-white/5 text-gray-600 tracking-wider">JP</button>
-                            <button
-                                class="w-full text-left px-3 py-2 text-[10px] font-bold hover:bg-white/5 text-gray-600 tracking-wider">EN</button>
-                        </div>
-                    </div>
-                    <a href="index.html#contact"
-                        class="px-6 py-2 bg-cream-100 text-navy-950 rounded-sm font-bold text-xs uppercase tracking-widest hover:bg-terracotta hover:text-gray-900 transition-all duration-300">Get
-                        Started</a>
+    <nav class="fixed top-0 w-full z-50 transition-all duration-500 backdrop-blur-xl border-b" id="navbar">
+        <div class="container mx-auto px-8 py-5">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-4 group">
+                    <!-- <div
+                        class="w-12 h-12 flex items-center justify-center logo-box transition-all duration-300 group-hover:scale-105">
+                        <span class="font-extrabold text-2xl logo-r transition-colors duration-300">R</span>
+                    </div> -->
+                    <span
+                        class="text-2xl font-bold tracking-tight logo-text transition-colors duration-300">RychmonstaR</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-16">
+                    <ul class="flex items-center gap-10">
+                        <li><a href="index.html#about"
+                                class="menu-link text-sm font-semibold transition-all duration-300 tracking-[0.15em] uppercase relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-current after:transition-all after:duration-300 hover:after:w-full">About</a>
+                        </li>
+                        <li><a href="index.html#why"
+                                class="menu-link text-sm font-semibold transition-all duration-300 tracking-[0.15em] uppercase relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-current after:transition-all after:duration-300 hover:after:w-full">Why</a>
+                        </li>
+                        <li><a href="index.html#services"
+                                class="menu-link text-sm font-semibold transition-all duration-300 tracking-[0.15em] uppercase relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-current after:transition-all after:duration-300 hover:after:w-full">Services</a>
+                        </li>
+                        <li><a href="index.html#topics"
+                                class="menu-link text-sm font-semibold transition-all duration-300 tracking-[0.15em] uppercase relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-current after:transition-all after:duration-300 hover:after:w-full">Topics</a>
+                        </li>
+                        <li><a href="index.html#contact"
+                                class="menu-link text-sm font-semibold transition-all duration-300 tracking-[0.15em] uppercase relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-current after:transition-all after:duration-300 hover:after:w-full">Contact</a>
+                        </li>
+                    </ul>
                 </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden mobile-btn transition-colors duration-300">
+                    <span class="iconify text-3xl" data-icon="solar:hamburger-menu-linear"></span>
+                </button>
             </div>
-            <button class="md:hidden text-gray-900 p-2" aria-label="Menu"><span class="iconify text-2xl"
-                    data-icon="solar:hamburger-menu-linear"></span></button>
         </div>
     </nav>
-    <div class="min-h-screen py-20 px-6">
+
+    <!-- Mobile Menu Panel -->
+    <div id="mobileMenu"
+        class="fixed inset-0 bg-navy-900 z-[9999] transform translate-x-full transition-transform duration-300 md:hidden">
+        <div class="flex flex-col h-full">
+            <div class="flex items-center justify-between p-8">
+                <span class="text-2xl font-semibold tracking-tight" style="color: #FBF2D9;">RychmonstaR</span>
+                <button id="closeMobileMenu"
+                    class="px-4 py-2 text-3xl font-bold hover:opacity-70 transition-opacity duration-300"
+                    style="color: #FBF2D9;">
+                    X
+                </button>
+            </div>
+            <nav class="flex-1 overflow-y-auto p-8">
+                <ul class="space-y-6">
+                    <li><a href="index.html#about"
+                            class="mobile-menu-link text-xl font-semibold hover:text-gold-500 transition-colors block py-3"
+                            style="color: #FBF2D9;">About</a>
+                    </li>
+                    <li><a href="index.html#why"
+                            class="mobile-menu-link text-xl font-semibold hover:text-gold-500 transition-colors block py-3"
+                            style="color: #FBF2D9;">Why</a>
+                    </li>
+                    <li><a href="index.html#services"
+                            class="mobile-menu-link text-xl font-semibold hover:text-gold-500 transition-colors block py-3"
+                            style="color: #FBF2D9;">Services</a>
+                    </li>
+                    <li><a href="index.html#topics"
+                            class="mobile-menu-link text-xl font-semibold hover:text-gold-500 transition-colors block py-3"
+                            style="color: #FBF2D9;">Topics</a>
+                    </li>
+                    <li><a href="index.html#contact"
+                            class="mobile-menu-link text-xl font-semibold hover:text-gold-500 transition-colors block py-3"
+                            style="color: #FBF2D9;">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="min-h-screen py-32 px-6">
         <div class="max-w-5xl mx-auto">
             <a href="index.html"
-                class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-12 transition-colors">
+                class="inline-flex items-center gap-2 text-gray-600 hover:text-terracotta mb-12 transition-colors">
                 <span class="iconify text-xl" data-icon="solar:arrow-left-linear"></span>
-                <span class="text-sm uppercase tracking-wider">Back to Home</span>
+                <span class="text-sm uppercase tracking-wider font-light">Back to Home</span>
             </a>
 
             <div class="glass rounded-lg p-12 md:p-16">
                 <div class="flex items-center gap-6 mb-8">
-                    <span class="iconify text-7xl text-gold-500" data-icon="solar:speaker-bold-duotone"></span>
+                    <span class="iconify text-7xl text-terracotta" data-icon="solar:speaker-bold-duotone"></span>
                     <div>
-                        <div class="text-xs text-gold-500 uppercase tracking-widest mb-2">Service Detail</div>
-                        <h1 class="text-4xl md:text-5xl font-serif font-bold text-gray-900">PR & Marketing</h1>
+                        <div class="text-xs text-terracotta uppercase tracking-widest mb-2 font-bold">Service Detail
+                        </div>
+                        <h1 class="text-4xl md:text-5xl font-light text-gray-900">PR & Marketing</h1>
                     </div>
                 </div>
 
-                <p class="text-xl text-gray-700 mb-16 leading-relaxed border-l-4 border-gold-500 pl-6">
-                    타겟팅(Targeting)부터 최적화(Optimizing)까지,<br />
-                    브랜드 가치를 높이는 통합 마케팅 전략
+                <p class="text-xl text-gray-700 mb-16 leading-relaxed border-l-4 border-terracotta pl-6 font-light">
+                    타겟 마케팅부터 글로벌 이벤트까지<br />
+                    통합 마케팅 솔루션
                 </p>
 
                 <div class="space-y-12">
                     <div
-                        class="bg-gray-50/50 p-8 rounded-lg border border-white/5 hover:border-gold-500/30 transition-colors">
+                        class="bg-gray-50 p-8 rounded-lg border border-gray-200 hover:border-terracotta/50 transition-colors">
                         <div class="flex items-start gap-4 mb-4">
-                            <span class="iconify text-3xl text-gold-500 mt-1"
+                            <span class="iconify text-3xl text-terracotta mt-1"
                                 data-icon="solar:target-bold-duotone"></span>
                             <div>
-                                <h3 class="text-2xl font-bold text-gray-900 mb-3">타겟 마케팅 (Targeting)</h3>
-                                <p class="text-gray-600 leading-relaxed">
-                                    정확한 타겟 고객 분석을 통해 효과적인 마케팅 전략을 수립합니다.
-                                    데이터 기반의 인사이트로 최적의 타겟 세그먼트를 발굴하고 맞춤형 메시지를 전달합니다.
+                                <h3 class="text-2xl font-medium text-gray-900 mb-3">타겟 마케팅 (Targeting)</h3>
+                                <p class="text-gray-600 leading-relaxed font-light">
+                                    데이터 기반의 정교한 타겟팅으로 핵심 고객층에 효과적으로 도달합니다.
+                                    시장 세분화와 페르소나 분석을 통해 최적의 마케팅 전략을 수립합니다.
                                 </p>
                             </div>
                         </div>
                     </div>
 
                     <div
-                        class="bg-gray-50/50 p-8 rounded-lg border border-white/5 hover:border-gold-500/30 transition-colors">
+                        class="bg-gray-50 p-8 rounded-lg border border-gray-200 hover:border-terracotta/50 transition-colors">
                         <div class="flex items-start gap-4 mb-4">
-                            <span class="iconify text-3xl text-gold-500 mt-1"
-                                data-icon="solar:palette-bold-duotone"></span>
+                            <span class="iconify text-3xl text-terracotta mt-1"
+                                data-icon="solar:star-bold-duotone"></span>
                             <div>
-                                <h3 class="text-2xl font-bold text-gray-900 mb-3">브랜딩 (On/Offline)</h3>
-                                <p class="text-gray-600 leading-relaxed">
+                                <h3 class="text-2xl font-medium text-gray-900 mb-3">브랜딩 (On/Offline)</h3>
+                                <p class="text-gray-600 leading-relaxed font-light">
                                     온라인과 오프라인을 아우르는 통합 브랜딩 전략을 제공합니다.
-                                    이벤트, 팝업스토어, 디지털 캠페인 등 다양한 채널을 통해 브랜드 가치를 극대화합니다.
+                                    브랜드 아이덴티티 구축부터 브랜드 경험 설계까지 일관된 브랜드 가치를 전달합니다.
                                 </p>
                             </div>
                         </div>
                     </div>
 
                     <div
-                        class="bg-gray-50/50 p-8 rounded-lg border border-white/5 hover:border-gold-500/30 transition-colors">
+                        class="bg-gray-50 p-8 rounded-lg border border-gray-200 hover:border-terracotta/50 transition-colors">
                         <div class="flex items-start gap-4 mb-4">
-                            <span class="iconify text-3xl text-gold-500 mt-1"
+                            <span class="iconify text-3xl text-terracotta mt-1"
                                 data-icon="solar:chart-2-bold-duotone"></span>
                             <div>
-                                <h3 class="text-2xl font-bold text-gray-900 mb-3">퍼포먼스 마케팅 & ASO/SEO</h3>
-                                <p class="text-gray-600 leading-relaxed">
-                                    데이터 기반의 퍼포먼스 마케팅으로 ROI를 극대화합니다.
-                                    앱 스토어 최적화(ASO)와 검색 엔진 최적화(SEO)를 통해 자연 유입을 증대시킵니다.
+                                <h3 class="text-2xl font-medium text-gray-900 mb-3">퍼포먼스 마케팅 & ASO/SEO</h3>
+                                <p class="text-gray-600 leading-relaxed font-light">
+                                    성과 중심의 디지털 마케팅과 앱스토어 최적화(ASO), 검색엔진 최적화(SEO)를 통해
+                                    가시적인 비즈니스 성과를 창출합니다.
                                 </p>
                             </div>
                         </div>
                     </div>
 
                     <div
-                        class="bg-gray-50/50 p-8 rounded-lg border border-white/5 hover:border-gold-500/30 transition-colors">
+                        class="bg-gray-50 p-8 rounded-lg border border-gray-200 hover:border-terracotta/50 transition-colors">
                         <div class="flex items-start gap-4 mb-4">
-                            <span class="iconify text-3xl text-gold-500 mt-1"
+                            <span class="iconify text-3xl text-terracotta mt-1"
                                 data-icon="solar:users-group-rounded-bold-duotone"></span>
                             <div>
-                                <h3 class="text-2xl font-bold text-gray-900 mb-3">인플루언서 및 콜라보레이션</h3>
-                                <p class="text-gray-600 leading-relaxed">
-                                    영향력 있는 인플루언서와의 협업을 통해 브랜드 인지도를 높입니다.
-                                    전략적 파트너십을 통한 시너지 효과를 창출합니다.
+                                <h3 class="text-2xl font-medium text-gray-900 mb-3">인플루언서 및 콜라보레이션</h3>
+                                <p class="text-gray-600 leading-relaxed font-light">
+                                    글로벌 인플루언서 네트워크를 활용한 협업 마케팅을 진행합니다.
+                                    브랜드와 인플루언서 간의 시너지를 극대화하여 효과적인 마케팅 캠페인을 운영합니다.
                                 </p>
                             </div>
                         </div>
                     </div>
 
                     <div
-                        class="bg-gray-50/50 p-8 rounded-lg border border-white/5 hover:border-gold-500/30 transition-colors">
+                        class="bg-gray-50 p-8 rounded-lg border border-gray-200 hover:border-terracotta/50 transition-colors">
                         <div class="flex items-start gap-4 mb-4">
-                            <span class="iconify text-3xl text-gold-500 mt-1"
-                                data-icon="solar:gameboy-bold-duotone"></span>
+                            <span class="iconify text-3xl text-terracotta mt-1"
+                                data-icon="solar:calendar-mark-bold-duotone"></span>
                             <div>
-                                <h3 class="text-2xl font-bold text-gray-900 mb-3">Global GameShow & Event 대행</h3>
-                                <p class="text-gray-600 leading-relaxed">
-                                    글로벌 게임쇼 및 컨퍼런스 참가를 전문적으로 지원합니다.
-                                    부스 운영, 프레젠테이션, 네트워킹 등 전 과정을 관리합니다.
+                                <h3 class="text-2xl font-medium text-gray-900 mb-3">Global GameShow & Event 대행</h3>
+                                <p class="text-gray-600 leading-relaxed font-light">
+                                    글로벌 게임쇼 및 이벤트 참가를 전문적으로 대행합니다.
+                                    E3, Gamescom, TGS 등 주요 게임 전시회 참가부터 부스 운영까지 전 과정을 지원합니다.
                                 </p>
                             </div>
                         </div>
@@ -333,17 +765,219 @@
 
                 <div
                     class="mt-16 pt-8 border-t border-gray-200 flex flex-col md:flex-row gap-6 items-center justify-between">
-                    <div class="text-gray-600 text-sm">
+                    <div class="text-gray-600 text-sm font-light">
                         <p>궁금하신 점이 있으시면 언제든지 문의해주세요.</p>
                     </div>
-                    <a href="mailto:contact@richmonstar.com"
-                        class="px-10 py-4 bg-gold-500 text-navy-950 rounded-full font-bold hover:bg-white transition-all shadow-lg">
-                        문의하기
-                    </a>
+                    <button onclick="openContactModal()"
+                        class="px-10 py-4 bg-terracotta text-white rounded-full font-medium hover:bg-navy-900 transition-all shadow-lg cursor-pointer">
+                        상담하기
+                    </button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="contact-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeContactModal()">&times;</button>
+
+            <!-- Success Message -->
+            <div id="successMessage" class="success-message">
+                <div class="success-icon">
+                    <span class="iconify" data-icon="solar:check-circle-bold" style="font-size: 45px;"></span>
+                </div>
+                <h2 class="success-title">문의가 전송되었습니다!</h2>
+                <p class="success-text">
+                    소중한 문의에 감사드립니다.<br>
+                    <!-- 전문 컨설턴트가 영업일 기준 24시간 이내에<br>
+                    입력하신 이메일로 연락드리겠습니다. -->
+                </p>
+                <button class="success-button" onclick="closeContactModal()">
+                    <span style="display: inline-flex; align-items: center; gap: 8px;">
+                        확인
+                        <span class="iconify" data-icon="solar:check-read-linear" style="font-size: 18px;"></span>
+                    </span>
+                </button>
+            </div>
+
+            <!-- Contact Form -->
+            <div id="contactFormDiv"
+                style="padding: 60px 50px; background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);">
+                <div style="text-align: center; margin-bottom: 45px;">
+                    <div
+                        style="display: inline-block; width: 60px; height: 60px; background: linear-gradient(135deg, #C17C74 0%, #a35e56 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 8px 20px rgba(193, 124, 116, 0.25);">
+                        <span class="iconify" data-icon="solar:chat-round-dots-bold"
+                            style="font-size: 28px; color: white;"></span>
+                    </div>
+                    <h2
+                        style="font-size: 2.8rem; font-weight: 700; color: #2A1F1D; margin-bottom: 14px; letter-spacing: -0.03em;">
+                        무료 상담 신청</h2>
+                    <p style="font-size: 1.05rem; color: #6b6460; line-height: 1.6; max-width: 400px; margin: 0 auto;">
+                        아래 정보를 입력해주시면<br />전문 컨설턴트가 빠르게 연락드리겠습니다.</p>
+                </div>
+
+                <form action="https://formsubmit.co/contact@rychmonstar.com" method="POST" id="contactForm">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="RychmonstaR 홈페이지 문의 - Global Consulting">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="box">
+                    <input type="hidden" name="_next"
+                        value="https://coolsik-park.github.io/richmonstar/r04/service-consulting.html#success">
+
+                    <div class="form-group">
+                        <label class="form-label" for="consultType">📋 문의 유형 *</label>
+                        <select class="form-select" id="consultType" name="문의유형" required>
+                            <option value="">문의 유형을 선택해주세요</option>
+                            <option value="글로벌컨설팅" selected>글로벌컨설팅</option>
+                            <option value="게임쇼/PR/마케팅">게임쇼/PR/마케팅</option>
+                            <option value="개발/디자인/운영">개발/디자인/운영</option>
+                            <option value="사업제휴">사업제휴</option>
+                            <option value="채용문의">채용문의</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="company">🏢 회사명 *</label>
+                        <input type="text" class="form-input" id="company" name="회사명" placeholder="회사명을 입력해주세요"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="name">👤 이름 *</label>
+                        <input type="text" class="form-input" id="name" name="이름" placeholder="담당자 성함을 입력해주세요" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="email">✉️ 이메일 *</label>
+                        <input type="email" class="form-input" id="email" name="이메일" placeholder="example@company.com"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="message">💬 문의 내용 *</label>
+                        <textarea class="form-textarea" id="message" name="문의내용" required
+                            placeholder="문의하실 내용을 자유롭게 작성해주세요.&#10;예) 일본 시장 진출 관련 상담을 받고 싶습니다."></textarea>
+                    </div>
+
+                    <button type="submit" class="form-submit">
+                        <span style="display: inline-flex; align-items: center; gap: 10px;">
+                            문의 전송하기
+                            <span class="iconify" data-icon="solar:arrow-right-linear" style="font-size: 20px;"></span>
+                        </span>
+                    </button>
+                    <p style="text-align: center; font-size: 0.85rem; color: #a89f97; margin-top: 20px;">
+                        * 영업일 기준 24시간 이내 답변 드립니다.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Scroll event for navbar
+        function handleScroll() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+
+        // Contact Modal Functions
+        function openContactModal() {
+            document.getElementById('contactModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            // Reset to form view
+            document.getElementById('successMessage').classList.remove('active');
+            document.getElementById('contactFormDiv').style.display = 'block';
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.remove('active');
+            document.body.style.overflow = '';
+            // Remove hash from URL
+            if (window.location.hash === '#success') {
+                history.replaceState(null, null, ' ');
+            }
+        }
+
+        function showSuccessMessage() {
+            document.getElementById('contactFormDiv').style.display = 'none';
+            document.getElementById('successMessage').classList.add('active');
+        }
+
+        // Check if form was successfully submitted
+        window.addEventListener('load', function () {
+            if (window.location.hash === '#success') {
+                document.getElementById('contactModal').classList.add('active');
+                document.body.style.overflow = 'hidden';
+                showSuccessMessage();
+            }
+        });
+
+        // Close modal on outside click
+        document.getElementById('contactModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeContactModal();
+            }
+        });
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeContactModal();
+            }
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMobileMenuBtn = document.getElementById('closeMobileMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        function toggleMobileMenu() {
+            const isOpen = !mobileMenu.classList.contains('translate-x-full');
+            if (isOpen) {
+                closeMobileMenuFunc();
+            } else {
+                openMobileMenu();
+            }
+        }
+
+        function openMobileMenu() {
+            mobileMenu.classList.remove('translate-x-full');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenuFunc() {
+            mobileMenu.classList.add('translate-x-full');
+            document.body.style.overflow = '';
+        }
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        }
+        if (closeMobileMenuBtn) {
+            closeMobileMenuBtn.addEventListener('click', closeMobileMenuFunc);
+        }
+
+        // Close mobile menu when clicking on a link
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenuFunc);
+        });
+
+        // Close mobile menu on ESC key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && mobileMenu) {
+                closeMobileMenuFunc();
+            }
+        });
+    </script>
 </body>
 
 </html>
