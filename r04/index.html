@@ -34,8 +34,7 @@
                         }
                     },
                     fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['"Poppins"', '"ONE Mobile Gothic"', '"M PLUS Rounded 1c"', 'sans-serif'],
+                        sans: ['"Poppins"', '"ONE Mobile Gothic"', 'sans-serif'],
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
@@ -65,9 +64,12 @@
     <!-- Iconify -->
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 
-    <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=M+PLUS+Rounded+1c:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    <!-- Preconnect for faster font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts - Only Poppins (optimized weights) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <style>
@@ -77,24 +79,127 @@
             src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONEMobileGothic-Regular.woff') format('woff');
             font-weight: normal;
             font-style: normal;
+            font-display: swap;
+        }
+
+        /* CSS Variables - Design System */
+        :root {
+            /* Colors - Navy */
+            --navy-950: #020617;
+            --navy-900: #0F172A;
+            --navy-800: #1E293B;
+            --navy-700: #334155;
+
+            /* Colors - Cream */
+            --cream-100: #FBF2D9;
+            --cream-200: #FFFDD0;
+            --cream-300: #FEF3C7;
+
+            /* Colors - Terracotta */
+            --terracotta: #C17C74;
+            --terracotta-dark: #a35e56;
+
+            /* Colors - Brown */
+            --brown-dark: #2A1F1D;
+            --brown-darker: #1a1412;
+
+            /* Colors - Gold */
+            --gold-400: #FACC15;
+            --gold-500: #EAB308;
+            --gold-600: #CA8A04;
+
+            /* Colors - Neutral */
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #E5E5E5;
+            --gray-300: #D4D4D4;
+            --gray-400: #A3A3A3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --gray-900: #171717;
+
+            /* Form Colors */
+            --form-border: #e8e4df;
+            --form-border-hover: var(--cream-100);
+            --form-placeholder: #a89f97;
+            --form-text: var(--brown-dark);
+
+            /* Z-index Scale */
+            --z-base: 1;
+            --z-dropdown: 100;
+            --z-sticky: 200;
+            --z-fixed: 300;
+            --z-modal-backdrop: 400;
+            --z-modal: 500;
+            --z-popover: 600;
+            --z-tooltip: 700;
+
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 4rem;
+
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --radius-full: 9999px;
+
+            /* Transitions */
+            --transition-fast: 0.15s ease;
+            --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Skip Navigation Link for Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--navy-900);
+            color: var(--cream-100);
+            padding: 12px 24px;
+            text-decoration: none;
+            z-index: var(--z-tooltip);
+            border-radius: 0 0 var(--radius-md) 0;
+            font-weight: 600;
+            transition: var(--transition-base);
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid var(--terracotta);
+            outline-offset: 2px;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
             background-color: white;
-            color: #111827;
+            color: var(--gray-900);
             overflow-x: hidden;
         }
 
         /* Container max-width override */
         @media (min-width: 1280px) {
             .container {
-                max-width: 1280px !important;
+                max-width: 1280px;
             }
         }
 
         /* Section content max-width */
-        .sction-content {
+        .section-content {
             max-width: 1280px;
             margin-left: auto;
             margin-right: auto;
@@ -130,16 +235,16 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: #060E24;
+            background: var(--navy-950);
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #1E293B;
+            background: var(--navy-800);
             border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #C17C74;
+            background: var(--terracotta);
         }
 
         /* Glassmorphism */
@@ -158,67 +263,67 @@
         /* Navbar States */
         #navbar {
             background-color: rgba(255, 255, 255, 0.98);
-            border-bottom-color: rgb(229, 231, 235);
+            border-bottom-color: var(--gray-200);
         }
 
         #navbar .logo-box {
-            background-color: #0F172A;
+            background-color: var(--navy-900);
         }
 
         #navbar .logo-r {
-            color: #FBF2D9;
+            color: var(--cream-100);
         }
 
         #navbar .logo-text {
-            color: #0F172A;
+            color: var(--navy-900);
         }
 
         #navbar .menu-link {
-            color: #4B5563;
+            color: var(--gray-600);
         }
 
         #navbar .menu-link:hover {
-            color: #0F172A;
+            color: var(--navy-900);
         }
 
         #navbar .mobile-btn {
-            color: #0F172A;
+            color: var(--navy-900);
         }
 
         /* Scrolled State */
         #navbar.scrolled {
             background-color: rgba(15, 23, 42, 0.98);
             border-bottom-color: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-lg);
         }
 
         #navbar.scrolled .logo-box {
-            background-color: #FBF2D9;
+            background-color: var(--cream-100);
         }
 
         #navbar.scrolled .logo-r {
-            color: #0F172A;
+            color: var(--navy-900);
         }
 
         #navbar.scrolled .logo-text {
-            color: #FBF2D9;
+            color: var(--cream-100);
         }
 
         #navbar.scrolled .menu-link {
-            color: #FBF2D9;
+            color: var(--cream-100);
         }
 
         #navbar.scrolled .menu-link:hover {
-            color: #FBF2D9;
+            color: var(--cream-100);
         }
 
         #navbar.scrolled .mobile-btn {
-            color: #FBF2D9;
+            color: var(--cream-100);
         }
 
         /* Flat Gold Color (No Gradient) */
         .text-gradient-gold {
-            color: #EAB308;
+            color: var(--gold-500);
         }
 
         /* Hero Title Large Size */
@@ -240,7 +345,7 @@
             inset: 0;
             background: rgba(6, 14, 36, 0.95);
             backdrop-filter: blur(8px);
-            z-index: 9999;
+            z-index: var(--z-modal);
             overflow-y: auto;
         }
 
@@ -258,14 +363,14 @@
         }
 
         .modal-content {
-            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+            background: linear-gradient(135deg, #ffffff 0%, var(--gray-50) 100%);
             max-width: 650px;
             width: 100%;
             position: relative;
-            border-radius: 20px;
+            border-radius: var(--radius-xl);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             overflow: hidden;
-            animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: slideUp var(--transition-smooth) cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .modal-content::before {
@@ -275,7 +380,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #C17C74 0%, #2A1F1D 100%);
+            background: linear-gradient(90deg, var(--terracotta) 0%, var(--brown-dark) 100%);
         }
 
         @keyframes slideUp {
@@ -298,21 +403,26 @@
             height: 44px;
             border: none;
             background: rgba(42, 31, 29, 0.08);
-            border-radius: 50%;
+            border-radius: var(--radius-full);
             font-size: 24px;
             cursor: pointer;
-            color: #666;
+            color: var(--gray-700);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 10;
+            transition: var(--transition-base);
+            z-index: var(--z-tooltip);
         }
 
         .modal-close:hover {
-            background: #C17C74;
+            background: var(--terracotta);
             color: white;
             transform: rotate(90deg);
+        }
+
+        .modal-close:focus {
+            outline: 2px solid var(--terracotta);
+            outline-offset: 2px;
         }
 
         .form-group {
@@ -325,7 +435,7 @@
             margin-bottom: 10px;
             font-size: 13px;
             font-weight: 600;
-            color: #2A1F1D;
+            color: var(--form-text);
             text-transform: uppercase;
             letter-spacing: 0.08em;
         }
@@ -335,13 +445,13 @@
         .form-textarea {
             width: 100%;
             padding: 16px 20px;
-            border: 2px solid #e8e4df;
-            border-radius: 12px;
+            border: 2px solid var(--form-border);
+            border-radius: var(--radius-md);
             font-size: 15px;
             font-family: 'Poppins', sans-serif;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: var(--transition-base);
             background: #ffffff;
-            color: #2A1F1D;
+            color: var(--form-text);
         }
 
         .form-select {
@@ -354,26 +464,26 @@
         }
 
         .form-select option {
-            color: #2A1F1D;
+            color: var(--form-text);
             padding: 10px;
         }
 
         .form-input::placeholder,
         .form-textarea::placeholder {
-            color: #a89f97;
+            color: var(--form-placeholder);
         }
 
         .form-input:hover,
         .form-select:hover,
         .form-textarea:hover {
-            border-color: #FBF2D9;
+            border-color: var(--form-border-hover);
         }
 
         .form-input:focus,
         .form-select:focus,
         .form-textarea:focus {
             outline: none;
-            border-color: #FBF2D9;
+            border-color: var(--form-border-hover);
             box-shadow: 0 0 0 4px rgba(251, 242, 217, 0.3);
             background: #ffffff;
             transform: translateY(-1px);
@@ -388,16 +498,16 @@
         .form-submit {
             width: 100%;
             padding: 18px;
-            background: linear-gradient(135deg, #2A1F1D 0%, #1a1412 100%);
+            background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown-darker) 100%);
             color: white;
             border: none;
-            border-radius: 12px;
+            border-radius: var(--radius-md);
             font-size: 15px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.12em;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: var(--transition-base);
             position: relative;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(42, 31, 29, 0.3);
@@ -415,7 +525,7 @@
         }
 
         .form-submit:hover {
-            background: linear-gradient(135deg, #C17C74 0%, #a35e56 100%);
+            background: linear-gradient(135deg, var(--terracotta) 0%, var(--terracotta-dark) 100%);
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(193, 124, 116, 0.4);
         }
@@ -429,9 +539,14 @@
         }
 
         .form-submit:disabled {
-            background: #d1ccc7;
+            background: var(--gray-300);
             cursor: not-allowed;
             box-shadow: none;
+        }
+
+        .form-submit:focus {
+            outline: 2px solid var(--terracotta);
+            outline-offset: 2px;
         }
 
         .success-message {
@@ -487,54 +602,79 @@
         .success-title {
             font-size: 2.2rem;
             font-weight: 600;
-            color: #2A1F1D;
+            color: var(--brown-dark);
             margin-bottom: 16px;
             letter-spacing: -0.02em;
         }
 
         .success-text {
             font-size: 1.1rem;
-            color: #666;
+            color: var(--gray-600);
             line-height: 1.7;
             margin-bottom: 35px;
         }
 
         .success-button {
             padding: 16px 50px;
-            background: linear-gradient(135deg, #2A1F1D 0%, #1a1412 100%);
+            background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown-darker) 100%);
             color: white;
             border: none;
-            border-radius: 12px;
+            border-radius: var(--radius-md);
             font-size: 14px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition-base);
             box-shadow: 0 4px 15px rgba(42, 31, 29, 0.25);
         }
 
         .success-button:hover {
-            background: linear-gradient(135deg, #C17C74 0%, #a35e56 100%);
+            background: linear-gradient(135deg, var(--terracotta) 0%, var(--terracotta-dark) 100%);
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(193, 124, 116, 0.35);
         }
 
-        /* Mobile Form Padding */
+        .success-button:focus {
+            outline: 2px solid var(--terracotta);
+            outline-offset: 2px;
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN - MOBILE FIRST
+           ============================================ */
+
+        /* Tablet and below (1024px) */
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 100%;
+                padding-left: var(--spacing-md);
+                padding-right: var(--spacing-md);
+            }
+        }
+
+        /* Mobile (768px and below) */
         @media (max-width: 768px) {
+
+            /* Modal Adjustments */
+            .contact-modal.active {
+                padding: 20px 15px;
+            }
+
             #contactFormDiv {
-                padding: 40px 30px !important;
+                padding: 40px 30px;
             }
 
             .success-message {
-                padding: 50px 30px !important;
+                padding: 50px 30px;
             }
 
             .modal-content {
                 margin: 0;
-                border-radius: 16px;
+                border-radius: var(--radius-lg);
             }
 
+            /* Form Elements */
             .form-label {
                 font-size: 12px;
             }
@@ -551,324 +691,194 @@
             }
         }
 
-        /* ============================================
-           MOBILE-FIRST PREMIUM DESIGN OPTIMIZATIONS
-           ============================================ */
-
-        /* Mobile Hero Section */
+        /* Mobile (768px and below) - continued */
         @media (max-width: 768px) {
+
+            /* Hero Section */
             #home {
-                padding-top: 120px !important;
-                padding-bottom: 80px !important;
-                min-height: auto !important;
+                padding-top: 120px;
+                padding-bottom: 80px;
+                min-height: auto;
             }
 
             .hero-title-small {
-                font-size: 2rem !important;
-                line-height: 1.35 !important;
+                font-size: 2rem;
+                line-height: 1.35;
                 letter-spacing: -0.02em;
             }
 
-            /* Hero CTA Button - Compact & Premium */
+            /* Hero CTA Button */
             #home .btn-premium {
-                padding: 12px 24px !important;
-                font-size: 13px !important;
-                font-weight: 600 !important;
-                color: #FBF2D9 !important;
+                padding: 12px 24px;
+                font-size: 13px;
+                font-weight: 600;
+                color: var(--cream-100);
                 width: auto;
                 display: inline-flex;
                 border-radius: 2px;
                 letter-spacing: 0.05em;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                box-shadow: var(--shadow-md);
             }
 
             #home .btn-premium .iconify {
-                font-size: 14px !important;
-                color: #FBF2D9 !important;
+                font-size: 14px;
+                color: var(--cream-100);
             }
 
-            /* Reduce hero section horizontal padding */
             #home .container {
-                padding-left: 16px !important;
-                padding-right: 16px !important;
+                padding-left: 16px;
+                padding-right: 16px;
             }
 
-            /* Left align CTA button container */
             #home .reveal.flex {
-                align-items: flex-start !important;
-                justify-content: flex-start !important;
+                align-items: flex-start;
+                justify-content: flex-start;
             }
-        }
 
-        /* Mobile Section Padding */
-        @media (max-width: 768px) {
+            /* Section Padding */
             section {
-                padding-top: 60px !important;
-                padding-bottom: 60px !important;
+                padding-top: 60px;
+                padding-bottom: 60px;
             }
 
-            /* Reduce all container horizontal padding on mobile */
             section .container,
             footer .container {
-                padding-left: 16px !important;
-                padding-right: 16px !important;
+                padding-left: 16px;
+                padding-right: 16px;
             }
 
             section h2 {
-                font-size: 2rem !important;
-                line-height: 1.2 !important;
+                font-size: 2rem;
+                line-height: 1.2;
                 word-break: keep-all;
             }
 
-            /* Reduce section title bottom margin */
             .mb-28 {
-                margin-bottom: 40px !important;
+                margin-bottom: 40px;
             }
 
             .mb-20 {
-                margin-bottom: 32px !important;
+                margin-bottom: 32px;
             }
-        }
 
-        /* Mobile About Section - Single Column Grid */
-        @media (max-width: 768px) {
+            /* About Section */
             #about .grid-cols-2 {
-                grid-template-columns: 1fr !important;
-                gap: 12px !important;
+                grid-template-columns: 1fr;
+                gap: 12px;
             }
 
             #about .grid-cols-2>div {
-                padding: 20px 24px !important;
+                padding: 20px 24px;
             }
 
             #about .grid-cols-2 .text-xs {
-                font-size: 10px !important;
-                margin-bottom: 8px !important;
+                font-size: 10px;
+                margin-bottom: 8px;
             }
 
             #about .grid-cols-2 .text-lg {
-                font-size: 15px !important;
+                font-size: 15px;
             }
 
-            /* About image section */
             #about img {
-                min-height: 300px !important;
+                min-height: 300px;
             }
-        }
 
-        /* About cards hover border color - cream */
-        #about .grid-cols-2>div:hover {
-            border-color: #FBF2D9 !important;
-        }
-
-        /* Topics cards hover border color - cream */
-        #latest-news-container a:hover {
-            border-color: #FBF2D9 !important;
-        }
-
-        /* Mobile Why Section Cards */
-        @media (max-width: 768px) {
+            /* Why Section Cards */
             #why .card-luxury {
-                padding: 28px 24px !important;
+                padding: 28px 24px;
             }
 
             #why .card-luxury .w-20 {
-                width: 56px !important;
-                height: 56px !important;
-                margin-bottom: 20px !important;
+                width: 56px;
+                height: 56px;
+                margin-bottom: 20px;
             }
 
             #why .card-luxury .text-4xl {
-                font-size: 24px !important;
+                font-size: 24px;
             }
 
             #why .card-luxury h3 {
-                font-size: 1.25rem !important;
-                margin-bottom: 12px !important;
+                font-size: 1.25rem;
+                margin-bottom: 12px;
                 word-break: keep-all;
             }
 
             #why .card-luxury p {
-                font-size: 14px !important;
-                line-height: 1.7 !important;
+                font-size: 14px;
+                line-height: 1.7;
             }
-        }
 
-        /* Mobile Services Section Cards */
-        @media (max-width: 768px) {
+            /* Services Section Cards */
             #services .card-luxury {
-                padding: 28px 24px !important;
+                padding: 28px 24px;
             }
 
             #services .card-luxury h3 {
-                font-size: 1.25rem !important;
-                margin-bottom: 16px !important;
+                font-size: 1.25rem;
+                margin-bottom: 16px;
             }
 
             #services .card-luxury ul {
-                gap: 12px !important;
+                gap: 12px;
             }
 
             #services .card-luxury li {
-                font-size: 13px !important;
-                gap: 12px !important;
+                font-size: 13px;
+                gap: 12px;
             }
 
             #services .card-luxury .iconify {
-                font-size: 14px !important;
+                font-size: 14px;
                 flex-shrink: 0;
             }
-        }
 
-        /* Mobile Topics/News Section */
-        @media (max-width: 768px) {
-
-            /* News cards container */
+            /* Topics/News Section */
             #latest-news-container {
                 padding: 0 4px;
             }
 
-            /* News card items */
             #topics a,
             #latest-news-container a {
-                padding: 16px !important;
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-                margin-bottom: 12px !important;
+                padding: 16px;
+                margin-left: 0;
+                margin-right: 0;
+                margin-bottom: 12px;
             }
 
             #topics .text-base,
             #latest-news-container .text-sm {
-                font-size: 11px !important;
-                min-width: auto !important;
+                font-size: 11px;
+                min-width: auto;
                 margin-bottom: 6px;
             }
 
             #topics .text-lg,
             #latest-news-container .text-base {
-                font-size: 14px !important;
-                line-height: 1.6 !important;
+                font-size: 14px;
+                line-height: 1.6;
             }
-        }
 
-        /* Mobile Footer/Contact Section */
-        @media (max-width: 768px) {
+            /* Contact Section */
             #contact {
-                padding-top: 60px !important;
-                padding-bottom: 40px !important;
+                padding-top: 60px;
+                padding-bottom: 40px;
             }
 
             #contact h2 {
-                font-size: 2.5rem !important;
-                margin-bottom: 32px !important;
-            }
-
-            /* Contact Cards */
-            #contact .glass {
-                padding: 24px 20px !important;
-            }
-
-            #contact .glass .w-20 {
-                width: 48px !important;
-                height: 48px !important;
-                margin-bottom: 16px !important;
-            }
-
-            #contact .glass .text-4xl {
-                font-size: 24px !important;
-            }
-
-            #contact .glass h3 {
-                font-size: 1.1rem !important;
-                margin-bottom: 12px !important;
-            }
-
-            #contact .glass p,
-            #contact .glass a {
-                font-size: 14px !important;
-                line-height: 1.6 !important;
-            }
-
-            /* Map Section */
-            #contact .text-3xl {
-                font-size: 1.25rem !important;
-            }
-
-            #contact .grid.md\:grid-cols-2 {
-                gap: 16px !important;
-            }
-
-            /* Social Icons */
-            #contact .w-16 {
-                width: 48px !important;
-                height: 48px !important;
-            }
-
-            #contact .w-16 .text-2xl {
-                font-size: 18px !important;
-            }
-
-            /* Footer Bottom */
-            #contact .border-t {
-                flex-direction: column !important;
-                text-align: center;
-                gap: 16px !important;
-            }
-
-            #contact .border-t p,
-            #contact .border-t a {
-                font-size: 12px !important;
-            }
-
-            /* CTA Button in Contact */
-            #contact .btn-premium {
-                padding: 14px 20px !important;
-                font-size: 14px !important;
+                font-size: 2.5rem;
+                margin-bottom: 32px;
             }
         }
 
-        /* Mobile Navigation Improvements */
-        @media (max-width: 768px) {
-            #navbar .container {
-                padding-left: 16px !important;
-                padding-right: 16px !important;
-                padding-top: 12px !important;
-                padding-bottom: 12px !important;
-            }
-
-            #navbar .w-12 {
-                width: 40px !important;
-                height: 40px !important;
-            }
-
-            #navbar .text-2xl:not(.iconify) {
-                font-size: 1.25rem !important;
-            }
+        /* Hover States */
+        #about .grid-cols-2>div:hover {
+            border-color: var(--cream-100);
         }
 
-        /* Smooth text rendering for mobile */
-        @media (max-width: 768px) {
-            body {
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-            }
-
-            /* Prevent text overflow */
-            h1,
-            h2,
-            h3,
-            p,
-            li {
-                overflow-wrap: break-word;
-                word-wrap: break-word;
-                hyphens: auto;
-            }
-
-            /* Better line heights for Korean text */
-            p,
-            li {
-                word-break: keep-all;
-            }
+        #latest-news-container a:hover {
+            border-color: var(--cream-100);
         }
 
         /* Extra small screens (iPhone SE, etc.) */
@@ -891,8 +901,12 @@
 
 <body class="text-gray-900 selection:bg-gold-200 selection:text-gray-900 relative bg-white">
 
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="skip-link">메인 콘텐츠로 건너뛰기</a>
+
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 transition-all duration-500 backdrop-blur-xl border-b" id="navbar">
+    <nav class="fixed top-0 w-full z-50 transition-all duration-500 backdrop-blur-xl border-b" id="navbar"
+        role="navigation" aria-label="메인 네비게이션">
         <div class="container mx-auto px-8 py-5">
             <div class="flex items-center justify-between">
                 <!-- Logo -->
@@ -927,7 +941,8 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobileMenuBtn" class="md:hidden mobile-btn transition-colors duration-300">
+                <button id="mobileMenuBtn" class="md:hidden mobile-btn transition-colors duration-300"
+                    aria-label="메뉴 열기" aria-expanded="false">
                     <span class="iconify text-3xl" data-icon="solar:hamburger-menu-linear"></span>
                 </button>
             </div>
@@ -936,17 +951,18 @@
 
     <!-- Mobile Menu Panel -->
     <div id="mobileMenu"
-        class="fixed inset-0 bg-navy-900 z-[9999] transform translate-x-full transition-transform duration-300 md:hidden">
+        class="fixed inset-0 bg-navy-900 z-[9999] transform translate-x-full transition-transform duration-300 md:hidden"
+        role="dialog" aria-modal="true" aria-label="모바일 메뉴">
         <div class="flex flex-col h-full">
             <div class="flex items-center justify-between p-8">
                 <span class="text-2xl font-semibold tracking-tight" style="color: #FBF2D9;">RychmonstaR</span>
                 <button id="closeMobileMenu"
                     class="px-4 py-2 text-3xl font-bold hover:opacity-70 transition-opacity duration-300"
-                    style="color: #FBF2D9;">
+                    style="color: #FBF2D9;" aria-label="메뉴 닫기">
                     X
                 </button>
             </div>
-            <nav class="flex-1 overflow-y-auto p-8">
+            <nav class="flex-1 overflow-y-auto p-8" aria-label="모바일 네비게이션">
                 <ul class="space-y-6">
                     <li><a href="#about"
                             class="mobile-menu-link text-xl font-semibold hover:text-gold-500 transition-colors block py-3"
@@ -973,7 +989,7 @@
         </div>
     </div>
 
-    <main>
+    <main id="main-content">
         <!-- Hero Section -->
         <section id="home"
             class="relative w-full min-h-screen flex flex-col justify-center overflow-hidden pt-48 pb-40 bg-white">
@@ -1040,50 +1056,66 @@
         <div class="divider-line"></div>
 
         <!-- About Section -->
-        <section id="about" class="py-40 bg-gray-50 relative">
-            <div class="container mx-auto px-8 sction-content">
-                <div class="flex flex-col lg:flex-row gap-16 items-stretch">
-                    <!-- Left: Profile Image -->
-                    <div class="w-full lg:w-3/5 reveal">
-                        <div class="relative group h-full">
-                            <div
-                                class="absolute -inset-4 bg-gradient-to-r from-gold-500/20 to-terracotta/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+        <section id="about" class="py-32 bg-gray-50 relative">
+            <div class="container mx-auto px-8">
+                <div class="flex flex-col lg:flex-row gap-12 lg:gap-10 items-start justify-between">
+
+                    <!-- Left: Profiles -->
+                    <div class="flex flex-col md:flex-row gap-12 lg:gap-16">
+
+                        <!-- CEO Profile -->
+                        <div class="flex gap-6 reveal">
+                            <!-- Photo -->
+                            <div class="relative flex-shrink-0">
+                                <img src="asset/ryu.png" alt="CEO Ryu Eunji"
+                                    class="w-52 h-72 object-cover object-top grayscale hover:grayscale-0 transition-all duration-500">
+                                <div class="absolute bottom-0 left-0 right-0 h-1.5" style="background-color: #FBF2D9;">
+                                </div>
                             </div>
-                            <div class="relative overflow-hidden rounded-2xl shadow-2xl bg-white p-2 h-full">
-                                <img src="asset/profile3.png" alt="RychmonstaR Team"
-                                    class="w-full h-full object-contain group-hover:scale-105 transition-all duration-700">
+                            <!-- Info -->
+                            <div class="pt-2">
+                                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-1">CEO</h3>
+                                <p class="text-base text-gray-700">유 은 지</p>
+                                <p class="text-sm text-gray-400 mb-6">Ryu Eunji</p>
+                                <p class="text-xs text-terracotta uppercase tracking-widest font-semibold mb-1">전문분야</p>
+                                <p class="text-sm text-gray-600">Global Marketing<br>Game</p>
+                            </div>
+                        </div>
+
+                        <!-- CSO Profile -->
+                        <div class="flex gap-6 reveal reveal-delay-100">
+                            <!-- Photo -->
+                            <div class="relative flex-shrink-0">
+                                <img src="asset/choi.png" alt="CSO Choi Hyangsook"
+                                    class="w-52 h-72 object-cover object-top grayscale hover:grayscale-0 transition-all duration-500">
+                                <div class="absolute bottom-0 left-0 right-0 h-1.5" style="background-color: #FBF2D9;">
+                                </div>
+                            </div>
+                            <!-- Info -->
+                            <div class="pt-2">
+                                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-1">CSO</h3>
+                                <p class="text-base text-gray-700">최 향 숙</p>
+                                <p class="text-sm text-gray-400 mb-6">Choi Hyangsook</p>
+                                <p class="text-xs text-terracotta uppercase tracking-widest font-semibold mb-1">전문분야</p>
+                                <p class="text-sm text-gray-600">Global Business Development<br>Alliance</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Right: Company Info -->
-                    <div class="w-full lg:w-2/5 reveal reveal-delay-100 flex items-center">
-                        <div
-                            class="w-full h-full p-12 bg-white border-2 border-gray-200 hover:border-terracotta hover:shadow-2xl transition-all duration-300 rounded-xl group flex flex-col justify-center">
-                            <div class="space-y-10">
-                                <!-- Company -->
-                                <div>
-                                    <div class="text-xs text-terracotta uppercase tracking-widest mb-3 font-bold">
-                                        COMPANY
-                                    </div>
-                                    <div class="text-2xl text-gray-900 font-semibold">㈜리치몬스타</div>
-                                </div>
-
-                                <!-- Office -->
-                                <div>
-                                    <div class="text-xs text-terracotta uppercase tracking-widest mb-3 font-bold">
-                                        OFFICE
-                                    </div>
-                                    <div class="text-2xl text-gray-900 font-semibold">Seoul, Tokyo</div>
-                                </div>
-
-                                <!-- Founded -->
-                                <div>
-                                    <div class="text-xs text-terracotta uppercase tracking-widest mb-3 font-bold">
-                                        FOUNDED
-                                    </div>
-                                    <div class="text-2xl text-gray-900 font-semibold">2021.03.03</div>
-                                </div>
+                    <div class="reveal reveal-delay-200 flex-shrink-0">
+                        <div class="space-y-5">
+                            <div>
+                                <p class="text-sm text-terracotta mb-1">Company</p>
+                                <p class="text-3xl font-bold text-gray-900">㈜리치몬스타</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-terracotta mb-1">Office</p>
+                                <p class="text-3xl font-bold text-gray-900">Seoul, Tokyo</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-terracotta mb-1">Founded</p>
+                                <p class="text-3xl font-bold text-gray-900">2021.03.03</p>
                             </div>
                         </div>
                     </div>
@@ -1238,12 +1270,12 @@
                             <li class="flex items-start gap-4">
                                 <span class="iconify text-gold-500 mt-1 flex-shrink-0"
                                     data-icon="solar:star-fall-linear"></span>
-                                타겟 마케팅 (Targeting)
+                                타겟 마케팅
                             </li>
                             <li class="flex items-start gap-4">
                                 <span class="iconify text-gold-500 mt-1 flex-shrink-0"
                                     data-icon="solar:star-fall-linear"></span>
-                                브랜딩 (On/Offline)
+                                브랜딩 마케팅
                             </li>
                             <li class="flex items-start gap-4">
                                 <span class="iconify text-gold-500 mt-1 flex-shrink-0"
@@ -1288,7 +1320,7 @@
                             <li class="flex items-start gap-4">
                                 <span class="iconify text-gold-500 mt-1 flex-shrink-0"
                                     data-icon="solar:star-fall-linear"></span>
-                                번역 및 로컬라이즈 (L10N)
+                                번역 및 로컬라이즈
                             </li>
                             <li class="flex items-start gap-4">
                                 <span class="iconify text-gold-500 mt-1 flex-shrink-0"
@@ -1517,12 +1549,12 @@
     </script>
 
     <!-- Contact Modal -->
-    <div id="contactModal" class="contact-modal">
+    <div id="contactModal" class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeContactModal()">&times;</button>
+            <button class="modal-close" onclick="closeContactModal()" aria-label="닫기">&times;</button>
 
             <!-- Success Message -->
-            <div id="successMessage" class="success-message">
+            <div id="successMessage" class="success-message" aria-live="polite">
                 <div class="success-icon">
                     <span class="iconify" data-icon="solar:check-circle-bold" style="font-size: 45px;"></span>
                 </div>
@@ -1549,7 +1581,7 @@
                         <span class="iconify" data-icon="solar:chat-round-dots-bold"
                             style="font-size: 28px; color: white;"></span>
                     </div>
-                    <h2
+                    <h2 id="modalTitle"
                         style="font-size: 2.8rem; font-weight: 700; color: #2A1F1D; margin-bottom: 14px; letter-spacing: -0.03em;">
                         무료 상담 신청</h2>
                     <p style="font-size: 1.05rem; color: #6b6460; line-height: 1.6; max-width: 400px; margin: 0 auto;">
@@ -1667,7 +1699,7 @@
             const videoSource = heroVideo.querySelector('source');
 
             if (isMobile) {
-                videoSource.src = 'asset/background-mobile.mp4';
+                videoSource.src = 'asset/background.mp4';
             } else {
                 videoSource.src = 'asset/background.mp4';
             }
@@ -1696,11 +1728,15 @@
         function openMobileMenu() {
             mobileMenu.classList.remove('translate-x-full');
             document.body.style.overflow = 'hidden';
+            mobileMenuBtn.setAttribute('aria-expanded', 'true');
+            mobileMenuBtn.setAttribute('aria-label', '메뉴 닫기');
         }
 
         function closeMobileMenuFunc() {
             mobileMenu.classList.add('translate-x-full');
             document.body.style.overflow = '';
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            mobileMenuBtn.setAttribute('aria-label', '메뉴 열기');
         }
 
         mobileMenuBtn.addEventListener('click', toggleMobileMenu);
