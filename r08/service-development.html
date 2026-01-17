@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dev & Operation - RychmonstaR</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ONE Mobile Gothic 한글 폰트 */
+        @font-face {
+            font-family: 'ONE Mobile Gothic';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONEMobileGothic-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* CSS Variables */
+        :root {
+            --navy: #060E24;
+            --cream: #FBF2D9;
+            --cream-dim: #C4BAA0;
+            --transition-smooth: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'ONE Mobile Gothic', sans-serif;
+            background-color: var(--navy);
+            color: var(--cream);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--navy);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--cream-dim);
+            border-radius: 5px;
+        }
+
+        ::selection {
+            background: var(--cream);
+            color: var(--navy);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 4rem;
+            background: rgba(6, 14, 36, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(251, 242, 217, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--cream);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '★';
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--cream-dim);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--cream);
+            transition: width 0.4s;
+        }
+
+        .nav-link:hover {
+            color: var(--cream);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero */
+        .service-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10rem 4rem 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(251, 242, 217, 0.05) 0%, transparent 100%);
+            opacity: 0.3;
+        }
+
+        .service-hero-content {
+            max-width: 1200px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .service-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid rgba(251, 242, 217, 0.3);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--cream-dim);
+            margin-bottom: 2rem;
+        }
+
+        .service-hero h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            color: var(--cream);
+        }
+
+        .service-hero h1 strong {
+            font-weight: 700;
+        }
+
+        .service-subtitle {
+            font-size: 1.5rem;
+            color: var(--cream-dim);
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Content Section */
+        .service-content {
+            padding: 6rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-block {
+            margin-bottom: 6rem;
+        }
+
+        .content-block h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--cream);
+            margin-bottom: 2rem;
+            letter-spacing: -0.01em;
+        }
+
+        .content-block p {
+            font-size: 1.125rem;
+            line-height: 1.9;
+            color: var(--cream-dim);
+            margin-bottom: 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .feature-item {
+            border: 1px solid rgba(251, 242, 217, 0.2);
+            padding: 3rem;
+            background: rgba(251, 242, 217, 0.03);
+            transition: var(--transition-smooth);
+        }
+
+        .feature-item:hover {
+            border-color: var(--cream);
+            background: rgba(251, 242, 217, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--cream);
+            margin-bottom: 1rem;
+        }
+
+        .feature-item p {
+            font-size: 1rem;
+            color: var(--cream-dim);
+            line-height: 1.7;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .feature-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--cream-dim);
+            border-bottom: 1px solid rgba(251, 242, 217, 0.1);
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--cream);
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 4rem;
+            background: rgba(251, 242, 217, 0.02);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--cream);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 3rem;
+            background: var(--cream);
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--navy);
+            transform: translateX(-100%);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cta-button:hover::before {
+            transform: translateX(0);
+        }
+
+        .cta-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button:hover span {
+            color: var(--cream);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 4rem;
+            border-top: 1px solid rgba(251, 242, 217, 0.1);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-text {
+            font-size: 0.875rem;
+            color: var(--cream-dim);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--cream-dim);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--cream);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .navbar,
+            .service-hero,
+            .service-content,
+            .cta-section {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .service-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .feature-item {
+                padding: 2rem;
+            }
+        }
+
+        /* Skip Navigation Link for Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--cream);
+            color: var(--navy);
+            padding: 12px 24px;
+            text-decoration: none;
+            z-index: 2000;
+            border-radius: 0 0 8px 0;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid var(--cream);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="skip-link">메인 콘텐츠로 건너뛰기</a>
+
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="메인 네비게이션">
+        <a href="index.html" class="logo">RychmonstaR</a>
+        <ul class="nav-menu">
+            <li><a href="index.html#about" class="nav-link">About</a></li>
+            <li><a href="index.html#services" class="nav-link">Services</a></li>
+            <li><a href="index.html#topics" class="nav-link">Topics</a></li>
+            <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <!-- Service Hero -->
+        <section class="service-hero">
+        <div class="service-hero-content">
+            <div class="service-badge">Service 03</div>
+            <h1>
+                <strong>Dev & Operation</strong><br>
+                비즈니스를 실현하는 기술
+            </h1>
+            <p class="service-subtitle">
+                플랫폼 개발부터 글로벌 운영까지
+            </p>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="service-content">
+        <div class="content-block">
+            <h2>서비스 개요</h2>
+            <p>
+                아이디어를 실제 제품으로 구현하고, 글로벌 시장에서 안정적으로 운영하는 것은 기술력과 경험이 필요한 과정입니다. RychmonstaR의 Dev & Operation 서비스는 플랫폼 개발부터 그래픽 디자인, 로컬라이제이션, 글로벌 CS 운영까지 포괄적인 기술 지원을 제공합니다.
+            </p>
+            <p>
+                PC, 모바일, Roblox 등 다양한 플랫폼에서의 개발 경험과 글로벌 운영 노하우를 바탕으로 고객사의 비즈니스 성공을 기술적으로 뒷받침합니다.
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">💻</div>
+                <h3>플랫폼 개발</h3>
+                <p>다양한 플랫폼에 최적화된 애플리케이션과 게임을 개발합니다.</p>
+                <ul class="feature-list">
+                    <li>PC 게임 및 애플리케이션 개발</li>
+                    <li>모바일 앱 개발 (iOS/Android)</li>
+                    <li>Roblox 게임 개발 및 최적화</li>
+                    <li>크로스 플랫폼 지원 및 포팅</li>
+                </ul>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">🎨</div>
+                <h3>그래픽 디자인</h3>
+                <p>비주얼적 완성도를 높이는 전문 그래픽 디자인 서비스를 제공합니다.</p>
+                <ul class="feature-list">
+                    <li>2D/3D 그래픽 디자인</li>
+                    <li>UI/UX 디자인 및 프로토타입</li>
+                    <li>이펙트 및 모션 그래픽</li>
+                    <li>캐릭터 및 배경 아트워크</li>
+                </ul>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">🌐</div>
+                <h3>번역 & 로컬라이즈</h3>
+                <p>현지 문화와 언어를 완벽하게 반영한 로컬라이제이션을 제공합니다.</p>
+                <ul class="feature-list">
+                    <li>다국어 번역 (한/영/일/중 등)</li>
+                    <li>게임 및 앱 로컬라이제이션</li>
+                    <li>문화적 적합성 검수 (Cultural Adaptation)</li>
+                    <li>LQA (Linguistic Quality Assurance)</li>
+                </ul>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">🎧</div>
+                <h3>글로벌 CS & SNS 운영</h3>
+                <p>24/7 고객 지원과 소셜 미디어 운영으로 사용자와의 소통을 강화합니다.</p>
+                <ul class="feature-list">
+                    <li>다국어 고객 지원 (이메일, 채팅)</li>
+                    <li>커뮤니티 관리 및 모더레이션</li>
+                    <li>SNS 계정 운영 및 콘텐츠 제작</li>
+                    <li>사용자 피드백 수집 및 분석</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>기술 파트너가 필요하신가요?</h2>
+        <a href="index.html#contact" class="cta-button">
+            <span>무료 상담 신청하기</span>
+        </a>
+    </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-text">
+                &copy; 2021-2026 RychmonstaR Inc. All rights reserved.
+            </div>
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Topics - RychmonstaR</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+
+    <style>
+        /* ONE Mobile Gothic 한글 폰트 */
+        @font-face {
+            font-family: 'ONE Mobile Gothic';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONEMobileGothic-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* CSS Variables */
+        :root {
+            --navy: #060E24;
+            --navy-light: #0A1534;
+            --cream: #FBF2D9;
+            --cream-dim: #C4BAA0;
+            --accent-gold: #D4AF37;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            --transition-smooth: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'ONE Mobile Gothic', sans-serif;
+            background-color: var(--navy);
+            color: var(--cream);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--navy);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--cream-dim);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--cream);
+        }
+
+        ::selection {
+            background: var(--cream);
+            color: var(--navy);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 2rem 4rem;
+            background: rgba(6, 14, 36, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(251, 242, 217, 0.1);
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--cream);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '★';
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--cream-dim);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--cream);
+            transition: width 0.4s;
+        }
+
+        .nav-link:hover {
+            color: var(--cream);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Main Container */
+        .main-container {
+            min-height: 100vh;
+            padding: 10rem 4rem 6rem;
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--cream-dim);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 4rem;
+            transition: var(--transition-smooth);
+        }
+
+        .back-link:hover {
+            color: var(--cream);
+            transform: translateX(-5px);
+        }
+
+        .topics-card {
+            background: rgba(251, 242, 217, 0.03);
+            border: 1px solid rgba(251, 242, 217, 0.15);
+            border-radius: 0;
+            padding: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .topics-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--cream), transparent);
+        }
+
+        .topics-header {
+            margin-bottom: 4rem;
+        }
+
+        .topics-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+
+        .topics-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--cream);
+        }
+
+        /* Year Divider */
+        .year-divider {
+            padding-top: 3rem;
+            padding-bottom: 2rem;
+            position: relative;
+        }
+
+        .year-divider h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--cream);
+            letter-spacing: 0.05em;
+        }
+
+        /* Accordion Item */
+        .accordion-item {
+            border-bottom: 1px solid rgba(251, 242, 217, 0.1);
+            transition: var(--transition-smooth);
+        }
+
+        .accordion-button {
+            width: 100%;
+            padding: 2rem 0;
+            background: transparent;
+            border: none;
+            text-align: left;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .accordion-button::before {
+            content: '';
+            position: absolute;
+            left: -4rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent-gold);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .accordion-button:hover::before {
+            opacity: 1;
+        }
+
+        .accordion-button:hover {
+            padding-left: 1rem;
+        }
+
+        .accordion-header-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .accordion-header-content {
+                flex-direction: row;
+                gap: 3rem;
+            }
+        }
+
+        .accordion-date {
+            min-width: 140px;
+            font-family: 'Poppins', monospace;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--cream-dim);
+            letter-spacing: 0.05em;
+        }
+
+        .accordion-title {
+            flex: 1;
+            font-size: 1.125rem;
+            font-weight: 400;
+            color: var(--cream);
+            line-height: 1.8;
+            transition: var(--transition-smooth);
+        }
+
+        .accordion-button:hover .accordion-title {
+            color: var(--accent-gold);
+        }
+
+        .accordion-icon {
+            margin-left: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
+        }
+
+        .accordion-icon.rotated {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), padding 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .accordion-content.open {
+            max-height: 500px;
+            padding-bottom: 2rem;
+        }
+
+        .accordion-text {
+            padding-left: 0;
+            color: var(--cream-dim);
+            line-height: 1.9;
+        }
+
+        @media (min-width: 768px) {
+            .accordion-text {
+                padding-left: 11.5rem;
+            }
+        }
+
+        .accordion-text p {
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 4rem;
+            border-top: 1px solid rgba(251, 242, 217, 0.1);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-text {
+            font-size: 0.875rem;
+            color: var(--cream-dim);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--cream-dim);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--cream);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .navbar {
+                padding: 1.5rem 2rem;
+            }
+
+            .main-container {
+                padding: 8rem 2rem 4rem;
+            }
+
+            .topics-card {
+                padding: 3rem 2rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .topics-title {
+                font-size: 2.5rem;
+            }
+
+            .year-divider h3 {
+                font-size: 2rem;
+            }
+
+            .accordion-button {
+                padding: 1.5rem 0;
+            }
+
+            .accordion-button::before {
+                left: -2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="index.html" class="logo">RychmonstaR</a>
+            <ul class="nav-menu">
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="index.html#topics" class="nav-link">Topics</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <div class="content-wrapper">
+            <a href="index.html" class="back-link">
+                <span class="iconify" data-icon="solar:arrow-left-linear"></span>
+                Back to Home
+            </a>
+
+            <div class="topics-card">
+                <div class="topics-header">
+                    <span class="topics-label">All News</span>
+                    <h1 class="topics-title">Topics</h1>
+                </div>
+
+                <div class="accordion-list">
+                    <!-- 2025년 뉴스 -->
+
+                    <div class="accordion-item" data-id="news-1">
+                        <button class="accordion-button">
+                            <div class="accordion-header-content">
+                                <div class="accordion-date">2025년 10월 17일</div>
+                                <div class="accordion-title">
+                                    프리아웃 코리아, 그룹사 'UUUM'과 연계하여 국내기업 일본 시장 진출 및 인플루언서 마케팅 지원 강화
+                                </div>
+                            </div>
+                            <span class="iconify accordion-icon" data-icon="solar:alt-arrow-down-linear"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-text">
+                                <p>RychmonstaR Inc.는 일본 최대 MCN 기업인 UUUM과의 전략적 파트너십을 통해 국내 기업의 일본 시장 진출을 지원합니다.</p>
+                                <p>UUUM의 광범위한 인플루언서 네트워크와 RychmonstaR의 글로벌 비즈니스 전문성을 결합하여, 효과적인 마케팅 전략을 제공합니다.</p>
+                                <p>주요 서비스로는 현지 인플루언서 매칭, 콘텐츠 제작 지원, 마케팅 캠페인 기획 및 실행 등이 있습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" data-id="news-2">
+                        <button class="accordion-button">
+                            <div class="accordion-header-content">
+                                <div class="accordion-date">2025년 03월 07일</div>
+                                <div class="accordion-title">
+                                    프리아웃 코리아, 유튜브 멀티채널 이용 행태 조사 발표 - 광고 시청률 높은 인벤토리, 시청 태도는 미흡.
+                                </div>
+                            </div>
+                            <span class="iconify accordion-icon" data-icon="solar:alt-arrow-down-linear"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-text">
+                                <p>유튜브 멀티채널 네트워크(MCN) 이용자들의 광고 시청 행태에 대한 심층 조사 결과를 발표했습니다.</p>
+                                <p>조사 결과, 인벤토리 광고의 시청률은 높으나 실제 시청 태도는 상대적으로 낮은 것으로 나타났습니다.</p>
+                                <p>이는 향후 광고 전략 수립에 중요한 인사이트를 제공할 것으로 기대됩니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" data-id="news-3">
+                        <button class="accordion-button">
+                            <div class="accordion-header-content">
+                                <div class="accordion-date">2025년 01월 10일</div>
+                                <div class="accordion-title">
+                                    프리아웃 코리아, 유튜브 멀티채널 이용 행태 조사 발표
+                                </div>
+                            </div>
+                            <span class="iconify accordion-icon" data-icon="solar:alt-arrow-down-linear"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-text">
+                                <p>2025년 첫 조사 결과로, 유튜브 멀티채널 이용자들의 콘텐츠 소비 패턴을 분석했습니다.</p>
+                                <p>다양한 채널을 동시에 구독하는 이용자들의 특성과 선호도를 파악하여, MCN 사업자들에게 유용한 데이터를 제공합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2026년 뉴스 -->
+                    <div class="year-divider">
+                        <h3>2026</h3>
+                    </div>
+
+                    <div class="accordion-item" data-id="news-4">
+                        <button class="accordion-button">
+                            <div class="accordion-header-content">
+                                <div class="accordion-date">01월 01일</div>
+                                <div class="accordion-title">
+                                    새해 첫 뉴스 - RychmonstaR, 글로벌 비즈니스 확장 계획 발표
+                                </div>
+                            </div>
+                            <span class="iconify accordion-icon" data-icon="solar:alt-arrow-down-linear"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-text">
+                                <p>2026년 새해를 맞아 RychmonstaR의 글로벌 비즈니스 확장 계획을 발표했습니다.</p>
+                                <p>미국, 유럽, 동남아시아 시장으로의 진출을 계획하고 있으며, 현지 파트너사와의 협력을 강화할 예정입니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" data-id="news-5">
+                        <button class="accordion-button">
+                            <div class="accordion-header-content">
+                                <div class="accordion-date">01월 15일</div>
+                                <div class="accordion-title">
+                                    RychmonstaR, 일본 도쿄 오피스 확장 이전
+                                </div>
+                            </div>
+                            <span class="iconify accordion-icon" data-icon="solar:alt-arrow-down-linear"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-text">
+                                <p>사업 확장에 따라 일본 도쿄 오피스를 더 넓은 공간으로 이전했습니다.</p>
+                                <p>신규 오피스는 미나토구 타카나와에 위치하며, 직원 수용 인원을 2배 이상 늘렸습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" data-id="news-6">
+                        <button class="accordion-button">
+                            <div class="accordion-header-content">
+                                <div class="accordion-date">02월 03일</div>
+                                <div class="accordion-title">
+                                    RychmonstaR, AI 기반 마케팅 솔루션 론칭
+                                </div>
+                            </div>
+                            <span class="iconify accordion-icon" data-icon="solar:alt-arrow-down-linear"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-text">
+                                <p>최신 AI 기술을 활용한 마케팅 자동화 솔루션을 정식 출시했습니다.</p>
+                                <p>타겟 분석부터 콘텐츠 최적화, 성과 측정까지 원스톱으로 제공하여 마케팅 효율을 극대화합니다.</p>
+                                <p>베타 테스트에 참여한 기업들은 평균 40% 이상의 ROI 향상을 경험했습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item" data-id="news-7">
+                        <button class="accordion-button">
+                            <div class="accordion-header-content">
+                                <div class="accordion-date">03월 20일</div>
+                                <div class="accordion-title">
+                                    글로벌 게임 컨퍼런스 GDC 2026 참가 성료
+                                </div>
+                            </div>
+                            <span class="iconify accordion-icon" data-icon="solar:alt-arrow-down-linear"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-text">
+                                <p>세계 최대 게임 개발자 컨퍼런스 GDC 2026에 참가하여 글로벌 네트워크를 확장했습니다.</p>
+                                <p>현지 퍼블리셔, 개발사와의 미팅을 통해 다수의 파트너십 논의가 진행되었습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-text">
+                &copy; 2021-2026 RychmonstaR Inc. All rights reserved.
+            </div>
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        document.querySelectorAll('.accordion-button').forEach(button => {
+            button.addEventListener('click', function () {
+                const item = this.closest('.accordion-item');
+                const content = item.querySelector('.accordion-content');
+                const icon = this.querySelector('.accordion-icon');
+                const isOpen = content.classList.contains('open');
+
+                // Close all other accordions
+                document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.querySelector('.accordion-content').classList.remove('open');
+                        otherItem.querySelector('.accordion-icon').classList.remove('rotated');
+                    }
+                });
+
+                // Toggle current accordion
+                if (isOpen) {
+                    content.classList.remove('open');
+                    icon.classList.remove('rotated');
+                } else {
+                    content.classList.add('open');
+                    icon.classList.add('rotated');
+                }
+            });
+        });
+
+        // Open specific news item from URL hash
+        window.addEventListener('load', function () {
+            const hash = window.location.hash.substring(1); // Remove #
+            if (hash) {
+                const targetItem = document.querySelector(`[data-id="${hash}"]`);
+                if (targetItem) {
+                    const content = targetItem.querySelector('.accordion-content');
+                    const icon = targetItem.querySelector('.accordion-icon');
+                    content.classList.add('open');
+                    icon.classList.add('rotated');
+
+                    // Scroll to the item
+                    setTimeout(() => {
+                        targetItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 100);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
