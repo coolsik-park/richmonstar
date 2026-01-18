@@ -234,6 +234,139 @@
                 font-size: 13px !important;
             }
         }
+
+        /* Language Selector */
+        .lang-selector {
+            position: relative;
+            display: inline-block;
+        }
+
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border: 1px solid rgba(15, 23, 42, 0.2);
+            background: transparent;
+            color: #0F172A;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .lang-btn:hover {
+            border-color: #C17C74;
+            color: #C17C74;
+        }
+
+        #navbar.scrolled .lang-btn {
+            color: #FBF2D9;
+            border-color: rgba(251, 242, 217, 0.3);
+        }
+
+        #navbar.scrolled .lang-btn:hover {
+            border-color: #FBF2D9;
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: white;
+            border: 1px solid rgba(15, 23, 42, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            min-width: 150px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            z-index: 100;
+        }
+
+        .lang-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .lang-option {
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #0F172A;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+        }
+
+        .lang-option:last-child {
+            border-bottom: none;
+        }
+
+        .lang-option:hover {
+            background: #f8f9fa;
+            color: #C17C74;
+        }
+
+        .lang-option.active {
+            background: #FBF2D9;
+            color: #0F172A;
+            font-weight: 600;
+        }
+
+        .mobile-lang-selector {
+            padding: 20px;
+            border-top: 1px solid rgba(251, 242, 217, 0.1);
+        }
+
+        .mobile-lang-btn {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(251, 242, 217, 0.05);
+            border: 1px solid rgba(251, 242, 217, 0.2);
+            color: #FBF2D9;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mobile-lang-btn:hover {
+            background: rgba(251, 242, 217, 0.1);
+        }
+
+        .mobile-lang-dropdown {
+            margin-top: 10px;
+            display: none;
+        }
+
+        .mobile-lang-dropdown.active {
+            display: block;
+        }
+
+        .mobile-lang-option {
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: rgba(251, 242, 217, 0.7);
+            border-bottom: 1px solid rgba(251, 242, 217, 0.1);
+        }
+
+        .mobile-lang-option:hover {
+            color: #FBF2D9;
+            background: rgba(251, 242, 217, 0.05);
+        }
+
+        .mobile-lang-option.active {
+            color: #FBF2D9;
+            font-weight: 600;
+            background: rgba(251, 242, 217, 0.1);
+        }
     </style>
 </head>
 
@@ -271,6 +404,29 @@
                                 class="menu-link text-sm font-semibold transition-all duration-300 tracking-[0.15em] uppercase relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-current after:transition-all after:duration-300 hover:after:w-full">Contact</a>
                         </li>
                     </ul>
+
+                    <!-- Language Selector -->
+                    <div class="lang-selector">
+                        <button class="lang-btn" id="langBtn" aria-label="언어 선택">
+                            <span class="iconify" data-icon="solar:global-linear"></span>
+                            <span id="currentLang">KO</span>
+                            <span class="iconify" data-icon="solar:alt-arrow-down-linear" style="font-size: 12px;"></span>
+                        </button>
+                        <div class="lang-dropdown" id="langDropdown">
+                            <div class="lang-option active" data-lang="ko">
+                                <span>🇰🇷</span>
+                                <span>한국어</span>
+                            </div>
+                            <div class="lang-option" data-lang="ja">
+                                <span>🇯🇵</span>
+                                <span>日本語</span>
+                            </div>
+                            <div class="lang-option" data-lang="en">
+                                <span>🇺🇸</span>
+                                <span>English</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -312,6 +468,28 @@
                             style="color: #FBF2D9;">Contact</a></li>
                 </ul>
             </nav>
+
+            <!-- Mobile Language Selector -->
+            <div class="mobile-lang-selector">
+                <button class="mobile-lang-btn" id="mobileLangBtn">
+                    <span style="display: flex; align-items: center; gap: 8px;">
+                        <span class="iconify" data-icon="solar:global-linear"></span>
+                        <span id="mobileLangText">한국어</span>
+                    </span>
+                    <span class="iconify" data-icon="solar:alt-arrow-down-linear"></span>
+                </button>
+                <div class="mobile-lang-dropdown" id="mobileLangDropdown">
+                    <div class="mobile-lang-option active" data-lang="ko">
+                        <span>🇰🇷 한국어</span>
+                    </div>
+                    <div class="mobile-lang-option" data-lang="ja">
+                        <span>🇯🇵 日本語</span>
+                    </div>
+                    <div class="mobile-lang-option" data-lang="en">
+                        <span>🇺🇸 English</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -326,9 +504,9 @@
 
             <div class="glass rounded-lg p-12 md:p-16">
                 <div class="mb-12">
-                    <span class="text-terracotta font-bold tracking-[0.2em] text-xs uppercase mb-3 block">All
+                    <span class="text-terracotta font-bold tracking-[0.2em] text-xs uppercase mb-3 block" data-lang="topicsSubtitle">All
                         News</span>
-                    <h1 class="text-4xl md:text-5xl font-light text-gray-900">Topics</h1>
+                    <h1 class="text-4xl md:text-5xl font-light text-gray-900" data-lang="topicsTitle">Topics</h1>
                 </div>
 
                 <!-- Loading Message -->
@@ -367,6 +545,8 @@
                 let currentYear = null;
                 let html = '';
 
+                const lang = localStorage.getItem('language') || 'ko';
+
                 sortedNews.forEach((news, index) => {
                     // Add year divider if year changes
                     if (currentYear !== news.year) {
@@ -376,8 +556,17 @@
                         currentYear = news.year;
                     }
 
+                    // 현재 언어에 맞는 필드 선택
+                    const dateKey = `date_${lang}`;
+                    const titleKey = `title_${lang}`;
+                    const contentKey = `content_${lang}`;
+
+                    const displayDate = news[dateKey] || news.date_ko || news.date_en || '';
+                    const displayTitle = news[titleKey] || news.title_ko || news.title_en || '';
+                    const contentArr = news[contentKey] || [];
+
                     // Check if content exists and is not empty
-                    const hasContent = news.content && Array.isArray(news.content) && news.content.length > 0 && news.content.some(p => p.trim() !== '');
+                    const hasContent = Array.isArray(contentArr) && contentArr.length > 0 && contentArr.some(p => p.trim() !== '');
 
                     // Create news item HTML
                     if (hasContent) {
@@ -386,10 +575,10 @@
                         <div class="border-b border-gray-200 accordion-item" data-id="${news.id}">
                             <button class="w-full py-6 hover:bg-gray-50 transition-colors px-6 -mx-6 text-left flex items-center justify-between group">
                                 <div class="flex flex-col md:flex-row gap-6 flex-1">
-                                    <div class="text-gray-500 text-sm font-mono min-w-[140px]">${news.date}</div>
+                                    <div class="text-gray-500 text-sm font-mono min-w-[140px]">${displayDate}</div>
                                     <div class="flex-1">
                                         <p class="text-gray-700 leading-relaxed group-hover:text-gray-900 transition-colors">
-                                            ${news.title}
+                                            ${displayTitle}
                                         </p>
                                     </div>
                                 </div>
@@ -397,7 +586,7 @@
                             </button>
                             <div class="accordion-content hidden px-6 pb-6">
                                 <div class="ml-0 md:ml-[156px] text-gray-600 leading-relaxed space-y-4">
-                                    ${news.content.map(paragraph => `<p>${paragraph}</p>`).join('')}
+                                    ${contentArr.map(paragraph => `<p>${paragraph}</p>`).join('')}
                                 </div>
                             </div>
                         </div>
@@ -408,10 +597,10 @@
                         <div class="border-b border-gray-200" data-id="${news.id}">
                             <div class="w-full py-6 px-6 -mx-6">
                                 <div class="flex flex-col md:flex-row gap-6">
-                                    <div class="text-gray-500 text-sm font-mono min-w-[140px]">${news.date}</div>
+                                    <div class="text-gray-500 text-sm font-mono min-w-[140px]">${displayDate}</div>
                                     <div class="flex-1">
                                         <p class="text-gray-700 leading-relaxed">
-                                            ${news.title}
+                                            ${displayTitle}
                                         </p>
                                     </div>
                                 </div>
@@ -551,6 +740,111 @@
             }
         });
 
+    </script>
+
+    <script>
+        // ==================== Language Switcher (Topics Page Header) ====================
+        const topicsTranslations = {
+            ko: {
+                topicsSubtitle: "All News",
+                topicsTitle: "Topics",
+            },
+            ja: {
+                topicsSubtitle: "最新ニュース",
+                topicsTitle: "トピックス",
+            },
+            en: {
+                topicsSubtitle: "All News",
+                topicsTitle: "Topics",
+            }
+        };
+
+        let topicsLanguage = localStorage.getItem('language') || 'ko';
+
+        const topicsLangBtn = document.getElementById('langBtn');
+        const topicsLangDropdown = document.getElementById('langDropdown');
+        const topicsCurrentLangSpan = document.getElementById('currentLang');
+        const topicsLangOptions = document.querySelectorAll('.lang-option');
+
+        const topicsMobileLangBtn = document.getElementById('mobileLangBtn');
+        const topicsMobileLangDropdown = document.getElementById('mobileLangDropdown');
+        const topicsMobileLangText = document.getElementById('mobileLangText');
+        const topicsMobileLangOptions = document.querySelectorAll('.mobile-lang-option');
+
+        if (topicsLangBtn && topicsLangDropdown) {
+            topicsLangBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                topicsLangDropdown.classList.toggle('active');
+            });
+
+            document.addEventListener('click', () => {
+                topicsLangDropdown.classList.remove('active');
+            });
+
+            topicsLangDropdown.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        }
+
+        if (topicsMobileLangBtn && topicsMobileLangDropdown) {
+            topicsMobileLangBtn.addEventListener('click', () => {
+                topicsMobileLangDropdown.classList.toggle('active');
+            });
+        }
+
+        topicsLangOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const lang = option.dataset.lang;
+                switchTopicsLanguage(lang);
+                topicsLangDropdown.classList.remove('active');
+
+                topicsLangOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+            });
+        });
+
+        topicsMobileLangOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const lang = option.dataset.lang;
+                switchTopicsLanguage(lang);
+                topicsMobileLangDropdown.classList.remove('active');
+
+                topicsMobileLangOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+            });
+        });
+
+        function switchTopicsLanguage(lang) {
+            topicsLanguage = lang;
+            localStorage.setItem('language', lang);
+
+            const labels = { ko: 'KO', ja: 'JA', en: 'EN' };
+            const names = { ko: '한국어', ja: '日本語', en: 'English' };
+
+            if (topicsCurrentLangSpan) topicsCurrentLangSpan.textContent = labels[lang];
+            if (topicsMobileLangText) topicsMobileLangText.textContent = names[lang];
+
+            applyTopicsTranslations(lang);
+
+            // 뉴스 리스트도 언어에 맞게 다시 로드
+            if (typeof loadNews === 'function') {
+                loadNews();
+            }
+        }
+
+        function applyTopicsTranslations(lang) {
+            const t = topicsTranslations[lang];
+            if (!t) return;
+
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                const key = el.getAttribute('data-lang');
+                if (t[key]) {
+                    el.textContent = t[key];
+                }
+            });
+        }
+
+        switchTopicsLanguage(topicsLanguage);
     </script>
 </body>
 

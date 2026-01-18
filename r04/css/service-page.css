@@ -1,0 +1,107 @@
+/* ============================================
+   Service Pages - Mobile Premium Design
+   ============================================ */
+
+@media (max-width: 768px) {
+
+    /* Main Content Area */
+    .min-h-screen {
+        padding-top: 100px !important;
+        padding-bottom: 60px !important;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    /* Glass Card Container */
+    .glass {
+        padding: 24px 20px !important;
+        border-radius: 16px !important;
+    }
+
+    /* Page Header */
+    .glass>.flex.items-center.gap-6 {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px !important;
+    }
+
+    .glass .iconify.text-7xl {
+        font-size: 48px !important;
+    }
+
+    .glass h1 {
+        font-size: 1.75rem !important;
+        line-height: 1.3 !important;
+    }
+
+    /* Page Description */
+    .glass p.text-xl {
+        font-size: 15px !important;
+        padding-left: 16px !important;
+        margin-bottom: 32px !important;
+        line-height: 1.7 !important;
+    }
+
+    /* Service Cards */
+    .space-y-12>div {
+        padding: 20px !important;
+    }
+
+    .space-y-12 .flex.items-start.gap-4 {
+        gap: 12px !important;
+    }
+
+    .space-y-12 .iconify.text-3xl {
+        font-size: 24px !important;
+    }
+
+    .space-y-12 h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 8px !important;
+        word-break: keep-all;
+    }
+
+    .space-y-12 p {
+        font-size: 13px !important;
+        line-height: 1.7 !important;
+    }
+
+    /* Bottom CTA */
+    .glass .mt-16 {
+        margin-top: 32px !important;
+        padding-top: 24px !important;
+    }
+
+    .glass .mt-16 .text-sm {
+        font-size: 13px !important;
+        text-align: center;
+    }
+
+    .glass .mt-16 button,
+    .glass .mt-16 a {
+        width: 100%;
+        text-align: center;
+        padding: 14px 24px !important;
+        font-size: 14px !important;
+    }
+
+    /* Back Link */
+    a.inline-flex {
+        margin-bottom: 20px !important;
+    }
+
+    a.inline-flex .text-sm {
+        font-size: 12px !important;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 375px) {
+    .glass h1 {
+        font-size: 1.5rem !important;
+    }
+
+    .space-y-12 h3 {
+        font-size: 1rem !important;
+    }
+}

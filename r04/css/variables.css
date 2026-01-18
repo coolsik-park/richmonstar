@@ -1,0 +1,28 @@
+/* ============================================
+   CSS Variables - Design System
+   ============================================ */
+
+:root {
+    /* Colors - Navy */
+    --navy-950: #020617;
+    --navy-900: #0F172A;
+    --navy-800: #1E293B;
+    --navy-700: #334155;
+
+    /* Colors - Cream */
+    --cream-100: #FBF2D9;
+    --cream-200: #FFFDD0;
+    --cream-300: #FEF3C7;
+
+    /* Colors - Terracotta */
+    --terracotta: #C17C74;
+    --terracotta-dark: #a35e56;
+
+    /* Colors - Gray */
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+}

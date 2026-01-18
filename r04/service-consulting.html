@@ -50,531 +50,20 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=M+PLUS+Rounded+1c:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
 
+    <!-- Separated CSS Files -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/lang-selector.css">
+    <link rel="stylesheet" href="css/service-page.css">
+
     <style>
-        /* ONE Mobile Gothic 한글 폰트 */
-        @font-face {
-            font-family: 'ONE Mobile Gothic';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONEMobileGothic-Regular.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: white;
-            color: #111827;
-            overflow-x: hidden;
-        }
-
-        /* Navbar Default State */
-        #navbar {
-            background-color: transparent;
-            border-bottom-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .logo-box {
-            background-color: #0F172A;
-        }
-
-        .logo-r {
-            color: #FBF2D9;
-        }
-
-        .logo-text {
-            color: #0F172A;
-        }
-
-        .menu-link {
-            color: #0F172A;
-        }
-
-        .menu-link:hover {
-            color: #C17C74;
-        }
-
-        .mobile-btn {
-            color: #0F172A;
-        }
-
-        /* Navbar Scrolled State */
-        #navbar.scrolled {
-            background-color: rgba(15, 23, 42, 0.98);
-            border-bottom-color: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        #navbar.scrolled .logo-box {
-            background-color: #FBF2D9;
-        }
-
-        #navbar.scrolled .logo-r {
-            color: #0F172A;
-        }
-
-        #navbar.scrolled .logo-text {
-            color: #FBF2D9;
-        }
-
-        #navbar.scrolled .menu-link {
-            color: #FBF2D9;
-        }
-
-        #navbar.scrolled .menu-link:hover {
-            color: #FBF2D9;
-        }
-
-        #navbar.scrolled .mobile-btn {
-            color: #FBF2D9;
-        }
-
-        /* Glass Effect */
+        /* Page-specific: Glass Effect */
         .glass {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        /* Contact Modal - Premium Design */
-        .contact-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(6, 14, 36, 0.95);
-            backdrop-filter: blur(8px);
-            z-index: 9999;
-            overflow-y: auto;
-        }
-
-        .contact-modal.active {
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding: 40px 20px;
-        }
-
-        @media (max-width: 768px) {
-            .contact-modal.active {
-                padding: 20px 15px;
-            }
-        }
-
-        .modal-content {
-            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
-            max-width: 650px;
-            width: 100%;
-            position: relative;
-            border-radius: 20px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            overflow: hidden;
-            animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .modal-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #C17C74 0%, #2A1F1D 100%);
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px) scale(0.95);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            width: 44px;
-            height: 44px;
-            border: none;
-            background: rgba(42, 31, 29, 0.08);
-            border-radius: 50%;
-            font-size: 24px;
-            cursor: pointer;
-            color: #666;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-
-        .modal-close:hover {
-            background: #C17C74;
-            color: white;
-            transform: rotate(90deg);
-        }
-
-        .form-group {
-            margin-bottom: 28px;
-            position: relative;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 10px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #2A1F1D;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        .form-input,
-        .form-select,
-        .form-textarea {
-            width: 100%;
-            padding: 16px 20px;
-            border: 2px solid #e8e4df;
-            border-radius: 12px;
-            font-size: 15px;
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            background: #ffffff;
-            color: #2A1F1D;
-        }
-
-        .form-select {
-            cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%232A1F1D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 20px center;
-            padding-right: 50px;
-        }
-
-        .form-select option {
-            color: #2A1F1D;
-            padding: 10px;
-        }
-
-        .form-input::placeholder,
-        .form-textarea::placeholder {
-            color: #a89f97;
-        }
-
-        .form-input:hover,
-        .form-select:hover,
-        .form-textarea:hover {
-            border-color: #FBF2D9;
-        }
-
-        .form-input:focus,
-        .form-select:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: #FBF2D9;
-            box-shadow: 0 0 0 4px rgba(251, 242, 217, 0.3);
-            background: #ffffff;
-            transform: translateY(-1px);
-        }
-
-        .form-textarea {
-            min-height: 140px;
-            resize: vertical;
-            line-height: 1.6;
-        }
-
-        .form-submit {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #2A1F1D 0%, #1a1412 100%);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 15px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(42, 31, 29, 0.3);
-        }
-
-        .form-submit::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .form-submit:hover {
-            background: linear-gradient(135deg, #C17C74 0%, #a35e56 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(193, 124, 116, 0.4);
-        }
-
-        .form-submit:hover::before {
-            left: 100%;
-        }
-
-        .form-submit:active {
-            transform: translateY(0);
-        }
-
-        .form-submit:disabled {
-            background: #d1ccc7;
-            cursor: not-allowed;
-            box-shadow: none;
-        }
-
-        .success-message {
-            display: none;
-            text-align: center;
-            padding: 70px 50px;
-        }
-
-        .success-message.active {
-            display: block;
-            animation: fadeIn 0.4s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .success-icon {
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 30px;
-            font-size: 45px;
-            color: white;
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
-            animation: successPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes successPulse {
-
-            0%,
-            100% {
-                box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
-            }
-
-            50% {
-                box-shadow: 0 10px 40px rgba(16, 185, 129, 0.5);
-            }
-        }
-
-        .success-title {
-            font-size: 2.2rem;
-            font-weight: 600;
-            color: #2A1F1D;
-            margin-bottom: 16px;
-            letter-spacing: -0.02em;
-        }
-
-        .success-text {
-            font-size: 1.1rem;
-            color: #666;
-            line-height: 1.7;
-            margin-bottom: 35px;
-        }
-
-        .success-button {
-            padding: 16px 50px;
-            background: linear-gradient(135deg, #2A1F1D 0%, #1a1412 100%);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(42, 31, 29, 0.25);
-        }
-
-        .success-button:hover {
-            background: linear-gradient(135deg, #C17C74 0%, #a35e56 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(193, 124, 116, 0.35);
-        }
-
-        /* Mobile Form Padding */
-        @media (max-width: 768px) {
-            #contactFormDiv {
-                padding: 40px 30px !important;
-            }
-
-            .success-message {
-                padding: 50px 30px !important;
-            }
-
-            .modal-content {
-                margin: 0;
-                border-radius: 16px;
-            }
-
-            .form-label {
-                font-size: 12px;
-            }
-
-            .form-input,
-            .form-select,
-            .form-textarea {
-                padding: 14px 18px;
-                font-size: 14px;
-            }
-
-            .success-title {
-                font-size: 1.8rem;
-            }
-        }
-
-        /* ============================================
-           MOBILE PREMIUM DESIGN FOR SERVICE PAGES
-           ============================================ */
-
-        @media (max-width: 768px) {
-
-            /* Main Content Area */
-            .min-h-screen {
-                padding-top: 100px !important;
-                padding-bottom: 60px !important;
-                padding-left: 16px !important;
-                padding-right: 16px !important;
-            }
-
-            /* Glass Card Container */
-            .glass {
-                padding: 24px 20px !important;
-                border-radius: 16px !important;
-            }
-
-            /* Page Header */
-            .glass>.flex.items-center.gap-6 {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 16px !important;
-            }
-
-            .glass .iconify.text-7xl {
-                font-size: 48px !important;
-            }
-
-            .glass h1 {
-                font-size: 1.75rem !important;
-                line-height: 1.3 !important;
-            }
-
-            /* Page Description */
-            .glass p.text-xl {
-                font-size: 15px !important;
-                padding-left: 16px !important;
-                margin-bottom: 32px !important;
-                line-height: 1.7 !important;
-            }
-
-            /* Service Cards */
-            .space-y-12>div {
-                padding: 20px !important;
-            }
-
-            .space-y-12 .flex.items-start.gap-4 {
-                gap: 12px !important;
-            }
-
-            .space-y-12 .iconify.text-3xl {
-                font-size: 24px !important;
-            }
-
-            .space-y-12 h3 {
-                font-size: 1.1rem !important;
-                margin-bottom: 8px !important;
-                word-break: keep-all;
-            }
-
-            .space-y-12 p {
-                font-size: 13px !important;
-                line-height: 1.7 !important;
-            }
-
-            /* Bottom CTA */
-            .glass .mt-16 {
-                margin-top: 32px !important;
-                padding-top: 24px !important;
-            }
-
-            .glass .mt-16 .text-sm {
-                font-size: 13px !important;
-                text-align: center;
-            }
-
-            .glass .mt-16 button,
-            .glass .mt-16 a {
-                width: 100%;
-                text-align: center;
-                padding: 14px 24px !important;
-                font-size: 14px !important;
-            }
-
-            /* Back Link */
-            a.inline-flex {
-                margin-bottom: 20px !important;
-            }
-
-            a.inline-flex .text-sm {
-                font-size: 12px !important;
-            }
-
-            /* Navigation */
-            #navbar .container {
-                padding-left: 16px !important;
-                padding-right: 16px !important;
-                padding-top: 12px !important;
-                padding-bottom: 12px !important;
-            }
-
-            #navbar .w-12 {
-                width: 36px !important;
-                height: 36px !important;
-            }
-
-            #navbar .text-2xl:not(.iconify) {
-                font-size: 1.15rem !important;
-            }
-        }
-
-        /* Extra small screens */
-        @media (max-width: 375px) {
-            .glass h1 {
-                font-size: 1.5rem !important;
-            }
-
-            .space-y-12 h3 {
-                font-size: 1rem !important;
-            }
         }
     </style>
 </head>
@@ -613,6 +102,29 @@
                                 class="menu-link text-sm font-semibold transition-all duration-300 tracking-[0.15em] uppercase relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-current after:transition-all after:duration-300 hover:after:w-full">Contact</a>
                         </li>
                     </ul>
+
+                    <!-- Language Selector -->
+                    <div class="lang-selector">
+                        <button class="lang-btn" id="langBtn" aria-label="언어 선택">
+                            <span class="iconify" data-icon="solar:global-linear"></span>
+                            <span id="currentLang">KO</span>
+                            <span class="iconify" data-icon="solar:alt-arrow-down-linear" style="font-size: 12px;"></span>
+                        </button>
+                        <div class="lang-dropdown" id="langDropdown">
+                            <div class="lang-option active" data-lang="ko">
+                                <span>🇰🇷</span>
+                                <span>한국어</span>
+                            </div>
+                            <div class="lang-option" data-lang="ja">
+                                <span>🇯🇵</span>
+                                <span>日本語</span>
+                            </div>
+                            <div class="lang-option" data-lang="en">
+                                <span>🇺🇸</span>
+                                <span>English</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -659,6 +171,28 @@
                     </li>
                 </ul>
             </nav>
+
+            <!-- Mobile Language Selector -->
+            <div class="mobile-lang-selector">
+                <button class="mobile-lang-btn" id="mobileLangBtn">
+                    <span style="display: flex; align-items: center; gap: 8px;">
+                        <span class="iconify" data-icon="solar:global-linear"></span>
+                        <span id="mobileLangText">한국어</span>
+                    </span>
+                    <span class="iconify" data-icon="solar:alt-arrow-down-linear"></span>
+                </button>
+                <div class="mobile-lang-dropdown" id="mobileLangDropdown">
+                    <div class="mobile-lang-option active" data-lang="ko">
+                        <span>🇰🇷 한국어</span>
+                    </div>
+                    <div class="mobile-lang-option" data-lang="ja">
+                        <span>🇯🇵 日本語</span>
+                    </div>
+                    <div class="mobile-lang-option" data-lang="en">
+                        <span>🇺🇸 English</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -675,13 +209,13 @@
                 <div class="flex items-center gap-6 mb-8">
                     <span class="iconify text-7xl text-terracotta" data-icon="solar:chart-square-bold-duotone"></span>
                     <div>
-                        <div class="text-xs text-terracotta uppercase tracking-widest mb-2 font-bold">Service Detail
+                        <div class="text-xs text-terracotta uppercase tracking-widest mb-2 font-bold" data-lang="serviceLabel">Service Detail
                         </div>
-                        <h1 class="text-4xl md:text-5xl font-light text-gray-900">Global Consulting</h1>
+                        <h1 class="text-4xl md:text-5xl font-light text-gray-900" data-lang="pageTitle">Global Consulting</h1>
                     </div>
                 </div>
 
-                <p class="text-xl text-gray-700 mb-16 leading-relaxed border-l-4 border-terracotta pl-6 font-light">
+                <p class="text-xl text-gray-700 mb-16 leading-relaxed border-l-4 border-terracotta pl-6 font-light" data-lang-html="pageLead">
                     현지 시장 분석부터 법인 설립, 파트너십 구축까지<br />
                     성공적인 해외 진출을 위한 원스톱 솔루션
                 </p>
@@ -693,8 +227,8 @@
                             <span class="iconify text-3xl text-terracotta mt-1"
                                 data-icon="solar:buildings-2-bold-duotone"></span>
                             <div>
-                                <h3 class="text-2xl font-medium text-gray-900 mb-3">현지 법인 설립 및 초기 안정화 지원</h3>
-                                <p class="text-gray-600 leading-relaxed font-light">
+                                <h3 class="text-2xl font-medium text-gray-900 mb-3" data-lang="card1Title">현지 법인 설립 및 초기 안정화 지원</h3>
+                                <p class="text-gray-600 leading-relaxed font-light" data-lang-html="card1Body">
                                     해외 시장 진출의 첫 단계인 법인 설립부터 초기 운영 안정화까지 전 과정을 지원합니다.
                                     현지 법률, 세무, 회계 전문가와의 네트워크를 통해 신속하고 정확한 법인 설립을 도와드립니다.
                                 </p>
@@ -708,8 +242,8 @@
                             <span class="iconify text-3xl text-terracotta mt-1"
                                 data-icon="solar:graph-up-bold-duotone"></span>
                             <div>
-                                <h3 class="text-2xl font-medium text-gray-900 mb-3">시장 특성 분석 및 경쟁사/소비자 동향 파악</h3>
-                                <p class="text-gray-600 leading-relaxed font-light">
+                                <h3 class="text-2xl font-medium text-gray-900 mb-3" data-lang="card2Title">시장 특성 분석 및 경쟁사/소비자 동향 파악</h3>
+                                <p class="text-gray-600 leading-relaxed font-light" data-lang-html="card2Body">
                                     진출하고자 하는 시장의 특성을 면밀히 분석하고, 경쟁사 및 소비자 동향을 파악하여
                                     최적의 시장 진입 전략을 수립합니다. 데이터 기반의 인사이트를 제공합니다.
                                 </p>
@@ -723,8 +257,8 @@
                             <span class="iconify text-3xl text-terracotta mt-1"
                                 data-icon="solar:settings-bold-duotone"></span>
                             <div>
-                                <h3 class="text-2xl font-medium text-gray-900 mb-3">AX 컨설팅 (SaaS 도입, 플랫폼화)</h3>
-                                <p class="text-gray-600 leading-relaxed font-light">
+                                <h3 class="text-2xl font-medium text-gray-900 mb-3" data-lang="card3Title">AX 컨설팅 (SaaS 도입, 플랫폼화)</h3>
+                                <p class="text-gray-600 leading-relaxed font-light" data-lang-html="card3Body">
                                     비즈니스 자동화(AX)를 통해 효율성을 극대화합니다. SaaS 도입, 플랫폼화 전략 수립 등
                                     디지털 트랜스포메이션을 지원하여 글로벌 경쟁력을 강화합니다.
                                 </p>
@@ -738,8 +272,8 @@
                             <span class="iconify text-3xl text-terracotta mt-1"
                                 data-icon="solar:hand-money-bold-duotone"></span>
                             <div>
-                                <h3 class="text-2xl font-medium text-gray-900 mb-3">투자 유치 및 비즈니스 네트워크 연계</h3>
-                                <p class="text-gray-600 leading-relaxed font-light">
+                                <h3 class="text-2xl font-medium text-gray-900 mb-3" data-lang="card4Title">투자 유치 및 비즈니스 네트워크 연계</h3>
+                                <p class="text-gray-600 leading-relaxed font-light" data-lang-html="card4Body">
                                     글로벌 투자자 및 파트너사와의 네트워크를 통해 투자 유치 기회를 제공하고,
                                     비즈니스 성장에 필요한 전략적 파트너십을 구축합니다.
                                 </p>
@@ -751,10 +285,11 @@
                 <div
                     class="mt-16 pt-8 border-t border-gray-200 flex flex-col md:flex-row gap-6 items-center justify-between">
                     <div class="text-gray-600 text-sm font-light">
-                        <p>궁금하신 점이 있으시면 언제든지 문의해주세요.</p>
+                        <p data-lang="ctaText">궁금하신 점이 있으시면 언제든지 문의해주세요.</p>
                     </div>
                     <button onclick="openContactModal()"
-                        class="px-10 py-4 bg-terracotta text-white rounded-full font-medium hover:bg-navy-900 transition-all shadow-lg cursor-pointer">
+                        class="px-10 py-4 bg-terracotta text-white rounded-full font-medium hover:bg-navy-900 transition-all shadow-lg cursor-pointer"
+                        data-lang="ctaButton">
                         상담하기
                     </button>
                 </div>
@@ -772,15 +307,14 @@
                 <div class="success-icon">
                     <span class="iconify" data-icon="solar:check-circle-bold" style="font-size: 45px;"></span>
                 </div>
-                <h2 class="success-title">문의가 전송되었습니다!</h2>
-                <p class="success-text">
+                <h2 class="success-title" data-lang="successTitle">문의가 전송되었습니다!</h2>
+                <p class="success-text" data-lang-html="successDesc">
                     소중한 문의에 감사드립니다.<br>
-                    <!-- 전문 컨설턴트가 영업일 기준 24시간 이내에<br>
-                    입력하신 이메일로 연락드리겠습니다. -->
+                    빠른 시일 내에 담당자가 연락드리겠습니다.
                 </p>
                 <button class="success-button" onclick="closeContactModal()">
                     <span style="display: inline-flex; align-items: center; gap: 8px;">
-                        확인
+                        <span data-lang="confirmBtn">확인</span>
                         <span class="iconify" data-icon="solar:check-read-linear" style="font-size: 18px;"></span>
                     </span>
                 </button>
@@ -795,10 +329,10 @@
                         <span class="iconify" data-icon="solar:chat-round-dots-bold"
                             style="font-size: 28px; color: white;"></span>
                     </div>
-                    <h2
+                    <h2 data-lang="modalTitle"
                         style="font-size: 2.8rem; font-weight: 700; color: #2A1F1D; margin-bottom: 14px; letter-spacing: -0.03em;">
                         무료 상담 신청</h2>
-                    <p style="font-size: 1.05rem; color: #6b6460; line-height: 1.6; max-width: 400px; margin: 0 auto;">
+                    <p data-lang-html="modalDesc" style="font-size: 1.05rem; color: #6b6460; line-height: 1.6; max-width: 400px; margin: 0 auto;">
                         아래 정보를 입력해주시면<br />전문 컨설턴트가 빠르게 연락드리겠습니다.</p>
                 </div>
 
@@ -811,158 +345,57 @@
                         value="https://coolsik-park.github.io/richmonstar/r04/service-consulting.html#success">
 
                     <div class="form-group">
-                        <label class="form-label" for="consultType">📋 문의 유형 *</label>
+                        <label class="form-label" for="consultType"><span>📋 </span><span data-lang="inquiryType">문의 유형</span> *</label>
                         <select class="form-select" id="consultType" name="문의유형" required>
-                            <option value="">문의 유형을 선택해주세요</option>
-                            <option value="글로벌컨설팅" selected>글로벌컨설팅</option>
-                            <option value="게임쇼/PR/마케팅">게임쇼/PR/마케팅</option>
-                            <option value="개발/디자인/운영">개발/디자인/운영</option>
-                            <option value="사업제휴">사업제휴</option>
-                            <option value="채용문의">채용문의</option>
+                            <option value="" data-lang="selectType">문의 유형을 선택해주세요</option>
+                            <option value="글로벌컨설팅" selected data-lang="typeConsulting">글로벌컨설팅</option>
+                            <option value="게임쇼/PR/마케팅" data-lang="typeMarketing">게임쇼/PR/마케팅</option>
+                            <option value="개발/디자인/운영" data-lang="typeDevelopment">개발/디자인/운영</option>
+                            <option value="사업제휴" data-lang="typePartnership">사업제휴</option>
+                            <option value="채용문의" data-lang="typeRecruit">채용문의</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label" for="company">🏢 회사명 *</label>
-                        <input type="text" class="form-input" id="company" name="회사명" placeholder="회사명을 입력해주세요"
+                        <label class="form-label" for="company"><span>🏢 </span><span data-lang="companyLabel">회사명</span> *</label>
+                        <input type="text" class="form-input" id="company" name="회사명" data-lang-placeholder="companyPlaceholder" placeholder="회사명을 입력해주세요"
                             required>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label" for="name">👤 이름 *</label>
-                        <input type="text" class="form-input" id="name" name="이름" placeholder="담당자 성함을 입력해주세요" required>
+                        <label class="form-label" for="name"><span>👤 </span><span data-lang="nameLabel">이름</span> *</label>
+                        <input type="text" class="form-input" id="name" name="이름" data-lang-placeholder="namePlaceholder" placeholder="담당자 성함을 입력해주세요" required>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label" for="email">✉️ 이메일 *</label>
-                        <input type="email" class="form-input" id="email" name="이메일" placeholder="example@company.com"
+                        <label class="form-label" for="email"><span>✉️ </span><span data-lang="emailLabel">이메일</span> *</label>
+                        <input type="email" class="form-input" id="email" name="이메일" data-lang-placeholder="emailPlaceholder" placeholder="example@company.com"
                             required>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label" for="message">💬 문의 내용 *</label>
-                        <textarea class="form-textarea" id="message" name="문의내용" required
+                        <label class="form-label" for="message"><span>💬 </span><span data-lang="messageLabel">문의 내용</span> *</label>
+                        <textarea class="form-textarea" id="message" name="문의내용" required data-lang-placeholder="messagePlaceholder"
                             placeholder="문의하실 내용을 자유롭게 작성해주세요.&#10;예) 일본 시장 진출 관련 상담을 받고 싶습니다."></textarea>
                     </div>
 
                     <button type="submit" class="form-submit">
                         <span style="display: inline-flex; align-items: center; gap: 10px;">
-                            문의 전송하기
+                            <span data-lang="submitBtn">문의 전송하기</span>
                             <span class="iconify" data-icon="solar:arrow-right-linear" style="font-size: 20px;"></span>
                         </span>
                     </button>
-                    <p style="text-align: center; font-size: 0.85rem; color: #a89f97; margin-top: 20px;">
-                        * 영업일 기준 24시간 이내 답변 드립니다.
-                    </p>
                 </form>
             </div>
         </div>
     </div>
 
-    <script>
-        // Scroll event for navbar
-        function handleScroll() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        }
-
-        window.addEventListener('scroll', handleScroll);
-        handleScroll();
-
-        // Contact Modal Functions
-        function openContactModal() {
-            document.getElementById('contactModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-            // Reset to form view
-            document.getElementById('successMessage').classList.remove('active');
-            document.getElementById('contactFormDiv').style.display = 'block';
-        }
-
-        function closeContactModal() {
-            document.getElementById('contactModal').classList.remove('active');
-            document.body.style.overflow = '';
-            // Remove hash from URL
-            if (window.location.hash === '#success') {
-                history.replaceState(null, null, ' ');
-            }
-        }
-
-        function showSuccessMessage() {
-            document.getElementById('contactFormDiv').style.display = 'none';
-            document.getElementById('successMessage').classList.add('active');
-        }
-
-        // Check if form was successfully submitted
-        window.addEventListener('load', function () {
-            if (window.location.hash === '#success') {
-                document.getElementById('contactModal').classList.add('active');
-                document.body.style.overflow = 'hidden';
-                showSuccessMessage();
-            }
-        });
-
-        // Close modal on outside click
-        document.getElementById('contactModal').addEventListener('click', function (e) {
-            if (e.target === this) {
-                closeContactModal();
-            }
-        });
-
-        // Close modal on ESC key
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') {
-                closeContactModal();
-            }
-        });
-
-        // Mobile Menu
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const closeMobileMenuBtn = document.getElementById('closeMobileMenu');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
-
-        function toggleMobileMenu() {
-            const isOpen = !mobileMenu.classList.contains('translate-x-full');
-            if (isOpen) {
-                closeMobileMenuFunc();
-            } else {
-                openMobileMenu();
-            }
-        }
-
-        function openMobileMenu() {
-            mobileMenu.classList.remove('translate-x-full');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeMobileMenuFunc() {
-            mobileMenu.classList.add('translate-x-full');
-            document.body.style.overflow = '';
-        }
-
-        if (mobileMenuBtn) {
-            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-        }
-        if (closeMobileMenuBtn) {
-            closeMobileMenuBtn.addEventListener('click', closeMobileMenuFunc);
-        }
-
-        // Close mobile menu when clicking on a link
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', closeMobileMenuFunc);
-        });
-
-        // Close mobile menu on ESC key
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && mobileMenu) {
-                closeMobileMenuFunc();
-            }
-        });
-    </script>
+    <!-- Separated JS Files -->
+    <script src="js/navbar.js"></script>
+    <script src="js/mobile-menu.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/translations/consulting.js"></script>
+    <script src="js/lang-switcher.js"></script>
 </body>
 
 </html>

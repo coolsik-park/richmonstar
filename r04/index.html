@@ -896,6 +896,140 @@
                 font-size: 1.1rem !important;
             }
         }
+
+        /* Language Selector */
+        .lang-selector {
+            position: relative;
+            display: inline-block;
+        }
+
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border: 1px solid rgba(15, 23, 42, 0.2);
+            background: transparent;
+            color: #0F172A;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .lang-btn:hover {
+            border-color: #C17C74;
+            color: #C17C74;
+        }
+
+        /* Navbar가 스크롤 상태일 때 다국어 선택 버튼 스타일 */
+        #navbar.scrolled .lang-btn {
+            color: #FBF2D9;
+            border-color: rgba(251, 242, 217, 0.3);
+        }
+
+        #navbar.scrolled .lang-btn:hover {
+            border-color: #FBF2D9;
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: white;
+            border: 1px solid rgba(15, 23, 42, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            min-width: 150px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            z-index: 100;
+        }
+
+        .lang-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .lang-option {
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #0F172A;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+        }
+
+        .lang-option:last-child {
+            border-bottom: none;
+        }
+
+        .lang-option:hover {
+            background: #f8f9fa;
+            color: #C17C74;
+        }
+
+        .lang-option.active {
+            background: #FBF2D9;
+            color: #0F172A;
+            font-weight: 600;
+        }
+
+        .mobile-lang-selector {
+            padding: 20px;
+            border-top: 1px solid rgba(251, 242, 217, 0.1);
+        }
+
+        .mobile-lang-btn {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(251, 242, 217, 0.05);
+            border: 1px solid rgba(251, 242, 217, 0.2);
+            color: #FBF2D9;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mobile-lang-btn:hover {
+            background: rgba(251, 242, 217, 0.1);
+        }
+
+        .mobile-lang-dropdown {
+            margin-top: 10px;
+            display: none;
+        }
+
+        .mobile-lang-dropdown.active {
+            display: block;
+        }
+
+        .mobile-lang-option {
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: rgba(251, 242, 217, 0.7);
+            border-bottom: 1px solid rgba(251, 242, 217, 0.1);
+        }
+
+        .mobile-lang-option:hover {
+            color: #FBF2D9;
+            background: rgba(251, 242, 217, 0.05);
+        }
+
+        .mobile-lang-option.active {
+            color: #FBF2D9;
+            font-weight: 600;
+            background: rgba(251, 242, 217, 0.1);
+        }
     </style>
 </head>
 
@@ -923,21 +1057,50 @@
                 <div class="hidden md:flex items-center gap-16">
                     <ul class="flex items-center gap-10">
                         <li><a href="#about"
-                                class="menu-link text-sm font-semibold transition-all duration-300 tracking-[0.15em] uppercase relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-current after:transition-all after:duration-300 hover:after:w-full">About</a>
+                                class="menu-link text-sm font-semibold transition-all duration-300 tracking-[0.15em] uppercase relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+                                data-lang="about">About</a>
                         </li>
                         <li><a href="#why"
-                                class="menu-link text-sm font-semibold transition-all duration-300 tracking-[0.15em] uppercase relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-current after:transition-all after:duration-300 hover:after:w-full">Why</a>
+                                class="menu-link text-sm font-semibold transition-all duration-300 tracking-[0.15em] uppercase relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+                                data-lang="why">Why</a>
                         </li>
                         <li><a href="#services"
-                                class="menu-link text-sm font-semibold transition-all duration-300 tracking-[0.15em] uppercase relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-current after:transition-all after:duration-300 hover:after:w-full">Services</a>
+                                class="menu-link text-sm font-semibold transition-all duration-300 tracking-[0.15em] uppercase relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+                                data-lang="services">Services</a>
                         </li>
                         <li><a href="#topics"
-                                class="menu-link text-sm font-semibold transition-all duration-300 tracking-[0.15em] uppercase relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-current after:transition-all after:duration-300 hover:after:w-full">Topics</a>
+                                class="menu-link text-sm font-semibold transition-all duration-300 tracking-[0.15em] uppercase relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+                                data-lang="topics">Topics</a>
                         </li>
                         <li><a href="#contact"
-                                class="menu-link text-sm font-semibold transition-all duration-300 tracking-[0.15em] uppercase relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-current after:transition-all after:duration-300 hover:after:w-full">Contact</a>
+                                class="menu-link text-sm font-semibold transition-all duration-300 tracking-[0.15em] uppercase relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+                                data-lang="contact">Contact</a>
                         </li>
                     </ul>
+
+                    <!-- Language Selector -->
+                    <div class="lang-selector">
+                        <button class="lang-btn" id="langBtn" aria-label="언어 선택">
+                            <span class="iconify" data-icon="solar:global-linear"></span>
+                            <span id="currentLang">KO</span>
+                            <span class="iconify" data-icon="solar:alt-arrow-down-linear"
+                                style="font-size: 12px;"></span>
+                        </button>
+                        <div class="lang-dropdown" id="langDropdown">
+                            <div class="lang-option active" data-lang="ko">
+                                <span>🇰🇷</span>
+                                <span>한국어</span>
+                            </div>
+                            <div class="lang-option" data-lang="ja">
+                                <span>🇯🇵</span>
+                                <span>日本語</span>
+                            </div>
+                            <div class="lang-option" data-lang="en">
+                                <span>🇺🇸</span>
+                                <span>English</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -966,26 +1129,47 @@
                 <ul class="space-y-6">
                     <li><a href="#about"
                             class="mobile-menu-link text-xl font-semibold hover:text-gold-500 transition-colors block py-3"
-                            style="color: #FBF2D9;">About</a>
+                            style="color: #FBF2D9;" data-lang="about">About</a>
                     </li>
                     <li><a href="#why"
                             class="mobile-menu-link text-xl font-semibold hover:text-gold-500 transition-colors block py-3"
-                            style="color: #FBF2D9;">Why</a>
+                            style="color: #FBF2D9;" data-lang="why">Why</a>
                     </li>
                     <li><a href="#services"
                             class="mobile-menu-link text-xl font-semibold hover:text-gold-500 transition-colors block py-3"
-                            style="color: #FBF2D9;">Services</a>
+                            style="color: #FBF2D9;" data-lang="services">Services</a>
                     </li>
                     <li><a href="#topics"
                             class="mobile-menu-link text-xl font-semibold hover:text-gold-500 transition-colors block py-3"
-                            style="color: #FBF2D9;">Topics</a>
+                            style="color: #FBF2D9;" data-lang="topics">Topics</a>
                     </li>
                     <li><a href="#contact"
                             class="mobile-menu-link text-xl font-semibold hover:text-gold-500 transition-colors block py-3"
-                            style="color: #FBF2D9;">Contact</a>
+                            style="color: #FBF2D9;" data-lang="contact">Contact</a>
                     </li>
                 </ul>
             </nav>
+            <!-- Mobile Language Selector -->
+            <div class="mobile-lang-selector">
+                <button class="mobile-lang-btn" id="mobileLangBtn">
+                    <span style="display: flex; align-items: center; gap: 8px;">
+                        <span class="iconify" data-icon="solar:global-linear"></span>
+                        <span id="mobileLangText">한국어</span>
+                    </span>
+                    <span class="iconify" data-icon="solar:alt-arrow-down-linear"></span>
+                </button>
+                <div class="mobile-lang-dropdown" id="mobileLangDropdown">
+                    <div class="mobile-lang-option active" data-lang="ko">
+                        <span>🇰🇷 한국어</span>
+                    </div>
+                    <div class="mobile-lang-option" data-lang="ja">
+                        <span>🇯🇵 日本語</span>
+                    </div>
+                    <div class="mobile-lang-option" data-lang="en">
+                        <span>🇺🇸 English</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1018,7 +1202,7 @@
                     <!-- Subtitle -->
                     <!-- <p class="reveal reveal-delay-200 text-xl md:text-2xl max-w-3xl mx-auto mb-20 font-light leading-relaxed tracking-wide"
                         style="color: #FBF2D9;">
-                        글로벌 비즈니스의 리스크를 경감하기 위한 가장 현명한 전략.<br class="hidden md:block" />
+                    글로벌 비즈니스의 리스크를 경감하기 위한 가장 현명한 전략.<br class="hidden md:block" />
                         고객사의 <strong class="font-medium" style="color: #FBF2D9;">길잡이 별</strong>이 되겠습니다.
                     </p> -->
                 </div>
@@ -1033,7 +1217,8 @@
                     <div class="reveal reveal-delay-300 flex flex-col md:flex-row justify-start gap-8 items-start">
                         <a href="#services"
                             class="btn-premium group px-10 py-5 bg-navy-900 text-white rounded-none font-light text-lg hover:bg-navy-800 transition-all duration-300 shadow-2xl flex items-center gap-4 tracking-wider">
-                            <span class="hidden md:inline">RychmonstaR </span>서비스 바로가기
+                            <span class="hidden md:inline" data-lang="viewServicesPre">RychmonstaR </span><span
+                                data-lang="viewServices">서비스 바로가기</span>
                             <span class="iconify group-hover:translate-x-2 transition-transform duration-300"
                                 data-icon="solar:arrow-right-linear"></span>
                         </a>
@@ -1074,11 +1259,13 @@
                             </div>
                             <!-- Info -->
                             <div class="pt-2">
-                                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-1">CEO</h3>
-                                <p class="text-base text-gray-700">유 은 지</p>
-                                <p class="text-sm text-gray-400 mb-6">Ryu Eunji</p>
-                                <p class="text-xs text-terracotta uppercase tracking-widest font-semibold mb-1">전문분야</p>
-                                <p class="text-sm text-gray-600">Global Marketing<br>Game</p>
+                                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-1" data-lang="ceo">CEO</h3>
+                                <p class="text-base text-gray-700" data-lang="ceoName">유 은 지</p>
+                                <p class="text-sm text-gray-400 mb-6" data-lang="ceoNameEn">Ryu Eunji</p>
+                                <p class="text-xs text-terracotta uppercase tracking-widest font-semibold mb-1"
+                                    data-lang="ceoField">전문분야</p>
+                                <p class="text-sm text-gray-600" data-lang-html="ceoExpertise">Global Marketing<br>Game
+                                </p>
                             </div>
                         </div>
 
@@ -1093,11 +1280,13 @@
                             </div>
                             <!-- Info -->
                             <div class="pt-2">
-                                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-1">CSO</h3>
-                                <p class="text-base text-gray-700">최 향 숙</p>
-                                <p class="text-sm text-gray-400 mb-6">Choi Hyangsook</p>
-                                <p class="text-xs text-terracotta uppercase tracking-widest font-semibold mb-1">전문분야</p>
-                                <p class="text-sm text-gray-600">Global Business Development<br>Alliance</p>
+                                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-1" data-lang="cso">CSO</h3>
+                                <p class="text-base text-gray-700" data-lang="csoName">최 향 숙</p>
+                                <p class="text-sm text-gray-400 mb-6" data-lang="csoNameEn">Choi Hyangsook</p>
+                                <p class="text-xs text-terracotta uppercase tracking-widest font-semibold mb-1"
+                                    data-lang="ceoField">전문분야</p>
+                                <p class="text-sm text-gray-600" data-lang-html="csoExpertise">Global Business
+                                    Development<br>Alliance</p>
                             </div>
                         </div>
                     </div>
@@ -1106,15 +1295,15 @@
                     <div class="reveal reveal-delay-200 flex-shrink-0 order-1 lg:order-2">
                         <div class="space-y-5">
                             <div>
-                                <p class="text-sm text-terracotta mb-1">Company</p>
-                                <p class="text-3xl font-bold text-gray-900">주식회사 리치몬스타</p>
+                                <p class="text-sm text-terracotta mb-1" data-lang="company">Company</p>
+                                <p class="text-3xl font-bold text-gray-900" data-lang="companyName">㈜리치몬스타</p>
                             </div>
                             <div>
-                                <p class="text-sm text-terracotta mb-1">Office</p>
-                                <p class="text-3xl font-bold text-gray-900">Seoul, Tokyo</p>
+                                <p class="text-sm text-terracotta mb-1" data-lang="office">Office</p>
+                                <p class="text-3xl font-bold text-gray-900" data-lang="officeLocation">Seoul, Tokyo</p>
                             </div>
                             <div>
-                                <p class="text-sm text-terracotta mb-1">Founded</p>
+                                <p class="text-sm text-terracotta mb-1" data-lang="founded">Founded</p>
                                 <p class="text-3xl font-bold text-gray-900">2021.03.03</p>
                             </div>
                         </div>
@@ -1132,7 +1321,8 @@
                 <div class="text-left mb-28 reveal">
                     <!-- <span class="text-terracotta font-light tracking-ultra-wide text-xs uppercase mb-6 block">Why
                         RychmonstaR?</span> -->
-                    <h2 class="text-5xl md:text-7xl font-light text-gray-900">Proven Success Formula</h2>
+                    <h2 class="text-5xl md:text-7xl font-light text-gray-900" data-lang="whyTitle">Proven Success
+                        Formula</h2>
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-12">
@@ -1146,9 +1336,10 @@
                             class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center text-terracotta text-4xl mb-10 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                             <span class="iconify" data-icon="solar:case-round-minimalistic-bold-duotone"></span>
                         </div> -->
-                        <h3 class="text-3xl font-semibold text-gray-900 mb-6" style="white-space: nowrap;">모방할 수 없는 실전경험
+                        <h3 class="text-3xl font-semibold text-gray-900 mb-6" style="white-space: nowrap;"
+                            data-lang="whyCard1Title">모방할 수 없는 실전경험
                         </h3>
-                        <p class="text-gray-600 text-lg leading-relaxed font-light">
+                        <p class="text-gray-600 text-lg leading-relaxed font-light" data-lang="whyCard1Desc">
                             단순한 조언이 아닌, 법인 설립, 안정화, 위기 대응까지 직접 실행한 20년 이상의 풍부한 실무 경험을 보유하고 있습니다.
                         </p>
                     </div>
@@ -1163,9 +1354,10 @@
                             class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center text-gold-500 text-4xl mb-10 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                             <span class="iconify" data-icon="solar:shield-check-bold-duotone"></span>
                         </div> -->
-                        <h3 class="text-3xl font-semibold text-gray-900 mb-6" style="white-space: nowrap;">리스크 최소화 전략
+                        <h3 class="text-3xl font-semibold text-gray-900 mb-6" style="white-space: nowrap;"
+                            data-lang="whyCard2Title">리스크 최소화 전략
                         </h3>
-                        <p class="text-gray-600 text-lg leading-relaxed font-light">
+                        <p class="text-gray-600 text-lg leading-relaxed font-light" data-lang="whyCard2Desc">
                             높아진 시장 비용 속에서 실패 확률을 최소화하고, 클라이언트의 비즈니스 모델에 최적화된 시장 진입 전략을 도출합니다.
                         </p>
                     </div>
@@ -1180,9 +1372,10 @@
                             class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center text-terracotta text-4xl mb-10 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                             <span class="iconify" data-icon="solar:earth-bold-duotone"></span>
                         </div> -->
-                        <h3 class="text-3xl font-semibold text-gray-900 mb-6" style="white-space: nowrap;">글로벌 네트워크의 가치
+                        <h3 class="text-3xl font-semibold text-gray-900 mb-6" style="white-space: nowrap;"
+                            data-lang="whyCard3Title">글로벌 네트워크의 가치
                         </h3>
-                        <p class="text-gray-600 text-lg leading-relaxed font-light">
+                        <p class="text-gray-600 text-lg leading-relaxed font-light" data-lang="whyCard3Desc">
                             미국, 유럽, 아시아 등 광범위한 글로벌 네트워크를 통해 불필요한 시행착오 없이 신속하고 효율적인 솔루션을 제공합니다.
                         </p>
                     </div>
@@ -1207,7 +1400,8 @@
                     <div>
                         <!-- <span class="text-gold-600 font-light tracking-ultra-wide text-xs uppercase mb-6 block">Our
                             Services</span> -->
-                        <h2 class="text-5xl md:text-7xl font-light text-gray-900">Total Business Solution</h2>
+                        <h2 class="text-5xl md:text-7xl font-light text-gray-900" data-lang="servicesTitle">Total
+                            Business Solution</h2>
                     </div>
                     <!-- <p class="text-gray-600 max-w-lg text-right text-lg font-light mt-8 md:mt-0">
                         성공적인 글로벌 비즈니스를 위한<br />전방위적 맞춤형 솔루션을 제공합니다.
@@ -1222,35 +1416,35 @@
                             class="text-terracotta mb-10 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 origin-left">
                             <span class="iconify text-7xl" data-icon="solar:chart-square-bold-duotone"></span>
                         </div> -->
-                        <h3
-                            class="text-3xl font-semibold text-gray-900 mb-8 group-hover:text-terracotta transition-colors">
+                        <h3 class="text-3xl font-semibold text-gray-900 mb-8 group-hover:text-terracotta transition-colors"
+                            data-lang="service1Title">
                             Global Consulting
                         </h3>
                         <ul class="space-y-5 text-gray-600 text-base font-light">
                             <li class="flex items-start gap-4">
                                 <span class="iconify text-gold-500 mt-1 flex-shrink-0"
                                     data-icon="solar:star-fall-linear"></span>
-                                국내/외 시장 진출 전략 수립
+                                <span data-lang="service1Item1">국내/외 시장 진출 전략 수립</span>
                             </li>
                             <li class="flex items-start gap-4">
                                 <span class="iconify text-gold-500 mt-1 flex-shrink-0"
                                     data-icon="solar:star-fall-linear"></span>
-                                현지 법인 설립 및 초기 안정화
+                                <span data-lang="service1Item2">현지 법인 설립 및 초기 안정화</span>
                             </li>
                             <li class="flex items-start gap-4">
                                 <span class="iconify text-gold-500 mt-1 flex-shrink-0"
                                     data-icon="solar:star-fall-linear"></span>
-                                조직 설정 (채용, 오피스 등)
+                                <span data-lang="service1Item3">조직 설정 (채용, 오피스 등)</span>
                             </li>
                             <li class="flex items-start gap-4">
                                 <span class="iconify text-gold-500 mt-1 flex-shrink-0"
                                     data-icon="solar:star-fall-linear"></span>
-                                AX 컨설팅 (SaaS, PF화)
+                                <span data-lang="service1Item4">AX 컨설팅 (SaaS, PF화)</span>
                             </li>
                             <li class="flex items-start gap-4">
                                 <span class="iconify text-gold-500 mt-1 flex-shrink-0"
                                     data-icon="solar:star-fall-linear"></span>
-                                투자 및 비즈니스 네트워크 연계
+                                <span data-lang="service1Item5">투자 및 비즈니스 네트워크 연계</span>
                             </li>
                         </ul>
                     </a>
@@ -1262,35 +1456,35 @@
                             class="text-gold-500 mb-10 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 origin-left">
                             <span class="iconify text-7xl" data-icon="solar:speaker-bold-duotone"></span>
                         </div> -->
-                        <h3
-                            class="text-3xl font-semibold text-gray-900 mb-8 group-hover:text-gold-500 transition-colors">
+                        <h3 class="text-3xl font-semibold text-gray-900 mb-8 group-hover:text-gold-500 transition-colors"
+                            data-lang="service2Title">
                             PR & Marketing
                         </h3>
                         <ul class="space-y-5 text-gray-600 text-base font-light">
                             <li class="flex items-start gap-4">
                                 <span class="iconify text-gold-500 mt-1 flex-shrink-0"
                                     data-icon="solar:star-fall-linear"></span>
-                                타겟 마케팅
+                                <span data-lang="service2Item1">타겟 마케팅</span>
                             </li>
                             <li class="flex items-start gap-4">
                                 <span class="iconify text-gold-500 mt-1 flex-shrink-0"
                                     data-icon="solar:star-fall-linear"></span>
-                                브랜딩 마케팅
+                                <span data-lang="service2Item2">브랜딩 마케팅</span>
                             </li>
                             <li class="flex items-start gap-4">
                                 <span class="iconify text-gold-500 mt-1 flex-shrink-0"
                                     data-icon="solar:star-fall-linear"></span>
-                                퍼포먼스 마케팅 & ASO/SEO
+                                <span data-lang="service2Item3">퍼포먼스 마케팅 & ASO/SEO</span>
                             </li>
                             <li class="flex items-start gap-4">
                                 <span class="iconify text-gold-500 mt-1 flex-shrink-0"
                                     data-icon="solar:star-fall-linear"></span>
-                                인플루언서 및 콜라보레이션
+                                <span data-lang="service2Item4">인플루언서 및 콜라보레이션</span>
                             </li>
                             <li class="flex items-start gap-4">
                                 <span class="iconify text-gold-500 mt-1 flex-shrink-0"
                                     data-icon="solar:star-fall-linear"></span>
-                                Global GameShow & Event 대행
+                                <span data-lang="service2Item5">Global GameShow & Event 대행</span>
                             </li>
                         </ul>
                     </a>
@@ -1302,35 +1496,35 @@
                             class="text-terracotta mb-10 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 origin-left">
                             <span class="iconify text-7xl" data-icon="solar:code-square-bold-duotone"></span>
                         </div> -->
-                        <h3
-                            class="text-3xl font-semibold text-gray-900 mb-8 group-hover:text-terracotta transition-colors">
+                        <h3 class="text-3xl font-semibold text-gray-900 mb-8 group-hover:text-terracotta transition-colors"
+                            data-lang="service3Title">
                             Dev & Operation
                         </h3>
                         <ul class="space-y-5 text-gray-600 text-base font-light">
                             <li class="flex items-start gap-4">
                                 <span class="iconify text-gold-500 mt-1 flex-shrink-0"
                                     data-icon="solar:star-fall-linear"></span>
-                                플랫폼 개발 (PC/Mobile, Roblox)
+                                <span data-lang="service3Item1">플랫폼 개발 (PC/Mobile, Roblox)</span>
                             </li>
                             <li class="flex items-start gap-4">
                                 <span class="iconify text-gold-500 mt-1 flex-shrink-0"
                                     data-icon="solar:star-fall-linear"></span>
-                                그래픽 디자인 (2D/3D/UI/Effect)
+                                <span data-lang="service3Item2">그래픽 디자인 (2D/3D/UI/Effect)</span>
                             </li>
                             <li class="flex items-start gap-4">
                                 <span class="iconify text-gold-500 mt-1 flex-shrink-0"
                                     data-icon="solar:star-fall-linear"></span>
-                                번역 및 로컬라이즈
+                                <span data-lang="service3Item3">번역 및 로컬라이즈</span>
                             </li>
                             <li class="flex items-start gap-4">
                                 <span class="iconify text-gold-500 mt-1 flex-shrink-0"
                                     data-icon="solar:star-fall-linear"></span>
-                                글로벌 CS 및 SNS 운영
+                                <span data-lang="service3Item4">글로벌 CS 및 SNS 운영</span>
                             </li>
                             <li class="flex items-start gap-4">
                                 <span class="iconify text-gold-500 mt-1 flex-shrink-0"
                                     data-icon="solar:star-fall-linear"></span>
-                                각종 사업 실무 대행
+                                <span data-lang="service3Item5">각종 사업 실무 대행</span>
                             </li>
                         </ul>
                     </a>
@@ -1346,14 +1540,14 @@
             <div class="container mx-auto px-8 sction-content">
                 <div class="flex flex-col md:flex-row justify-between items-start mb-20 reveal">
                     <div>
-                        <span
-                            class="text-terracotta font-medium tracking-ultra-wide text-xs uppercase mb-4 block">Latest
+                        <span class="text-terracotta font-medium tracking-ultra-wide text-xs uppercase mb-4 block"
+                            data-lang="topicsSubtitle">Latest
                             News</span>
-                        <h2 class="text-5xl md:text-7xl font-light text-gray-900">Topics</h2>
+                        <h2 class="text-5xl md:text-7xl font-light text-gray-900" data-lang="topicsTitle">Topics</h2>
                     </div>
                     <a href="topics.html"
                         class="text-gold-600 hover:text-gray-900 transition-colors text-base font-light uppercase tracking-wider flex items-center gap-3">
-                        View All
+                        <span data-lang="viewAll">View All</span>
                         <span class="iconify" data-icon="solar:arrow-right-linear"></span>
                     </a>
                 </div>
@@ -1404,7 +1598,8 @@
         <div class="container mx-auto px-8 relative z-10 sction-content">
             <!-- Contact Title -->
             <div class="text-left mb-28">
-                <h2 class="text-5xl md:text-7xl font-light text-white mb-8 tracking-tight">Contact</h2>
+                <h2 class="text-5xl md:text-7xl font-light text-white mb-8 tracking-tight" data-lang="contactTitle">
+                    Contact</h2>
             </div>
 
             <!-- Contact Cards -->
@@ -1417,8 +1612,8 @@
                         class="w-20 h-20 rounded-full bg-gradient-to-br from-gold-500 to-terracotta flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                         <span class="iconify text-4xl text-white" data-icon="solar:map-point-bold"></span>
                     </div>
-                    <h3 class="text-2xl font-light text-white mb-5">Seoul Office</h3>
-                    <p class="text-slate-300 leading-relaxed font-light text-base">
+                    <h3 class="text-2xl font-light text-white mb-5" data-lang="seoulOffice">Seoul Office</h3>
+                    <p class="text-slate-300 leading-relaxed font-light text-base" data-lang-html="seoulAddress">
                         #902, 7, Teheran-ro 8-gil<br />
                         Gangnam-gu, Seoul<br />
                         Republic of Korea
@@ -1431,8 +1626,8 @@
                         class="w-20 h-20 rounded-full bg-gradient-to-br from-gold-500 to-terracotta flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                         <span class="iconify text-4xl text-white" data-icon="solar:buildings-bold"></span>
                     </div>
-                    <h3 class="text-2xl font-light text-white mb-5">Tokyo Office</h3>
-                    <p class="text-slate-300 leading-relaxed font-light text-base">
+                    <h3 class="text-2xl font-light text-white mb-5" data-lang="tokyoOffice">Tokyo Office</h3>
+                    <p class="text-slate-300 leading-relaxed font-light text-base" data-lang-html="tokyoAddress">
                         8F, THE LINKPILLAR 1 SOUTH<br />
                         2-21-2 Takanawa, Minato-ku<br />
                         Tokyo, Japan
@@ -1445,13 +1640,14 @@
                         class="w-20 h-20 rounded-full bg-gradient-to-br from-gold-500 to-terracotta flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
                         <span class="iconify text-4xl text-white" data-icon="solar:letter-bold"></span>
                     </div>
-                    <h3 class="text-2xl font-light text-white mb-5">Email Us</h3>
+                    <h3 class="text-2xl font-light text-white mb-5" data-lang="emailUs">Email Us</h3>
                     <a href="mailto:contact@rychmonstar.com"
                         class="text-slate-300 hover:text-gold-400 transition-colors text-base block font-light mb-6">
                         contact@rychmonstar.com
                     </a>
                     <button onclick="openContactModal()"
-                        class="btn-premium w-full py-4 bg-gold-500 text-white font-bold text-xl hover:bg-gold-600 transition-all duration-300 shadow-xl tracking-wide uppercase cursor-pointer">
+                        class="btn-premium w-full py-4 bg-gold-500 text-white font-bold text-xl hover:bg-gold-600 transition-all duration-300 shadow-xl tracking-wide uppercase cursor-pointer"
+                        data-lang="consultBtn">
                         상담하기
                     </button>
                 </div>
@@ -1460,11 +1656,13 @@
             <!-- Map Section -->
             <div class="max-w-7xl mx-auto mb-24">
                 <div class="glass p-8">
-                    <h3 class="text-3xl font-light text-white mb-10 text-center">Our Locations</h3>
+                    <h3 class="text-3xl font-light text-white mb-10 text-center" data-lang="ourLocations">Our Locations
+                    </h3>
                     <div class="grid md:grid-cols-2 gap-8">
                         <!-- Seoul -->
                         <div>
-                            <h4 class="text-white font-light mb-5 text-sm uppercase tracking-ultra-wide">Seoul, Korea
+                            <h4 class="text-white font-light mb-5 text-sm uppercase tracking-ultra-wide"
+                                data-lang="seoulKorea">Seoul, Korea
                             </h4>
                             <div class="aspect-video overflow-hidden">
                                 <iframe
@@ -1475,7 +1673,8 @@
                         </div>
                         <!-- Tokyo -->
                         <div>
-                            <h4 class="text-white font-light mb-5 text-sm uppercase tracking-ultra-wide">Tokyo, Japan
+                            <h4 class="text-white font-light mb-5 text-sm uppercase tracking-ultra-wide"
+                                data-lang="tokyoJapan">Tokyo, Japan
                             </h4>
                             <div class="aspect-video overflow-hidden">
                                 <iframe
@@ -1510,7 +1709,7 @@
             <!-- Footer Bottom -->
             <div
                 class="border-t border-white/20 pt-10 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-slate-400 font-light">
-                <p>&copy; 2021-2024 RychmonstaR Inc. All rights reserved.</p>
+                <p>&copy; 2021-2025 RychmonstaR Inc. All rights reserved.</p>
                 <div class="flex gap-8">
                     <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
                     <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
@@ -1558,15 +1757,15 @@
                 <div class="success-icon">
                     <span class="iconify" data-icon="solar:check-circle-bold" style="font-size: 45px;"></span>
                 </div>
-                <h2 class="success-title">문의가 전송되었습니다!</h2>
-                <p class="success-text">
+                <h2 class="success-title" data-lang="successTitle">문의가 전송되었습니다!</h2>
+                <p class="success-text" data-lang-html="successDesc">
                     소중한 문의에 감사드립니다.<br>
                     전문 컨설턴트가 영업일 기준 24시간 이내에<br>
                     입력하신 이메일로 연락드리겠습니다.
                 </p>
                 <button class="success-button" onclick="closeContactModal()">
                     <span style="display: inline-flex; align-items: center; gap: 8px;">
-                        확인
+                        <span data-lang="confirmBtn">확인</span>
                         <span class="iconify" data-icon="solar:check-read-linear" style="font-size: 18px;"></span>
                     </span>
                 </button>
@@ -1581,10 +1780,10 @@
                         <span class="iconify" data-icon="solar:chat-round-dots-bold"
                             style="font-size: 28px; color: white;"></span>
                     </div>
-                    <h2 id="modalTitle"
+                    <h2 id="modalTitle" data-lang="modalTitle"
                         style="font-size: 2.8rem; font-weight: 700; color: #2A1F1D; margin-bottom: 14px; letter-spacing: -0.03em;">
                         무료 상담 신청</h2>
-                    <p style="font-size: 1.05rem; color: #6b6460; line-height: 1.6; max-width: 400px; margin: 0 auto;">
+                    <p data-lang-html="modalDesc" style="font-size: 1.05rem; color: #6b6460; line-height: 1.6; max-width: 400px; margin: 0 auto;">
                         아래 정보를 입력해주시면<br />전문 컨설턴트가 빠르게 연락드리겠습니다.</p>
                 </div>
 
@@ -1597,49 +1796,46 @@
                         value="https://coolsik-park.github.io/richmonstar/r04/index.html#success">
 
                     <div class="form-group">
-                        <label class="form-label" for="consultType">📋 문의 유형 *</label>
-                        <select class="form-select" id="consultType" name="문의유형" required>
-                            <option value="">문의 유형을 선택해주세요</option>
-                            <option value="글로벌컨설팅">글로벌컨설팅</option>
-                            <option value="게임쇼/PR/마케팅">게임쇼/PR/마케팅</option>
-                            <option value="개발/디자인/운영">개발/디자인/운영</option>
-                            <option value="사업제휴">사업제휴</option>
-                            <option value="채용문의">채용문의</option>
+                        <label class="form-label" for="consultType"><span>📋 </span><span data-lang="inquiryType">문의 유형</span> *</label>
+                        <select class="form-select" id="consultType" name="문의유형" required data-lang-select="inquirySelect">
+                            <option value="" data-lang="selectType">문의 유형을 선택해주세요</option>
+                            <option value="글로벌컨설팅" data-lang="typeConsulting">글로벌컨설팅</option>
+                            <option value="게임쇼/PR/마케팅" data-lang="typeMarketing">게임쇼/PR/마케팅</option>
+                            <option value="개발/디자인/운영" data-lang="typeDevelopment">개발/디자인/운영</option>
+                            <option value="사업제휴" data-lang="typePartnership">사업제휴</option>
+                            <option value="채용문의" data-lang="typeRecruit">채용문의</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label" for="company">🏢 회사명 *</label>
-                        <input type="text" class="form-input" id="company" name="회사명" placeholder="회사명을 입력해주세요"
+                        <label class="form-label" for="company"><span>🏢 </span><span data-lang="companyLabel">회사명</span> *</label>
+                        <input type="text" class="form-input" id="company" name="회사명" data-lang-placeholder="companyPlaceholder" placeholder="회사명을 입력해주세요"
                             required>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label" for="name">👤 이름 *</label>
-                        <input type="text" class="form-input" id="name" name="이름" placeholder="담당자 성함을 입력해주세요" required>
+                        <label class="form-label" for="name"><span>👤 </span><span data-lang="nameLabel">이름</span> *</label>
+                        <input type="text" class="form-input" id="name" name="이름" data-lang-placeholder="namePlaceholder" placeholder="담당자 성함을 입력해주세요" required>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label" for="email">✉️ 이메일 *</label>
-                        <input type="email" class="form-input" id="email" name="이메일" placeholder="example@company.com"
+                        <label class="form-label" for="email"><span>✉️ </span><span data-lang="emailLabel">이메일</span> *</label>
+                        <input type="email" class="form-input" id="email" name="이메일" data-lang-placeholder="emailPlaceholder" placeholder="example@company.com"
                             required>
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label" for="message">💬 문의 내용 *</label>
-                        <textarea class="form-textarea" id="message" name="문의내용" required
+                        <label class="form-label" for="message"><span>💬 </span><span data-lang="messageLabel">문의 내용</span> *</label>
+                        <textarea class="form-textarea" id="message" name="문의내용" required data-lang-placeholder="messagePlaceholder"
                             placeholder="문의하실 내용을 자유롭게 작성해주세요.&#10;예) 일본 시장 진출 관련 상담을 받고 싶습니다."></textarea>
                     </div>
 
                     <button type="submit" class="form-submit">
                         <span style="display: inline-flex; align-items: center; gap: 10px;">
-                            문의 전송하기
+                            <span data-lang="submitBtn">문의 전송하기</span>
                             <span class="iconify" data-icon="solar:arrow-right-linear" style="font-size: 20px;"></span>
                         </span>
                     </button>
-                    <!-- <p style="text-align: center; font-size: 0.85rem; color: #a89f97; margin-top: 20px;">
-                        * 영업일 기준 24시간 이내 답변 드립니다.
-                    </p> -->
                 </form>
             </div>
         </div>
@@ -1792,17 +1988,24 @@
 
                 let html = '';
 
+                const lang = (typeof currentLanguage !== 'undefined' ? currentLanguage : (localStorage.getItem('language') || 'ko'));
+
                 latestNews.forEach((news, index) => {
+                    const dateKey = `date_${lang}`;
+                    const titleKey = `title_${lang}`;
+                    const displayDate = news[dateKey] || news.date_ko || news.date_en || '';
+                    const displayTitle = news[titleKey] || news.title_ko || news.title_en || '';
+
                     html += `
                     <a href="topics.html?id=${news.id}"
                         class="block mb-4 p-6 bg-white border border-gray-200 rounded-lg hover:border-terracotta/50 hover:shadow-lg transition-all cursor-pointer group">
                         <div class="flex flex-col md:flex-row gap-4 md:gap-8 items-start md:items-center">
                             <div class="text-terracotta text-sm font-medium font-mono min-w-[120px]">
-                                ${news.date}
+                                ${displayDate}
                             </div>
                             <div class="flex-1">
                                 <p class="text-gray-700 text-base leading-relaxed group-hover:text-gray-900 transition-colors">
-                                    ${news.title}
+                                    ${displayTitle}
                                 </p>
                             </div>
                             <span class="iconify text-gray-400 group-hover:text-terracotta group-hover:translate-x-1 transition-all hidden md:block" data-icon="solar:arrow-right-linear"></span>
@@ -1824,6 +2027,10 @@
             loadLatestNews();
         });
     </script>
+
+    <!-- Language Translations and Switcher -->
+    <script src="js/translations/index.js"></script>
+    <script src="js/lang-switcher.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,26 @@
+/* ============================================
+   Base Styles
+   ============================================ */
+
+/* ONE Mobile Gothic 한글 폰트 */
+@font-face {
+    font-family: 'ONE Mobile Gothic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONEMobileGothic-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: 'Poppins', 'ONE Mobile Gothic', sans-serif;
+    background-color: white;
+    color: #111827;
+    overflow-x: hidden;
+}
+
+/* Glass Effect */
+.glass {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}

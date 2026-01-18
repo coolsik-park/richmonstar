@@ -1,0 +1,190 @@
+/* ============================================
+   Contact Modal - Premium Design
+   ============================================ */
+
+.contact-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(6, 14, 36, 0.95);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    overflow-y: auto;
+}
+
+.contact-modal.active {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+@media (max-width: 768px) {
+    .contact-modal.active {
+        padding: 20px 15px;
+    }
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+    max-width: 650px;
+    width: 100%;
+    position: relative;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #C17C74 0%, #2A1F1D 100%);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: rgba(42, 31, 29, 0.08);
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    background: #C17C74;
+    color: white;
+    transform: rotate(90deg);
+}
+
+/* Success Message */
+.success-message {
+    display: none;
+    text-align: center;
+    padding: 70px 50px;
+}
+
+.success-message.active {
+    display: block;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.success-icon {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px;
+    font-size: 45px;
+    color: white;
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+    animation: successPulse 2s ease-in-out infinite;
+}
+
+@keyframes successPulse {
+    0%,
+    100% {
+        box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 10px 40px rgba(16, 185, 129, 0.5);
+    }
+}
+
+.success-title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #2A1F1D;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+}
+
+.success-text {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 35px;
+}
+
+.success-button {
+    padding: 16px 50px;
+    background: linear-gradient(135deg, #2A1F1D 0%, #1a1412 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(42, 31, 29, 0.25);
+}
+
+.success-button:hover {
+    background: linear-gradient(135deg, #C17C74 0%, #a35e56 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(193, 124, 116, 0.35);
+}
+
+/* Mobile Modal Padding */
+@media (max-width: 768px) {
+    #contactFormDiv {
+        padding: 40px 30px !important;
+    }
+
+    .success-message {
+        padding: 50px 30px !important;
+    }
+
+    .modal-content {
+        margin: 0;
+        border-radius: 16px;
+    }
+
+    .success-title {
+        font-size: 1.8rem;
+    }
+}

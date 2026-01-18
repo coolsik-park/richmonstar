@@ -1,0 +1,83 @@
+/* ============================================
+   Navbar Styles
+   ============================================ */
+
+/* Navbar Default State */
+#navbar {
+    background-color: transparent;
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.logo-box {
+    background-color: #0F172A;
+}
+
+.logo-r {
+    color: #FBF2D9;
+}
+
+.logo-text {
+    color: #0F172A;
+}
+
+.menu-link {
+    color: #0F172A;
+}
+
+.menu-link:hover {
+    color: #C17C74;
+}
+
+.mobile-btn {
+    color: #0F172A;
+}
+
+/* Navbar Scrolled State */
+#navbar.scrolled {
+    background-color: rgba(15, 23, 42, 0.98);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+#navbar.scrolled .logo-box {
+    background-color: #FBF2D9;
+}
+
+#navbar.scrolled .logo-r {
+    color: #0F172A;
+}
+
+#navbar.scrolled .logo-text {
+    color: #FBF2D9;
+}
+
+#navbar.scrolled .menu-link {
+    color: #FBF2D9;
+}
+
+#navbar.scrolled .menu-link:hover {
+    color: #FBF2D9;
+}
+
+#navbar.scrolled .mobile-btn {
+    color: #FBF2D9;
+}
+
+/* Mobile Navigation Responsive */
+@media (max-width: 768px) {
+    #navbar .container {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        padding-top: 12px !important;
+        padding-bottom: 12px !important;
+    }
+
+    #navbar .w-12 {
+        width: 36px !important;
+        height: 36px !important;
+    }
+
+    #navbar .text-2xl:not(.iconify) {
+        font-size: 1.15rem !important;
+    }
+}
