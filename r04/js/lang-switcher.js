@@ -85,6 +85,11 @@ function switchLanguage(lang) {
     if (mobileLangText) mobileLangText.textContent = langNames[lang];
 
     applyTranslations(lang);
+
+    // Reload news items if loadLatestNews function exists (index.html)
+    if (typeof loadLatestNews === 'function') {
+        loadLatestNews();
+    }
 }
 
 function applyTranslations(lang) {
