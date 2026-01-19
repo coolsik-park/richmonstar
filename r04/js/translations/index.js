@@ -17,7 +17,7 @@ const translations = {
         viewServicesPre: "RychmonstaR ",
         // About Section
         company: "Company",
-        companyName: "㈜리치몬스타",
+        companyName: "주식회사 리치몬스타",
         office: "Office",
         officeLocation: "Seoul, Tokyo",
         founded: "Founded",
@@ -117,7 +117,7 @@ const translations = {
         viewServicesPre: "RychmonstaR ",
         // About Section
         company: "Company",
-        companyName: "㈱リチモンスター",
+        companyName: "RychmonstaR Inc",
         office: "Office",
         officeLocation: "Seoul, Tokyo",
         founded: "Founded",

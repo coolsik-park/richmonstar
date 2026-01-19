@@ -16,7 +16,7 @@ const translations = {
         card4Title: "인플루언서 및 콜라보레이션",
         card4Body: "글로벌 인플루언서 네트워크를 활용한 협업 마케팅을 진행합니다.<br />브랜드와 인플루언서 간의 시너지를 극대화하여 효과적인 마케팅 캠페인을 운영합니다.",
         card5Title: "Global GameShow & Event 대행",
-        card5Body: "글로벌 게임쇼 및 이벤트 참가를 전문적으로 대행합니다.<br />E3, Gamescom, TGS 등 주요 게임 전시회 참가부터 부스 운영까지 전 과정을 지원합니다.",
+        card5Body: "글로벌 게임쇼 및 이벤트 참가를 전문적으로 대행합니다.<br />Gmaescom, ChinaJoy, TGS, G-star 등 주요 게임 전시회 참가부터 부스 운영까지 전 과정을 지원합니다.",
         ctaText: "궁금하신 점이 있으시면 언제든지 문의해주세요.",
         ctaButton: "상담하기",
         // Modal
@@ -55,7 +55,7 @@ const translations = {
         card4Title: "インフルエンサー＆コラボレーション",
         card4Body: "グローバルインフルエンサーネットワークを活用したコラボマーケティングを展開します。<br />ブランドとインフルエンサーのシナジーを最大化し、効果的なキャンペーンを運営します。",
         card5Title: "グローバルゲームショー＆イベント代行",
-        card5Body: "グローバルゲームショーやイベント参加を専門的に代行します。<br />E3、Gamescom、TGS等の主要ゲーム展示会への出展からブース運営まで全過程をサポートします。",
+        card5Body: "グローバルゲームショーやイベント参加を専門的に代行します。<br />Gmaescom, ChinaJoy, TGS, G-star等の主要ゲーム展示会への出展からブース運営まで全過程をサポートします。",
         ctaText: "ご不明な点がございましたら、いつでもお問い合わせください。",
         ctaButton: "相談する",
         // Modal
@@ -94,7 +94,7 @@ const translations = {
         card4Title: "Influencer & Collaboration",
         card4Body: "We conduct collaborative marketing leveraging global influencer networks.<br />We maximize synergy between brands and influencers to run effective marketing campaigns.",
         card5Title: "Global GameShow & Event Agency",
-        card5Body: "We professionally handle participation in global game shows and events.<br />We support the entire process from major game exhibitions like E3, Gamescom, TGS to booth operations.",
+        card5Body: "We professionally handle participation in global game shows and events.<br />We support the entire process from major game exhibitions like Gmaescom, ChinaJoy, TGS, G-star, Gamescom, TGS to booth operations.",
         ctaText: "If you have any questions, feel free to contact us anytime.",
         ctaButton: "Contact Us",
         // Modal
