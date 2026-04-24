@@ -1,865 +1,2054 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="scroll-smooth">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RychmonstaR - Design Studio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap"
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RychmonstaR - Global Business Strategic Partner</title>
+    <meta name="description" content="RychmonstaR - Global Business Strategic Partner. 글로벌 비즈니스 성공을 위한 최적의 파트너입니다." />
+    <meta property="og:title" content="RychmonstaR - Global Business Strategic Partner" />
+    <meta property="og:description" content="RychmonstaR - Global Business Strategic Partner. 글로벌 비즈니스 성공을 위한 최적의 파트너입니다." />
+    <meta property="og:type" content="website" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            950: '#020617',
+                            900: '#0F172A',
+                            800: '#1E293B',
+                            700: '#334155',
+                        },
+                        gold: {
+                            400: '#FACC15',
+                            500: '#EAB308',
+                            600: '#CA8A04',
+                            700: '#A16207',
+                        },
+                        cream: {
+                            100: '#FFFDD0',
+                            200: '#FEF3C7',
+                        },
+                        terracotta: {
+                            DEFAULT: '#C17C74',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Poppins"', '"ONE Mobile Gothic"', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-slow': 'float 10s ease-in-out infinite',
+                        'scroll': 'scroll 40s linear infinite',
+                        'fade-in-up': 'fadeInUp 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+
+    <!-- Preconnect for faster font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts - Only Poppins (optimized weights) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* ONE Mobile Gothic 한글 폰트 */
+        @font-face {
+            font-family: 'ONE Mobile Gothic';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONEMobileGothic-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* CSS Variables - Design System */
+        :root {
+            /* Colors - Navy */
+            --navy-950: #020617;
+            --navy-900: #0F172A;
+            --navy-800: #1E293B;
+            --navy-700: #334155;
+
+            /* Colors - Cream */
+            --cream-100: #FBF2D9;
+            --cream-200: #FFFDD0;
+            --cream-300: #FEF3C7;
+
+            /* Colors - Terracotta */
+            --terracotta: #C17C74;
+            --terracotta-dark: #a35e56;
+
+            /* Colors - Brown */
+            --brown-dark: #2A1F1D;
+            --brown-darker: #1a1412;
+
+            /* Colors - Gold */
+            --gold-400: #FACC15;
+            --gold-500: #EAB308;
+            --gold-600: #CA8A04;
+
+            /* Colors - Neutral */
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #E5E5E5;
+            --gray-300: #D4D4D4;
+            --gray-400: #A3A3A3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --gray-900: #171717;
+
+            /* Form Colors */
+            --form-border: #e8e4df;
+            --form-border-hover: var(--cream-100);
+            --form-placeholder: #a89f97;
+            --form-text: var(--brown-dark);
+
+            /* Z-index Scale */
+            --z-base: 1;
+            --z-dropdown: 100;
+            --z-sticky: 200;
+            --z-fixed: 300;
+            --z-modal-backdrop: 400;
+            --z-modal: 500;
+            --z-popover: 600;
+            --z-tooltip: 700;
+
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 4rem;
+
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --radius-full: 9999px;
+
+            /* Transitions */
+            --transition-fast: 0.15s ease;
+            --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Skip Navigation Link for Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--navy-900);
+            color: var(--cream-100);
+            padding: 12px 24px;
+            text-decoration: none;
+            z-index: var(--z-tooltip);
+            border-radius: 0 0 var(--radius-md) 0;
+            font-weight: 600;
+            transition: var(--transition-base);
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid var(--terracotta);
+            outline-offset: 2px;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #060E24;
-            color: #FBF2D9;
+            font-family: 'Poppins', sans-serif;
+            background-color: white;
+            color: var(--gray-900);
             overflow-x: hidden;
-            min-height: 100vh;
-            position: relative;
         }
 
-        /* Animated Background */
-        .bg-animation {
-            position: fixed;
-            inset: 0;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .bg-gradient {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.15;
-            animation: float 20s ease-in-out infinite;
-        }
-
-        .gradient-1 {
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, #FBF2D9 0%, transparent 70%);
-            top: -300px;
-            left: -300px;
-            animation-delay: 0s;
-        }
-
-        .gradient-2 {
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, #C17C74 0%, transparent 70%);
-            bottom: -400px;
-            right: -400px;
-            animation-delay: 5s;
-        }
-
-        .gradient-3 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, #EAB308 0%, transparent 70%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation-delay: 10s;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            25% {
-                transform: translate(50px, 50px) scale(1.1);
-            }
-
-            50% {
-                transform: translate(-50px, 100px) scale(0.9);
-            }
-
-            75% {
-                transform: translate(100px, -50px) scale(1.05);
+        /* Container max-width override */
+        @media (min-width: 1280px) {
+            .container {
+                max-width: 1280px;
             }
         }
 
-        /* Grid Pattern Overlay */
-        .grid-overlay {
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(251, 242, 217, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(251, 242, 217, 0.02) 1px, transparent 1px);
-            background-size: 60px 60px;
-            pointer-events: none;
-            z-index: 1;
+        /* Section content max-width */
+        .section-content {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .container {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 100px 80px;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Header */
-        header {
-            margin-bottom: 120px;
-            animation: fadeInDown 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 80px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .logo-box {
-            width: 56px;
-            height: 56px;
-            background: #FBF2D9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            font-weight: 700;
-            color: #060E24;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .logo-box::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(45deg, transparent, rgba(193, 124, 116, 0.3), transparent);
-            transform: translateX(-100%);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            100% {
-                transform: translateX(100%);
-            }
-        }
-
-        .logo-text {
-            font-size: 28px;
-            font-weight: 600;
-            color: #FBF2D9;
-            letter-spacing: -0.02em;
-        }
-
-        .header-badge {
-            padding: 10px 24px;
-            border: 1px solid rgba(251, 242, 217, 0.2);
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: rgba(251, 242, 217, 0.6);
-            background: rgba(251, 242, 217, 0.03);
-            backdrop-filter: blur(10px);
-        }
-
-        .header-content {
-            text-align: center;
-        }
-
-        h1 {
-            font-size: clamp(4rem, 10vw, 9rem);
-            font-weight: 200;
-            letter-spacing: -0.04em;
-            line-height: 0.95;
-            margin-bottom: 40px;
-            background: linear-gradient(135deg, #FBF2D9 0%, rgba(251, 242, 217, 0.4) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            color: rgba(251, 242, 217, 0.5);
-            font-weight: 300;
-            letter-spacing: 0.02em;
-            max-width: 700px;
-            margin: 0 auto 50px;
-            line-height: 1.6;
-        }
-
-        .header-stats {
-            display: flex;
-            justify-content: center;
-            gap: 80px;
-            margin-top: 60px;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 300;
-            color: #FBF2D9;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: rgba(251, 242, 217, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-        }
-
-        /* Divider */
-        .divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(251, 242, 217, 0.2), transparent);
-            margin: 80px 0;
-        }
-
-        /* Grid */
-        .versions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-            gap: 40px;
-            margin-bottom: 100px;
-        }
-
-        /* Version Card */
-        .version-card {
-            position: relative;
-            background: rgba(251, 242, 217, 0.02);
-            border: 1px solid rgba(251, 242, 217, 0.08);
-            padding: 60px 50px;
-            text-decoration: none;
-            display: block;
-            overflow: hidden;
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-            backdrop-filter: blur(10px);
-        }
-
-        .version-card:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .version-card:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .version-card:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        .version-card:nth-child(4) {
-            animation-delay: 0.4s;
-        }
-
-        .version-card:nth-child(5) {
-            animation-delay: 0.5s;
-        }
-
-        .version-card:nth-child(6) {
-            animation-delay: 0.6s;
-        }
-
-        .version-card:nth-child(7) {
-            animation-delay: 0.7s;
-        }
-
-        .version-card:nth-child(8) {
-            animation-delay: 0.8s;
-        }
-
-        .version-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(193, 124, 116, 0.1) 0%, transparent 100%);
+        /* Smooth Scroll Reveal Classes */
+        .reveal {
             opacity: 0;
-            transition: opacity 0.6s;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .version-card::after {
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-100 {
+            transition-delay: 0.1s;
+        }
+
+        .reveal-delay-200 {
+            transition-delay: 0.2s;
+        }
+
+        .reveal-delay-300 {
+            transition-delay: 0.3s;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--navy-950);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--navy-800);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--terracotta);
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-nav {
+            background: rgba(6, 14, 36, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Navbar States */
+        #navbar {
+            background-color: rgba(255, 255, 255, 0.98);
+            border-bottom-color: var(--gray-200);
+        }
+
+        #navbar .logo-box {
+            background-color: var(--navy-900);
+        }
+
+        #navbar .logo-r {
+            color: var(--cream-100);
+        }
+
+        #navbar .logo-text {
+            color: var(--navy-900);
+        }
+
+        #navbar .menu-link {
+            color: var(--gray-600);
+        }
+
+        #navbar .menu-link:hover {
+            color: var(--navy-900);
+        }
+
+        #navbar .mobile-btn {
+            color: var(--navy-900);
+        }
+
+        /* Scrolled State */
+        #navbar.scrolled {
+            background-color: rgba(15, 23, 42, 0.98);
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        #navbar.scrolled .logo-box {
+            background-color: var(--cream-100);
+        }
+
+        #navbar.scrolled .logo-r {
+            color: var(--navy-900);
+        }
+
+        #navbar.scrolled .logo-text {
+            color: var(--cream-100);
+        }
+
+        #navbar.scrolled .menu-link {
+            color: var(--cream-100);
+        }
+
+        #navbar.scrolled .menu-link:hover {
+            color: var(--cream-100);
+        }
+
+        #navbar.scrolled .mobile-btn {
+            color: var(--cream-100);
+        }
+
+        /* Flat Gold Color (No Gradient) */
+        .text-gradient-gold {
+            color: var(--gold-500);
+        }
+
+        /* Hero Title Large Size */
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.3;
+        }
+
+        /* Hero Title Small Size */
+        .hero-title-small {
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            line-height: 1.2;
+        }
+
+        /* Contact Modal */
+        .contact-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(6, 14, 36, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: var(--z-modal);
+            overflow-y: auto;
+        }
+
+        .contact-modal.active {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .contact-modal.active {
+                padding: 20px 15px;
+            }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #ffffff 0%, var(--gray-50) 100%);
+            max-width: 650px;
+            width: 100%;
+            position: relative;
+            border-radius: var(--radius-xl);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            animation: slideUp var(--transition-smooth) cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-content::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #C17C74, #EAB308);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            height: 4px;
+            background: linear-gradient(90deg, var(--terracotta) 0%, var(--brown-dark) 100%);
         }
 
-        .version-card:hover {
-            transform: translateY(-15px);
-            border-color: rgba(251, 242, 217, 0.25);
-            box-shadow:
-                0 40px 80px rgba(0, 0, 0, 0.4),
-                0 0 80px rgba(193, 124, 116, 0.1);
-            background: rgba(251, 242, 217, 0.04);
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
-        .version-card:hover::before {
-            opacity: 1;
-        }
-
-        .version-card:hover::after {
-            transform: scaleX(1);
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 40px;
-        }
-
-        .version-number {
-            font-size: 7rem;
-            font-weight: 200;
-            color: rgba(251, 242, 217, 0.1);
-            line-height: 1;
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            letter-spacing: -0.05em;
-        }
-
-        .version-card:hover .version-number {
-            color: rgba(193, 124, 116, 0.3);
-            transform: scale(1.15) translateX(10px);
-        }
-
-        .card-status {
-            padding: 8px 16px;
-            border: 1px solid rgba(251, 242, 217, 0.15);
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: rgba(251, 242, 217, 0.5);
-            background: rgba(251, 242, 217, 0.02);
-        }
-
-        .version-card:hover .card-status {
-            border-color: #C17C74;
-            color: #C17C74;
-        }
-
-        .version-title {
-            font-size: 2rem;
-            color: #FBF2D9;
-            font-weight: 500;
-            margin-bottom: 16px;
-            letter-spacing: -0.02em;
-            transition: color 0.3s;
-        }
-
-        .version-card:hover .version-title {
-            color: #C17C74;
-        }
-
-        .version-desc {
-            font-size: 1.05rem;
-            color: rgba(251, 242, 217, 0.45);
-            font-weight: 300;
-            line-height: 1.7;
-            margin-bottom: 40px;
-        }
-
-        .version-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-
-        .feature-tag {
-            font-size: 12px;
-            padding: 8px 16px;
-            border: 1px solid rgba(251, 242, 217, 0.15);
-            color: rgba(251, 242, 217, 0.5);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: all 0.3s;
-            background: rgba(251, 242, 217, 0.02);
-        }
-
-        .version-card:hover .feature-tag {
-            border-color: rgba(193, 124, 116, 0.4);
-            color: #C17C74;
-            background: rgba(193, 124, 116, 0.05);
-        }
-
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(251, 242, 217, 0.08);
-        }
-
-        .view-link {
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            color: rgba(251, 242, 217, 0.6);
-            text-transform: uppercase;
-            transition: all 0.3s;
-        }
-
-        .version-card:hover .view-link {
-            color: #C17C74;
-            letter-spacing: 0.15em;
-        }
-
-        .arrow-icon {
-            width: 48px;
-            height: 48px;
-            border: 1px solid rgba(251, 242, 217, 0.15);
+        .modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            border: none;
+            background: rgba(42, 31, 29, 0.08);
+            border-radius: var(--radius-full);
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--gray-700);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: var(--transition-base);
+            z-index: var(--z-tooltip);
+        }
+
+        .modal-close:hover {
+            background: var(--terracotta);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .modal-close:focus {
+            outline: 2px solid var(--terracotta);
+            outline-offset: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 28px;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--form-text);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--form-border);
+            border-radius: var(--radius-md);
+            font-size: 15px;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition-base);
+            background: #ffffff;
+            color: var(--form-text);
+        }
+
+        .form-select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%232A1F1D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            padding-right: 50px;
+        }
+
+        .form-select option {
+            color: var(--form-text);
+            padding: 10px;
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: var(--form-placeholder);
+        }
+
+        .form-input:hover,
+        .form-select:hover,
+        .form-textarea:hover {
+            border-color: var(--form-border-hover);
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--form-border-hover);
+            box-shadow: 0 0 0 4px rgba(251, 242, 217, 0.3);
+            background: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        .form-textarea {
+            min-height: 140px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown-darker) 100%);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            cursor: pointer;
+            transition: var(--transition-base);
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 15px rgba(42, 31, 29, 0.3);
         }
 
-        .arrow-icon::before {
+        .form-submit::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: rgba(193, 124, 116, 0.1);
-            transform: translateX(-100%);
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
         }
 
-        .version-card:hover .arrow-icon {
-            border-color: #C17C74;
-            transform: translateX(10px) rotate(45deg);
+        .form-submit:hover {
+            background: linear-gradient(135deg, var(--terracotta) 0%, var(--terracotta-dark) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(193, 124, 116, 0.4);
         }
 
-        .version-card:hover .arrow-icon::before {
-            transform: translateX(0);
+        .form-submit:hover::before {
+            left: 100%;
         }
 
-        .arrow-icon::after {
-            content: '→';
-            font-size: 1.5rem;
-            color: #C17C74;
-            position: relative;
-            z-index: 1;
+        .form-submit:active {
+            transform: translateY(0);
         }
 
-        /* Footer */
-        footer {
+        .form-submit:disabled {
+            background: var(--gray-300);
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .form-submit:focus {
+            outline: 2px solid var(--terracotta);
+            outline-offset: 2px;
+        }
+
+        .success-message {
+            display: none;
             text-align: center;
-            padding: 80px 0;
-            border-top: 1px solid rgba(251, 242, 217, 0.08);
-            animation: fadeIn 2s ease-out;
+            padding: 70px 50px;
         }
 
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        footer p {
-            font-size: 0.95rem;
-            color: rgba(251, 242, 217, 0.35);
-            font-weight: 300;
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .footer-link {
-            font-size: 13px;
-            color: rgba(251, 242, 217, 0.4);
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: color 0.3s;
-        }
-
-        .footer-link:hover {
-            color: #C17C74;
-        }
-
-        /* Animations */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-40px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .success-message.active {
+            display: block;
+            animation: fadeIn 0.4s ease-out;
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
+                transform: scale(0.9);
             }
 
             to {
                 opacity: 1;
+                transform: scale(1);
             }
         }
 
-        /* Cursor Effect */
-        @media (hover: hover) {
-            .version-card {
-                cursor: pointer;
+        .success-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 45px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            animation: successPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes successPulse {
+
+            0%,
+            100% {
+                box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 10px 40px rgba(16, 185, 129, 0.5);
             }
         }
 
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .versions-grid {
-                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            }
+        .success-title {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--brown-dark);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
         }
 
-        @media (max-width: 768px) {
+        .success-text {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+
+        .success-button {
+            padding: 16px 50px;
+            background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown-darker) 100%);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            transition: var(--transition-base);
+            box-shadow: 0 4px 15px rgba(42, 31, 29, 0.25);
+        }
+
+        .success-button:hover {
+            background: linear-gradient(135deg, var(--terracotta) 0%, var(--terracotta-dark) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(193, 124, 116, 0.35);
+        }
+
+        .success-button:focus {
+            outline: 2px solid var(--terracotta);
+            outline-offset: 2px;
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN - MOBILE FIRST
+           ============================================ */
+
+        /* Tablet and below (1024px) */
+        @media (max-width: 1024px) {
             .container {
-                padding: 60px 30px;
+                max-width: 100%;
+                padding-left: var(--spacing-md);
+                padding-right: var(--spacing-md);
+            }
+        }
+
+        /* Mobile (768px and below) */
+        @media (max-width: 768px) {
+
+            /* Modal Adjustments */
+            .contact-modal.active {
+                padding: 20px 15px;
             }
 
-            .header-top {
-                flex-direction: column;
-                gap: 30px;
-                align-items: flex-start;
-            }
-
-            h1 {
-                font-size: 3.5rem;
-            }
-
-            .subtitle {
-                font-size: 1.2rem;
-            }
-
-            .header-stats {
-                flex-direction: column;
-                gap: 40px;
-            }
-
-            .versions-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .version-card {
+            #contactFormDiv {
                 padding: 40px 30px;
             }
 
-            .version-number {
-                font-size: 5rem;
+            .success-message {
+                padding: 50px 30px;
             }
 
-            .version-title {
-                font-size: 1.5rem;
+            .modal-content {
+                margin: 0;
+                border-radius: var(--radius-lg);
+            }
+
+            /* Form Elements */
+            .form-label {
+                font-size: 12px;
+            }
+
+            .form-input,
+            .form-select,
+            .form-textarea {
+                padding: 14px 18px;
+                font-size: 14px;
+            }
+
+            .success-title {
+                font-size: 1.8rem;
             }
         }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
+        /* Mobile (768px and below) - continued */
+        @media (max-width: 768px) {
+
+            /* Hero Section */
+            #home {
+                padding-top: 120px;
+                padding-bottom: 80px;
+                min-height: auto;
+            }
+
+            .hero-title-small {
+                font-size: 2rem;
+                line-height: 1.35;
+                letter-spacing: -0.02em;
+            }
+
+            /* Hero CTA Button */
+            #home .btn-premium {
+                padding: 12px 24px;
+                font-size: 13px;
+                font-weight: 600;
+                color: var(--cream-100);
+                width: auto;
+                display: inline-flex;
+                border-radius: 2px;
+                letter-spacing: 0.05em;
+                box-shadow: var(--shadow-md);
+            }
+
+            #home .btn-premium .iconify {
+                font-size: 14px;
+                color: var(--cream-100);
+            }
+
+            #home .container {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            #home .reveal.flex {
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
+
+            /* Section Padding */
+            section {
+                padding-top: 60px;
+                padding-bottom: 60px;
+            }
+
+            section .container,
+            footer .container {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            section h2 {
+                font-size: 2rem;
+                line-height: 1.2;
+                word-break: keep-all;
+            }
+
+            .mb-28 {
+                margin-bottom: 40px;
+            }
+
+            .mb-20 {
+                margin-bottom: 32px;
+            }
+
+            /* About Section */
+            #about .grid-cols-2 {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            #about .grid-cols-2>div {
+                padding: 20px 24px;
+            }
+
+            #about .grid-cols-2 .text-xs {
+                font-size: 10px;
+                margin-bottom: 8px;
+            }
+
+            #about .grid-cols-2 .text-lg {
+                font-size: 15px;
+            }
+
+            #about img {
+                min-height: 300px;
+            }
+
+            /* Why Section Cards */
+            #why .card-luxury {
+                padding: 28px 24px;
+            }
+
+            #why .card-luxury .w-20 {
+                width: 56px;
+                height: 56px;
+                margin-bottom: 20px;
+            }
+
+            #why .card-luxury .text-4xl {
+                font-size: 24px;
+            }
+
+            #why .card-luxury h3 {
+                font-size: 1.25rem;
+                margin-bottom: 12px;
+                word-break: keep-all;
+            }
+
+            #why .card-luxury p {
+                font-size: 14px;
+                line-height: 1.7;
+            }
+
+            /* Services Section Cards */
+            #services .card-luxury {
+                padding: 2rem;
+            }
+
+            #services .card-luxury h3 {
+                font-size: 1.125rem;
+                margin-bottom: 16px;
+            }
+
+            #services .card-luxury ul {
+                gap: 12px;
+            }
+
+            #services .card-luxury li {
+                font-size: 13px;
+                gap: 12px;
+            }
+
+            #services .card-luxury .iconify {
+                font-size: 14px;
+                flex-shrink: 0;
+            }
+
+            /* Topics/News Section */
+            #latest-news-container {
+                padding: 0 4px;
+            }
+
+            #topics a,
+            #latest-news-container a {
+                padding: 16px;
+                margin-left: 0;
+                margin-right: 0;
+                margin-bottom: 12px;
+            }
+
+            #topics .text-base,
+            #latest-news-container .text-sm {
+                font-size: 11px;
+                min-width: auto;
+                margin-bottom: 6px;
+            }
+
+            #topics .text-lg,
+            #latest-news-container .text-base {
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
+            /* Contact Section */
+            #contact {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+
+            #contact h2 {
+                font-size: 2.5rem;
+                margin-bottom: 32px;
+            }
         }
 
-        ::-webkit-scrollbar-track {
-            background: #060E24;
+        /* Hover States */
+        #about .grid-cols-2>div:hover {
+            border-color: var(--cream-100);
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: rgba(251, 242, 217, 0.2);
-            border-radius: 5px;
+        #latest-news-container a:hover {
+            border-color: var(--cream-100);
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(193, 124, 116, 0.5);
+        /* Extra small screens (iPhone SE, etc.) */
+        @media (max-width: 375px) {
+            .hero-title-small {
+                font-size: 1.75rem !important;
+            }
+
+            section h2 {
+                font-size: 1.75rem !important;
+            }
+
+            #why .card-luxury h3,
+            #services .card-luxury h3 {
+                font-size: 1.1rem !important;
+            }
         }
 
-        /* Selection */
-        ::selection {
-            background: rgba(193, 124, 116, 0.3);
+        /* Language Selector */
+        .lang-selector {
+            position: relative;
+            display: inline-block;
+        }
+
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            border: 1px solid rgba(15, 23, 42, 0.2);
+            background: transparent;
+            color: #0F172A;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .lang-btn:hover {
+            border-color: #C17C74;
+            color: #C17C74;
+        }
+
+        /* Navbar가 스크롤 상태일 때 다국어 선택 버튼 스타일 */
+        #navbar.scrolled .lang-btn {
             color: #FBF2D9;
+            border-color: rgba(251, 242, 217, 0.3);
+        }
+
+        #navbar.scrolled .lang-btn:hover {
+            border-color: #FBF2D9;
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: white;
+            border: 1px solid rgba(15, 23, 42, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            min-width: 150px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            z-index: 100;
+        }
+
+        .lang-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .lang-option {
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #0F172A;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+        }
+
+        .lang-option:last-child {
+            border-bottom: none;
+        }
+
+        .lang-option:hover {
+            background: #f8f9fa;
+            color: #C17C74;
+        }
+
+        .lang-option.active {
+            background: #FBF2D9;
+            color: #0F172A;
+            font-weight: 600;
+        }
+
+        .mobile-lang-selector {
+            padding: 20px;
+            border-top: 1px solid rgba(251, 242, 217, 0.1);
+        }
+
+        .mobile-lang-btn {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(251, 242, 217, 0.05);
+            border: 1px solid rgba(251, 242, 217, 0.2);
+            color: #FBF2D9;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mobile-lang-btn:hover {
+            background: rgba(251, 242, 217, 0.1);
+        }
+
+        .mobile-lang-dropdown {
+            margin-top: 10px;
+            display: none;
+        }
+
+        .mobile-lang-dropdown.active {
+            display: block;
+        }
+
+        .mobile-lang-option {
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: rgba(251, 242, 217, 0.7);
+            border-bottom: 1px solid rgba(251, 242, 217, 0.1);
+        }
+
+        .mobile-lang-option:hover {
+            color: #FBF2D9;
+            background: rgba(251, 242, 217, 0.05);
+        }
+
+        .mobile-lang-option.active {
+            color: #FBF2D9;
+            font-weight: 600;
+            background: rgba(251, 242, 217, 0.1);
         }
     </style>
 </head>
 
-<body>
-    <!-- Animated Background -->
-    <div class="bg-animation">
-        <div class="bg-gradient gradient-1"></div>
-        <div class="bg-gradient gradient-2"></div>
-        <div class="bg-gradient gradient-3"></div>
+<body class="text-gray-900 selection:bg-gold-200 selection:text-gray-900 relative bg-white">
+
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="skip-link">메인 콘텐츠로 건너뛰기</a>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-500 backdrop-blur-xl border-b" id="navbar"
+        role="navigation" aria-label="메인 네비게이션">
+        <div class="container mx-auto px-8 py-5">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-4 group">
+                    <!-- <div
+                        class="w-12 h-12 flex items-center justify-center logo-box transition-all duration-300 group-hover:scale-105">
+                        <span class="font-extrabold text-2xl logo-r transition-colors duration-300">R</span>
+                    </div> -->
+                    <span
+                        class="text-2xl font-bold tracking-tight logo-text transition-colors duration-300">RychmonstaR</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-16">
+                    <ul class="flex items-center gap-10">
+                        <li><a href="#about"
+                                class="menu-link text-sm font-semibold transition-all duration-300 tracking-[0.15em] uppercase relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+                                data-lang="about">About</a>
+                        </li>
+                        <li><a href="#why"
+                                class="menu-link text-sm font-semibold transition-all duration-300 tracking-[0.15em] uppercase relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+                                data-lang="why">Why</a>
+                        </li>
+                        <li><a href="#services"
+                                class="menu-link text-sm font-semibold transition-all duration-300 tracking-[0.15em] uppercase relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+                                data-lang="services">Services</a>
+                        </li>
+                        <li><a href="#topics"
+                                class="menu-link text-sm font-semibold transition-all duration-300 tracking-[0.15em] uppercase relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+                                data-lang="topics">Topics</a>
+                        </li>
+                        <li><a href="#contact"
+                                class="menu-link text-sm font-semibold transition-all duration-300 tracking-[0.15em] uppercase relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-current after:transition-all after:duration-300 hover:after:w-full"
+                                data-lang="contact">Contact</a>
+                        </li>
+                    </ul>
+
+                    <!-- Language Selector -->
+                    <div class="lang-selector">
+                        <button class="lang-btn" id="langBtn" aria-label="언어 선택">
+                            <span class="iconify" data-icon="solar:global-linear"></span>
+                            <span id="currentLang">KO</span>
+                            <span class="iconify" data-icon="solar:alt-arrow-down-linear"
+                                style="font-size: 12px;"></span>
+                        </button>
+                        <div class="lang-dropdown" id="langDropdown">
+                            <div class="lang-option active" data-lang="ko">
+                                <span>🇰🇷</span>
+                                <span>한국어</span>
+                            </div>
+                            <div class="lang-option" data-lang="ja">
+                                <span>🇯🇵</span>
+                                <span>日本語</span>
+                            </div>
+                            <div class="lang-option" data-lang="en">
+                                <span>🇺🇸</span>
+                                <span>English</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden mobile-btn transition-colors duration-300"
+                    aria-label="메뉴 열기" aria-expanded="false">
+                    <span class="iconify text-3xl" data-icon="solar:hamburger-menu-linear"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Panel -->
+    <div id="mobileMenu"
+        class="fixed inset-0 bg-navy-900 z-[9999] transform translate-x-full transition-transform duration-300 md:hidden"
+        role="dialog" aria-modal="true" aria-label="모바일 메뉴">
+        <div class="flex flex-col h-full">
+            <div class="flex items-center justify-between p-8">
+                <span class="text-2xl font-semibold tracking-tight" style="color: #FBF2D9;">RychmonstaR</span>
+                <button id="closeMobileMenu"
+                    class="px-4 py-2 text-3xl font-bold hover:opacity-70 transition-opacity duration-300"
+                    style="color: #FBF2D9;" aria-label="메뉴 닫기">
+                    X
+                </button>
+            </div>
+            <nav class="flex-1 overflow-y-auto p-8" aria-label="모바일 네비게이션">
+                <ul class="space-y-6">
+                    <li><a href="#about"
+                            class="mobile-menu-link text-xl font-semibold hover:text-gold-500 transition-colors block py-3"
+                            style="color: #FBF2D9;" data-lang="about">About</a>
+                    </li>
+                    <li><a href="#why"
+                            class="mobile-menu-link text-xl font-semibold hover:text-gold-500 transition-colors block py-3"
+                            style="color: #FBF2D9;" data-lang="why">Why</a>
+                    </li>
+                    <li><a href="#services"
+                            class="mobile-menu-link text-xl font-semibold hover:text-gold-500 transition-colors block py-3"
+                            style="color: #FBF2D9;" data-lang="services">Services</a>
+                    </li>
+                    <li><a href="#topics"
+                            class="mobile-menu-link text-xl font-semibold hover:text-gold-500 transition-colors block py-3"
+                            style="color: #FBF2D9;" data-lang="topics">Topics</a>
+                    </li>
+                    <li><a href="#contact"
+                            class="mobile-menu-link text-xl font-semibold hover:text-gold-500 transition-colors block py-3"
+                            style="color: #FBF2D9;" data-lang="contact">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- Mobile Language Selector -->
+            <div class="mobile-lang-selector">
+                <button class="mobile-lang-btn" id="mobileLangBtn">
+                    <span style="display: flex; align-items: center; gap: 8px;">
+                        <span class="iconify" data-icon="solar:global-linear"></span>
+                        <span id="mobileLangText">한국어</span>
+                    </span>
+                    <span class="iconify" data-icon="solar:alt-arrow-down-linear"></span>
+                </button>
+                <div class="mobile-lang-dropdown" id="mobileLangDropdown">
+                    <div class="mobile-lang-option active" data-lang="ko">
+                        <span>🇰🇷 한국어</span>
+                    </div>
+                    <div class="mobile-lang-option" data-lang="ja">
+                        <span>🇯🇵 日本語</span>
+                    </div>
+                    <div class="mobile-lang-option" data-lang="en">
+                        <span>🇺🇸 English</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="grid-overlay"></div>
 
-    <div class="container">
-        <header>
-            <div class="header-top">
-                <div class="logo">
-                    <div class="logo-box">R</div>
-                    <span class="logo-text">RychmonstaR</span>
-                </div>
-                <div class="header-badge">Design Studio</div>
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="home"
+            class="relative w-full min-h-screen flex flex-col justify-center overflow-hidden pt-48 pb-40 bg-white">
+            <!-- City Background Video -->
+            <div class="absolute inset-0 z-0 pointer-events-none">
+                <video id="heroVideo" autoplay loop muted playsinline class="w-full h-full object-cover">
+                    <source src="asset/background.mp4" type="video/mp4">
+                </video>
             </div>
 
-            <div class="header-content">
-                <h1>Design<br>Versions</h1>
-                <p class="subtitle">
-                    Explore our collection of meticulously crafted homepage designs.<br>
-                    Each version represents a unique approach to premium web aesthetics.
-                </p>
+            <div class="relative z-10 container mx-auto px-4 md:px-8 text-left flex items-center justify-start"
+                style="max-width: 1280px; min-height: 50vh;">
+                <!-- Left: Text Area (70% width) -->
+                <div class="w-full lg:w-[70%]">
+                    <!-- Hero Title -->
+                    <h1 class="reveal reveal-delay-100 hero-title-small mb-16 leading-[1.2] tracking-tight"
+                        style="color: #FBF2D9;">
+                        Rich Insight
+                        <br />
+                        Monster Strategy<br />
+                        Be Star
+                        <!-- <br />
+                        <span class="font-light text-gradient-gold hero-title">RychmonstaR</span> -->
+                    </h1>
 
-                <div class="header-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">08</span>
-                        <span class="stat-label">Versions</span>
+                    <!-- Subtitle -->
+                    <!-- <p class="reveal reveal-delay-200 text-xl md:text-2xl max-w-3xl mx-auto mb-20 font-light leading-relaxed tracking-wide"
+                        style="color: #FBF2D9;">
+                    글로벌 비즈니스의 리스크를 경감하기 위한 가장 현명한 전략.<br class="hidden md:block" />
+                        고객사의 <strong class="font-medium" style="color: #FBF2D9;">길잡이 별</strong>이 되겠습니다.
+                    </p> -->
+                </div>
+                <!-- Right: Empty Space (30% width) -->
+                <div class="hidden lg:block w-[30%]"></div>
+            </div>
+
+            <!-- CTA Buttons - Moved to bottom -->
+            <div class="relative z-10 container mx-auto px-2 md:px-8 pb-20 flex items-center justify-start"
+                style="max-width: 1280px;">
+                <div class="w-full lg:w-[70%]">
+                    <div class="reveal reveal-delay-300 flex flex-col md:flex-row justify-start gap-8 items-start">
+                        <a href="#services"
+                            class="btn-premium group px-10 py-5 bg-navy-900 text-white rounded-none font-light text-lg hover:bg-navy-800 transition-all duration-300 shadow-2xl flex items-center gap-4 tracking-wider">
+                            <span class="hidden md:inline" data-lang="viewServicesPre">RychmonstaR </span><span
+                                data-lang="viewServices">서비스 바로가기</span>
+                            <span class="iconify group-hover:translate-x-2 transition-transform duration-300"
+                                data-icon="solar:arrow-right-linear"></span>
+                        </a>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">Unique</span>
+                </div>
+                <!-- Right: Empty Space -->
+                <div class="hidden lg:block w-[30%]"></div>
+            </div>
+
+            <!-- Floating Abstract Shapes -->
+            <div
+                class="absolute top-1/4 left-[10%] w-96 h-96 bg-gold-500/10 rounded-full blur-[140px] animate-float pointer-events-none">
+            </div>
+            <div
+                class="absolute bottom-1/4 right-[10%] w-[500px] h-[500px] bg-terracotta/5 rounded-full blur-[160px] animate-float-slow pointer-events-none">
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="divider-line"></div>
+
+        <!-- About Section -->
+        <section id="about" class="py-32 bg-gray-50 relative">
+            <div class="container mx-auto px-8">
+                <div class="flex flex-col lg:flex-row gap-12 lg:gap-10 items-start justify-between">
+
+                    <!-- Left: Profiles -->
+                    <div class="flex flex-col md:flex-row gap-12 lg:gap-16 order-2 lg:order-1">
+
+                        <!-- CEO Profile -->
+                        <div class="flex gap-6 reveal">
+                            <!-- Photo -->
+                            <div class="relative flex-shrink-0">
+                                <img src="asset/profile_ryu.png" alt="CEO Ryu Eunji"
+                                    class="w-52 h-72 object-cover object-top grayscale hover:grayscale-0 transition-all duration-500">
+                                <div class="absolute bottom-0 left-0 right-0 h-1.5" style="background-color: #FBF2D9;">
+                                </div>
+                            </div>
+                            <!-- Info -->
+                            <div class="pt-2">
+                                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-1" data-lang="ceo">CEO</h3>
+                                <p class="text-base text-gray-700" data-lang="ceoName">유 은 지</p>
+                                <p class="text-sm text-gray-400 mb-6" data-lang="ceoNameEn">Ryu Eunji</p>
+                                <p class="text-xs text-terracotta uppercase tracking-widest font-semibold mb-1"
+                                    data-lang="ceoField">전문분야</p>
+                                <p class="text-sm text-gray-600" data-lang-html="ceoExpertise">Global Marketing<br>Game
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- CSO Profile -->
+                        <div class="flex gap-6 reveal reveal-delay-100">
+                            <!-- Photo -->
+                            <div class="relative flex-shrink-0">
+                                <img src="asset/profile_choi.png" alt="CSO Choi Hyangsook"
+                                    class="w-52 h-72 object-cover object-top grayscale hover:grayscale-0 transition-all duration-500">
+                                <div class="absolute bottom-0 left-0 right-0 h-1.5" style="background-color: #FBF2D9;">
+                                </div>
+                            </div>
+                            <!-- Info -->
+                            <div class="pt-2">
+                                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-1" data-lang="cso">CSO</h3>
+                                <p class="text-base text-gray-700" data-lang="csoName">최 향 숙</p>
+                                <p class="text-sm text-gray-400 mb-6" data-lang="csoNameEn">Choi Hyangsook</p>
+                                <p class="text-xs text-terracotta uppercase tracking-widest font-semibold mb-1"
+                                    data-lang="ceoField">전문분야</p>
+                                <p class="text-sm text-gray-600" data-lang-html="csoExpertise">Global Business
+                                    Development<br>Alliance</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">2024</span>
-                        <span class="stat-label">Latest</span>
+
+                    <!-- Right: Company Info -->
+                    <div class="reveal reveal-delay-200 flex-shrink-0 order-1 lg:order-2">
+                        <div class="space-y-5">
+                            <div>
+                                <p class="text-sm text-terracotta mb-1" data-lang="company">Company</p>
+                                <p class="text-2xl font-bold text-gray-900" data-lang="companyName">주식회사 리치몬스타</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-terracotta mb-1" data-lang="office">Office</p>
+                                <p class="text-2xl font-bold text-gray-900" data-lang="officeLocation">Seoul, Tokyo</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-terracotta mb-1" data-lang="founded">Founded</p>
+                                <p class="text-2xl font-bold text-gray-900">2021.03.03</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </header>
+        </section>
 
-        <div class="divider"></div>
+        <!-- Divider -->
+        <div class="divider-line"></div>
 
-        <div class="versions-grid">
-            <!-- Version 01 -->
-            <a href="./r01/index.html" target="_blank" class="version-card">
-                <div class="card-header">
-                    <div class="version-number">01</div>
-                    <div class="card-status">Classic</div>
+        <!-- Why Section -->
+        <section id="why" class="py-40 bg-white relative">
+            <div class="container mx-auto px-8 sction-content">
+                <div class="text-left mb-28 reveal">
+                    <!-- <span class="text-terracotta font-light tracking-ultra-wide text-xs uppercase mb-6 block">Why
+                        RychmonstaR?</span> -->
+                    <h2 class="text-5xl md:text-7xl font-light text-gray-900" data-lang="whyTitle">Proven Success
+                        Formula</h2>
                 </div>
-                <h3 class="version-title">Original Edition</h3>
-                <p class="version-desc">
-                    The foundation design featuring classic dark theme with floating elements and sophisticated
-                    glassmorphism effects.
-                </p>
-                <div class="version-features">
-                    <span class="feature-tag">Dark Theme</span>
-                    <span class="feature-tag">Glass Effect</span>
-                    <span class="feature-tag">Premium</span>
-                </div>
-                <div class="card-footer">
-                    <span class="view-link">View Design</span>
-                    <div class="arrow-icon"></div>
-                </div>
-            </a>
 
-            <!-- Version 02 -->
-            <a href="./r02/index.html" target="_blank" class="version-card">
-                <div class="card-header">
-                    <div class="version-number">02</div>
-                    <div class="card-status">Refined</div>
-                </div>
-                <h3 class="version-title">Enhanced Edition</h3>
-                <p class="version-desc">
-                    Evolved design with improved typography hierarchy and enhanced spacing for better visual balance.
-                </p>
-                <div class="version-features">
-                    <span class="feature-tag">Modern</span>
-                    <span class="feature-tag">Elegant</span>
-                    <span class="feature-tag">Balanced</span>
-                </div>
-                <div class="card-footer">
-                    <span class="view-link">View Design</span>
-                    <div class="arrow-icon"></div>
-                </div>
-            </a>
+                <div class="grid md:grid-cols-3 gap-12">
+                    <!-- Card 1 -->
+                    <div
+                        class="reveal card-luxury p-12 bg-white border border-gray-200 hover:border-terracotta/30 group relative overflow-hidden">
+                        <div
+                            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-terracotta to-gold-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left">
+                        </div>
+                        <!-- <div
+                            class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center text-terracotta text-4xl mb-10 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                            <span class="iconify" data-icon="solar:case-round-minimalistic-bold-duotone"></span>
+                        </div> -->
+                        <h3 class="text-3xl font-semibold text-gray-900 mb-6 text-center" style="white-space: nowrap;"
+                            data-lang="whyCard1Title">모방할 수 없는 실전경험
+                        </h3>
+                        <p class="text-gray-600 text-lg leading-relaxed font-light" data-lang="whyCard1Desc">
+                            단순한 조언이 아닌, 법인 설립, 안정화, 위기 대응까지 직접 실행한 20년 이상의 풍부한 실무 경험을 보유하고 있습니다.
+                        </p>
+                    </div>
 
-            <!-- Version 03 -->
-            <a href="./r03/index.html" target="_blank" class="version-card">
-                <div class="card-header">
-                    <div class="version-number">03</div>
-                    <div class="card-status">Optimized</div>
-                </div>
-                <h3 class="version-title">Balanced Edition</h3>
-                <p class="version-desc">
-                    Refined navigation system with smooth color transitions and improved user interaction patterns.
-                </p>
-                <div class="version-features">
-                    <span class="feature-tag">Light Theme</span>
-                    <span class="feature-tag">Clean</span>
-                    <span class="feature-tag">Smooth</span>
-                </div>
-                <div class="card-footer">
-                    <span class="view-link">View Design</span>
-                    <div class="arrow-icon"></div>
-                </div>
-            </a>
+                    <!-- Card 2 -->
+                    <div
+                        class="reveal reveal-delay-100 card-luxury p-12 bg-white border border-gray-200 hover:border-gold-500/30 group relative overflow-hidden">
+                        <div
+                            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold-500 to-terracotta transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left">
+                        </div>
+                        <!-- <div
+                            class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center text-gold-500 text-4xl mb-10 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                            <span class="iconify" data-icon="solar:shield-check-bold-duotone"></span>
+                        </div> -->
+                        <h3 class="text-3xl font-semibold text-gray-900 mb-6 text-center" style="white-space: nowrap;"
+                            data-lang="whyCard2Title">리스크 최소화 전략
+                        </h3>
+                        <p class="text-gray-600 text-lg leading-relaxed font-light" data-lang="whyCard2Desc">
+                            높아진 시장 비용 속에서 실패 확률을 최소화하고, 클라이언트의 비즈니스 모델에 최적화된 시장 진입 전략을 도출합니다.
+                        </p>
+                    </div>
 
-            <!-- Version 04 -->
-            <a href="./r04/index.html" target="_blank" class="version-card">
-                <div class="card-header">
-                    <div class="version-number">04</div>
-                    <div class="card-status">Creative</div>
+                    <!-- Card 3 -->
+                    <div
+                        class="reveal reveal-delay-200 card-luxury p-12 bg-white border border-gray-200 hover:border-terracotta/30 group relative overflow-hidden">
+                        <div
+                            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-terracotta to-gold-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left">
+                        </div>
+                        <!-- <div
+                            class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center text-terracotta text-4xl mb-10 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                            <span class="iconify" data-icon="solar:earth-bold-duotone"></span>
+                        </div> -->
+                        <h3 class="text-3xl font-semibold text-gray-900 mb-6 text-center" style="white-space: nowrap;"
+                            data-lang="whyCard3Title">글로벌 네트워크의 가치
+                        </h3>
+                        <p class="text-gray-600 text-lg leading-relaxed font-light" data-lang="whyCard3Desc">
+                            미국, 유럽, 아시아 등 광범위한 글로벌 네트워크를 통해 불필요한 시행착오 없이 신속하고 효율적인 솔루션을 제공합니다.
+                        </p>
+                    </div>
                 </div>
-                <h3 class="version-title">Experimental</h3>
-                <p class="version-desc">
-                    Alternative design exploration featuring unique layout structures and bold creative decisions.
-                </p>
-                <div class="version-features">
-                    <span class="feature-tag">Innovative</span>
-                    <span class="feature-tag">Bold</span>
-                    <span class="feature-tag">Unique</span>
-                </div>
-                <div class="card-footer">
-                    <span class="view-link">View Design</span>
-                    <div class="arrow-icon"></div>
-                </div>
-            </a>
+            </div>
+        </section>
 
-            <!-- Version 05 -->
-            <a href="./r05/index.html" target="_blank" class="version-card">
-                <div class="card-header">
-                    <div class="version-number">05</div>
-                    <div class="card-status">Minimal</div>
-                </div>
-                <h3 class="version-title">Minimalist Approach</h3>
-                <p class="version-desc">
-                    Stripped-down design philosophy focusing on essential elements with maximum visual impact.
-                </p>
-                <div class="version-features">
-                    <span class="feature-tag">Minimal</span>
-                    <span class="feature-tag">Pure</span>
-                    <span class="feature-tag">Essential</span>
-                </div>
-                <div class="card-footer">
-                    <span class="view-link">View Design</span>
-                    <div class="arrow-icon"></div>
-                </div>
-            </a>
+        <!-- Divider -->
+        <div class="divider-line"></div>
 
-            <!-- Version 06 -->
-            <a href="./r06/index.html" target="_blank" class="version-card">
-                <div class="card-header">
-                    <div class="version-number">06</div>
-                    <div class="card-status">Luxury</div>
-                </div>
-                <h3 class="version-title">Premium Edition</h3>
-                <p class="version-desc">
-                    Luxury-focused design with generous spacing, refined typography, and premium visual treatments.
-                </p>
-                <div class="version-features">
-                    <span class="feature-tag">Luxury</span>
-                    <span class="feature-tag">Spacious</span>
-                    <span class="feature-tag">Refined</span>
-                </div>
-                <div class="card-footer">
-                    <span class="view-link">View Design</span>
-                    <div class="arrow-icon"></div>
-                </div>
-            </a>
+        <!-- Services -->
+        <section id="services" class="py-40 bg-gray-50 relative overflow-hidden">
+            <div
+                class="absolute top-0 right-0 w-[1000px] h-[1000px] bg-gold-500/5 rounded-full blur-[150px] pointer-events-none sction-content">
+            </div>
+            <div
+                class="absolute bottom-0 left-0 w-[800px] h-[800px] bg-terracotta/5 rounded-full blur-[130px] pointer-events-none">
+            </div>
 
-            <!-- Version 07 -->
-            <a href="./r07/index.html" target="_blank" class="version-card">
-                <div class="card-header">
-                    <div class="version-number">07</div>
-                    <div class="card-status">Advanced</div>
+            <div class="container mx-auto px-8 relative z-10">
+                <div class="flex flex-col md:flex-row justify-between items-start mb-28 reveal">
+                    <div>
+                        <!-- <span class="text-gold-600 font-light tracking-ultra-wide text-xs uppercase mb-6 block">Our
+                            Services</span> -->
+                        <h2 class="text-5xl md:text-7xl font-light text-gray-900" data-lang="servicesTitle">Total
+                            Business Solution</h2>
+                    </div>
+                    <!-- <p class="text-gray-600 max-w-lg text-right text-lg font-light mt-8 md:mt-0">
+                        성공적인 글로벌 비즈니스를 위한<br />전방위적 맞춤형 솔루션을 제공합니다.
+                    </p> -->
                 </div>
-                <h3 class="version-title">Ultimate Edition</h3>
-                <p class="version-desc">
-                    Most advanced iteration featuring split-screen layouts, asymmetric grids, and cutting-edge
-                    aesthetics.
-                </p>
-                <div class="version-features">
-                    <span class="feature-tag">Advanced</span>
-                    <span class="feature-tag">Modern</span>
-                    <span class="feature-tag">Complete</span>
-                </div>
-                <div class="card-footer">
-                    <span class="view-link">View Design</span>
-                    <div class="arrow-icon"></div>
-                </div>
-            </a>
 
-            <!-- Version 08 -->
-            <a href="./r08/index.html" target="_blank" class="version-card">
-                <div class="card-header">
-                    <div class="version-number">08</div>
-                    <div class="card-status">Latest</div>
+                <div class="grid lg:grid-cols-3 gap-10">
+                    <!-- Service 1 -->
+                    <a href="service-consulting.html"
+                        class="card-luxury p-8 bg-white border border-gray-200 hover:border-navy-900/20 transition-all group block cursor-pointer">
+                        <!-- <div
+                            class="text-terracotta mb-10 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 origin-left">
+                            <span class="iconify text-7xl" data-icon="solar:chart-square-bold-duotone"></span>
+                        </div> -->
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-8 group-hover:text-terracotta transition-colors"
+                            data-lang="service1Title">
+                            Global Consulting
+                        </h3>
+                        <ul class="space-y-5 text-gray-600 text-base font-light">
+                            <li class="flex items-start gap-4">
+                                <span class="iconify text-gold-500 mt-1 flex-shrink-0"
+                                    data-icon="solar:star-fall-linear"></span>
+                                <span data-lang="service1Item1">국내/외 시장 진출 전략 수립</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="iconify text-gold-500 mt-1 flex-shrink-0"
+                                    data-icon="solar:star-fall-linear"></span>
+                                <span data-lang="service1Item2">현지 법인 설립 및 초기 안정화</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="iconify text-gold-500 mt-1 flex-shrink-0"
+                                    data-icon="solar:star-fall-linear"></span>
+                                <span data-lang="service1Item3">조직 설정 (채용, 오피스 등)</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="iconify text-gold-500 mt-1 flex-shrink-0"
+                                    data-icon="solar:star-fall-linear"></span>
+                                <span data-lang="service1Item4">AX 컨설팅 (SaaS, PF화)</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="iconify text-gold-500 mt-1 flex-shrink-0"
+                                    data-icon="solar:star-fall-linear"></span>
+                                <span data-lang="service1Item5">투자 및 비즈니스 네트워크 연계</span>
+                            </li>
+                        </ul>
+                    </a>
+
+                    <!-- Service 2 -->
+                    <a href="service-marketing.html"
+                        class="card-luxury p-8 bg-white border border-gray-200 hover:border-navy-900/20 transition-all group block cursor-pointer">
+                        <!-- <div
+                            class="text-gold-500 mb-10 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 origin-left">
+                            <span class="iconify text-7xl" data-icon="solar:speaker-bold-duotone"></span>
+                        </div> -->
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-8 group-hover:text-gold-500 transition-colors"
+                            data-lang="service2Title">
+                            PR & Marketing
+                        </h3>
+                        <ul class="space-y-5 text-gray-600 text-base font-light">
+                            <li class="flex items-start gap-4">
+                                <span class="iconify text-gold-500 mt-1 flex-shrink-0"
+                                    data-icon="solar:star-fall-linear"></span>
+                                <span data-lang="service2Item1">타겟 마케팅</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="iconify text-gold-500 mt-1 flex-shrink-0"
+                                    data-icon="solar:star-fall-linear"></span>
+                                <span data-lang="service2Item2">브랜딩 마케팅</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="iconify text-gold-500 mt-1 flex-shrink-0"
+                                    data-icon="solar:star-fall-linear"></span>
+                                <span data-lang="service2Item3">퍼포먼스 마케팅 & ASO/SEO</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="iconify text-gold-500 mt-1 flex-shrink-0"
+                                    data-icon="solar:star-fall-linear"></span>
+                                <span data-lang="service2Item4">인플루언서 및 콜라보레이션</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="iconify text-gold-500 mt-1 flex-shrink-0"
+                                    data-icon="solar:star-fall-linear"></span>
+                                <span data-lang="service2Item5">Global GameShow & Event 대행</span>
+                            </li>
+                        </ul>
+                    </a>
+
+                    <!-- Service 3 -->
+                    <a href="service-development.html"
+                        class="card-luxury p-8 bg-white border border-gray-200 hover:border-navy-900/20 transition-all group block cursor-pointer">
+                        <!-- <div
+                            class="text-terracotta mb-10 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 origin-left">
+                            <span class="iconify text-7xl" data-icon="solar:code-square-bold-duotone"></span>
+                        </div> -->
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-8 group-hover:text-terracotta transition-colors"
+                            data-lang="service3Title">
+                            Dev & Operation
+                        </h3>
+                        <ul class="space-y-5 text-gray-600 text-base font-light">
+                            <li class="flex items-start gap-4">
+                                <span class="iconify text-gold-500 mt-1 flex-shrink-0"
+                                    data-icon="solar:star-fall-linear"></span>
+                                <span data-lang="service3Item1">플랫폼 개발 (PC/Mobile, Roblox)</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="iconify text-gold-500 mt-1 flex-shrink-0"
+                                    data-icon="solar:star-fall-linear"></span>
+                                <span data-lang="service3Item2">그래픽 디자인 (2D/3D/UI/Effect)</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="iconify text-gold-500 mt-1 flex-shrink-0"
+                                    data-icon="solar:star-fall-linear"></span>
+                                <span data-lang="service3Item3">번역 및 로컬라이즈</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="iconify text-gold-500 mt-1 flex-shrink-0"
+                                    data-icon="solar:star-fall-linear"></span>
+                                <span data-lang="service3Item4">글로벌 CS 및 SNS 운영</span>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="iconify text-gold-500 mt-1 flex-shrink-0"
+                                    data-icon="solar:star-fall-linear"></span>
+                                <span data-lang="service3Item5">각종 사업 실무 대행</span>
+                            </li>
+                        </ul>
+                    </a>
                 </div>
-                <h3 class="version-title">Professional Edition</h3>
-                <p class="version-desc">
-                    Latest professional design with enhanced profile sections, optimized mobile layouts, and refined visual hierarchy.
-                </p>
-                <div class="version-features">
-                    <span class="feature-tag">Professional</span>
-                    <span class="feature-tag">Responsive</span>
-                    <span class="feature-tag">Premium</span>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="divider-line"></div>
+
+        <!-- Topics / News -->
+        <section id="topics" class="py-40 bg-white">
+            <div class="container mx-auto px-8 sction-content">
+                <div class="flex flex-col md:flex-row justify-between items-start mb-20 reveal">
+                    <div>
+                        <span class="text-terracotta font-medium tracking-ultra-wide text-xs uppercase mb-4 block"
+                            data-lang="topicsSubtitle">Latest
+                            News</span>
+                        <h2 class="text-5xl md:text-7xl font-light text-gray-900" data-lang="topicsTitle">Topics</h2>
+                    </div>
+                    <a href="topics.html"
+                        class="text-gold-600 hover:text-gray-900 transition-colors text-base font-light uppercase tracking-wider flex items-center gap-3">
+                        <span data-lang="viewAll">View All</span>
+                        <span class="iconify" data-icon="solar:arrow-right-linear"></span>
+                    </a>
                 </div>
-                <div class="card-footer">
-                    <span class="view-link">View Design</span>
-                    <div class="arrow-icon"></div>
+
+                <div class="max-w-5xl" id="latest-news-container">
+                    <!-- Latest 3 news items will be dynamically loaded here -->
                 </div>
-            </a>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="divider-line"></div>
+
+        <!-- CTA -->
+        <!-- <section class="py-40 relative overflow-hidden bg-white">
+            <div class="absolute inset-0 bg-gradient-to-b from-gray-50 to-white"></div>
+            <div
+                class="absolute inset-0 bg-[radial-gradient(#0F172A_1px,transparent_1px)] [background-size:40px_40px] opacity-[0.03]">
+            </div>
+
+            <div class="container mx-auto px-8 relative z-10 text-center reveal">
+                <h2 class="text-5xl md:text-7xl font-light text-gray-900 mb-12 leading-tight">
+                    Start Global Business<br />
+                    <span class="text-navy-900">with RychmonstaR</span>
+                </h2>
+                <p class="text-gray-600 mb-16 text-2xl font-light tracking-wide">당신의 비즈니스를 세계로 연결합니다.</p>
+                <button onclick="openContactModal()"
+                    class="btn-premium px-16 py-6 bg-navy-900 text-white font-light text-xl hover:bg-navy-800 transition-all duration-300 shadow-2xl tracking-ultra-wide uppercase cursor-pointer">
+                    Get in Touch
+                </button>
+            </div>
+        </section> -->
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="relative bg-navy-950 pt-32 pb-16 overflow-hidden">
+        <!-- Map Background -->
+        <div class="absolute inset-0 opacity-5">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.0976574154547!2d127.05285631531753!3d37.50280797980846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca3f4e7e3e3e3%3A0x0!2zMzfCsDMwJzEwLjEiTiAxMjfCsDAzJzE4LjQiRQ!5e0!3m2!1sen!2skr!4v1234567890"
+                width="100%" height="100%" style="border:0;filter:grayscale(100%) invert(1);" allowfullscreen=""
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
         </div>
 
-        <div class="divider"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-navy-950/95 via-navy-950/98 to-navy-950"></div>
 
-        <footer>
-            <div class="footer-content">
-                <p>
-                    Each design version has been carefully crafted to showcase different approaches to modern web
-                    design,
-                    from minimalist to luxury aesthetics.
-                </p>
-                <p>&copy; 2021-2024 RychmonstaR Inc. All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="#" class="footer-link">Privacy</a>
-                    <a href="#" class="footer-link">Terms</a>
-                    <a href="#" class="footer-link">Contact</a>
+        <div class="container mx-auto px-8 relative z-10 sction-content">
+            <!-- Contact Title -->
+            <div class="text-left mb-28">
+                <h2 class="text-5xl md:text-7xl font-light text-white mb-8 tracking-tight" data-lang="contactTitle">
+                    Contact</h2>
+            </div>
+
+            <!-- Contact Cards -->
+            <div class="grid md:grid-cols-3 gap-10 max-w-7xl mx-auto mb-24">
+
+
+                <!-- Seoul Office -->
+                <div class="glass p-6 md:p-12 hover:bg-white/10 transition-all duration-500 group">
+                    <div
+                        class="w-20 h-20 rounded-full bg-gradient-to-br from-gold-500 to-terracotta flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                        <span class="iconify text-4xl text-white" data-icon="solar:map-point-bold"></span>
+                    </div>
+                    <h3 class="text-2xl font-light text-white mb-5" data-lang="seoulOffice">Seoul Office</h3>
+                    <p class="text-slate-300 leading-relaxed font-light text-base" data-lang-html="seoulAddress">
+                        #902, 7, Teheran-ro 8-gil<br />
+                        Gangnam-gu, Seoul<br />
+                        Republic of Korea
+                    </p>
+                </div>
+
+                <!-- Tokyo Office -->
+                <div class="glass p-6 md:p-12 hover:bg-white/10 transition-all duration-500 group">
+                    <div
+                        class="w-20 h-20 rounded-full bg-gradient-to-br from-gold-500 to-terracotta flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                        <span class="iconify text-4xl text-white" data-icon="solar:buildings-bold"></span>
+                    </div>
+                    <h3 class="text-2xl font-light text-white mb-5" data-lang="tokyoOffice">Tokyo Office</h3>
+                    <p class="text-slate-300 leading-relaxed font-light text-base" data-lang-html="tokyoAddress">
+                        8F, THE LINKPILLAR 1 SOUTH<br />
+                        2-21-2 Takanawa, Minato-ku<br />
+                        Tokyo, Japan
+                    </p>
+                </div>
+
+                <!-- Email -->
+                <div class="glass p-6 md:p-12 hover:bg-white/10 transition-all duration-500 group">
+                    <div
+                        class="w-20 h-20 rounded-full bg-gradient-to-br from-gold-500 to-terracotta flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                        <span class="iconify text-4xl text-white" data-icon="solar:letter-bold"></span>
+                    </div>
+                    <h3 class="text-2xl font-light text-white mb-5" data-lang="emailUs">Email Us</h3>
+                    <a href="mailto:support@rychmonstar.com"
+                        class="text-slate-300 hover:text-gold-400 transition-colors text-base block font-light mb-6">
+                        support@rychmonstar.com
+                    </a>
+                    <button onclick="openContactModal()"
+                        class="btn-premium w-full py-4 bg-gold-500 text-white font-bold text-xl hover:bg-gold-600 transition-all duration-300 shadow-xl tracking-wide uppercase cursor-pointer"
+                        data-lang="consultBtn">
+                        상담하기
+                    </button>
                 </div>
             </div>
-        </footer>
+
+            <!-- Map Section -->
+            <div class="max-w-7xl mx-auto mb-24">
+                <div class="glass p-8">
+                    <h3 class="text-3xl font-light text-white mb-10 text-center" data-lang="ourLocations">Our Locations
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Seoul -->
+                        <div>
+                            <h4 class="text-white font-light mb-5 text-sm uppercase tracking-ultra-wide"
+                                data-lang="seoulKorea">Seoul, Korea
+                            </h4>
+                            <div class="aspect-video overflow-hidden">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.4024568363234!2d127.0316961!3d37.498425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca15700b40f61%3A0x313c065b931b03a8!2z7ISc7Jq47Yq567OE7IucIOqwleuCqOq1rCDsl63sgrzrj5kgODIzLTM!5e0!3m2!1sko!2skr!4v1768795594976!5m2!1sko!2skr"
+                                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <!-- <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.238692835654!2d127.05285631531753!3d37.50280797980846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca159a7d4b36d%3A0x6a61a7e8e9c8e8e8!2z7ISc7Jq47Yq567OE7IucIOqwleuCqOq1rCDthYztl6TrnoDroZwgN-yLnOq4uCA4!5e0!3m2!1sko!2skr!4v1735537027123!5m2!1sko!2skr"
+                                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                                </iframe> -->
+                            </div>
+                        </div>
+                        <!-- Tokyo -->
+                        <div>
+                            <h4 class="text-white font-light mb-5 text-sm uppercase tracking-ultra-wide"
+                                data-lang="tokyoJapan">Tokyo, Japan
+                            </h4>
+                            <div class="aspect-video overflow-hidden">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1621.3717336179852!2d139.73692631744387!3d35.634050200000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b003e1444af%3A0xb75bf80810b5362e!2sTHE%20LINKPILLAR%201%20SOUTH%20Bicycle!5e0!3m2!1sko!2skr!4v1773124363410!5m2!1sko!2skr"
+                                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Media -->
+            <div class="text-center mb-20">
+                <h3 class="text-3xl font-light text-white mb-10">Follow Our Journey</h3>
+                <div class="flex justify-center gap-8">
+                    <a href="https://www.facebook.com/rychmonstar" target="_blank"
+                        class="w-16 h-16 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-gradient-to-br hover:from-gold-500 hover:to-terracotta hover:border-transparent transition-all duration-500 hover:scale-110">
+                        <span class="iconify text-2xl" data-icon="ri:facebook-fill"></span>
+                    </a>
+                    <a href="https://www.linkedin.com/company/rychmonstar"
+                        class="w-16 h-16 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-gradient-to-br hover:from-gold-500 hover:to-terracotta hover:border-transparent transition-all duration-500 hover:scale-110">
+                        <span class="iconify text-2xl" data-icon="ri:linkedin-fill"></span>
+                    </a>
+                    <!-- <a href="https://www.linkedin.com/company/rychmonstar" target="_blank"
+                        class="w-16 h-16 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-gradient-to-br hover:from-gold-500 hover:to-terracotta hover:border-transparent transition-all duration-500 hover:scale-110">
+                        <span class="iconify text-2xl" data-icon="ri:instagram-fill"></span>
+                    </a> -->
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div
+                class="border-t border-white/20 pt-10 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-slate-400 font-light">
+                <p>&copy; 2021-2025 RychmonstaR Inc. All rights reserved.</p>
+                <div class="flex gap-8">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+
+        function handleScroll() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+
+        // Scroll Reveal Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
+
+        document.querySelectorAll('.reveal').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeContactModal()" aria-label="닫기">&times;</button>
+
+            <!-- Success Message -->
+            <div id="successMessage" class="success-message" aria-live="polite">
+                <div class="success-icon">
+                    <span class="iconify" data-icon="solar:check-circle-bold" style="font-size: 45px;"></span>
+                </div>
+                <h2 class="success-title" data-lang="successTitle">문의가 전송되었습니다!</h2>
+                <p class="success-text" data-lang-html="successDesc">
+                    소중한 문의에 감사드립니다.<br>
+                    전문 컨설턴트가 영업일 기준 24시간 이내에<br>
+                    입력하신 이메일로 연락드리겠습니다.
+                </p>
+                <button class="success-button" onclick="closeContactModal()">
+                    <span style="display: inline-flex; align-items: center; gap: 8px;">
+                        <span data-lang="confirmBtn">확인</span>
+                        <span class="iconify" data-icon="solar:check-read-linear" style="font-size: 18px;"></span>
+                    </span>
+                </button>
+            </div>
+
+            <!-- Contact Form -->
+            <div id="contactFormDiv"
+                style="padding: 60px 50px; background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);">
+                <div style="text-align: center; margin-bottom: 45px;">
+                    <div
+                        style="display: inline-block; width: 60px; height: 60px; background: linear-gradient(135deg, #C17C74 0%, #a35e56 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 8px 20px rgba(193, 124, 116, 0.25);">
+                        <span class="iconify" data-icon="solar:chat-round-dots-bold"
+                            style="font-size: 28px; color: white;"></span>
+                    </div>
+                    <h2 id="modalTitle" data-lang="modalTitle"
+                        style="font-size: 2.8rem; font-weight: 700; color: #2A1F1D; margin-bottom: 14px; letter-spacing: -0.03em;">
+                        무료 상담 신청</h2>
+                    <p data-lang-html="modalDesc"
+                        style="font-size: 1.05rem; color: #6b6460; line-height: 1.6; max-width: 400px; margin: 0 auto;">
+                        아래 정보를 입력해주시면<br />전문 컨설턴트가 빠르게 연락드리겠습니다.</p>
+                </div>
+
+                <form action="https://formsubmit.co/support@rychmonstar.com" method="POST" id="contactForm">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="RychmonstaR 홈페이지 문의">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="box">
+                    <input type="hidden" name="_next"
+                        value="https://coolsik-park.github.io/richmonstar/r04/index.html#success">
+
+                    <div class="form-group">
+                        <label class="form-label" for="consultType"><span>📋 </span><span data-lang="inquiryType">문의
+                                유형</span> *</label>
+                        <select class="form-select" id="consultType" name="문의유형" required
+                            data-lang-select="inquirySelect">
+                            <option value="" data-lang="selectType">문의 유형을 선택해주세요</option>
+                            <option value="글로벌컨설팅" data-lang="typeConsulting">글로벌컨설팅</option>
+                            <option value="게임쇼/PR/마케팅" data-lang="typeMarketing">게임쇼/PR/마케팅</option>
+                            <option value="개발/디자인/운영" data-lang="typeDevelopment">개발/디자인/운영</option>
+                            <option value="사업제휴" data-lang="typePartnership">사업제휴</option>
+                            <option value="채용문의" data-lang="typeRecruit">채용문의</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="company"><span>🏢 </span><span
+                                data-lang="companyLabel">회사명</span> *</label>
+                        <input type="text" class="form-input" id="company" name="회사명"
+                            data-lang-placeholder="companyPlaceholder" placeholder="회사명을 입력해주세요" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="name"><span>👤 </span><span data-lang="nameLabel">이름</span>
+                            *</label>
+                        <input type="text" class="form-input" id="name" name="이름"
+                            data-lang-placeholder="namePlaceholder" placeholder="담당자 성함을 입력해주세요" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="email"><span>✉️ </span><span data-lang="emailLabel">이메일</span>
+                            *</label>
+                        <input type="email" class="form-input" id="email" name="이메일"
+                            data-lang-placeholder="emailPlaceholder" placeholder="example@company.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="message"><span>💬 </span><span data-lang="messageLabel">문의
+                                내용</span> *</label>
+                        <textarea class="form-textarea" id="message" name="문의내용" required
+                            data-lang-placeholder="messagePlaceholder"
+                            placeholder="문의하실 내용을 자유롭게 작성해주세요.&#10;예) 일본 시장 진출 관련 상담을 받고 싶습니다."></textarea>
+                    </div>
+
+                    <button type="submit" class="form-submit">
+                        <span style="display: inline-flex; align-items: center; gap: 10px;">
+                            <span data-lang="submitBtn">문의 전송하기</span>
+                            <span class="iconify" data-icon="solar:arrow-right-linear" style="font-size: 20px;"></span>
+                        </span>
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
+
+    <script>
+        // Contact Modal Functions
+        function openContactModal() {
+            document.getElementById('contactModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            // Reset to form view
+            document.getElementById('successMessage').classList.remove('active');
+            document.getElementById('contactFormDiv').style.display = 'block';
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.remove('active');
+            document.body.style.overflow = '';
+            // Remove hash from URL
+            if (window.location.hash === '#success') {
+                history.replaceState(null, null, ' ');
+            }
+        }
+
+        function showSuccessMessage() {
+            document.getElementById('contactFormDiv').style.display = 'none';
+            document.getElementById('successMessage').classList.add('active');
+        }
+
+        // Check if form was successfully submitted
+        window.addEventListener('load', function () {
+            if (window.location.hash === '#success') {
+                document.getElementById('contactModal').classList.add('active');
+                document.body.style.overflow = 'hidden';
+                showSuccessMessage();
+            }
+        });
+
+        // Close modal on outside click
+        document.getElementById('contactModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeContactModal();
+            }
+        });
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeContactModal();
+            }
+        });
+
+        // Change hero video for mobile
+        function updateHeroVideo() {
+            const heroVideo = document.getElementById('heroVideo');
+            const isMobile = window.innerWidth < 768;
+            const videoSource = heroVideo.querySelector('source');
+
+            if (isMobile) {
+                videoSource.src = 'asset/background.mp4';
+            } else {
+                videoSource.src = 'asset/background.mp4';
+            }
+            heroVideo.load();
+        }
+
+        // Update video on load and resize
+        updateHeroVideo();
+        window.addEventListener('resize', updateHeroVideo);
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        function toggleMobileMenu() {
+            const isOpen = !mobileMenu.classList.contains('translate-x-full');
+            if (isOpen) {
+                closeMobileMenuFunc();
+            } else {
+                openMobileMenu();
+            }
+        }
+
+        function openMobileMenu() {
+            mobileMenu.classList.remove('translate-x-full');
+            document.body.style.overflow = 'hidden';
+            mobileMenuBtn.setAttribute('aria-expanded', 'true');
+            mobileMenuBtn.setAttribute('aria-label', '메뉴 닫기');
+        }
+
+        function closeMobileMenuFunc() {
+            mobileMenu.classList.add('translate-x-full');
+            document.body.style.overflow = '';
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            mobileMenuBtn.setAttribute('aria-label', '메뉴 열기');
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        closeMobileMenu.addEventListener('click', closeMobileMenuFunc);
+
+        // Close mobile menu when clicking on a link
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenuFunc);
+        });
+
+        // Close mobile menu on ESC key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeMobileMenuFunc();
+            }
+        });
+    </script>
+
+    <!-- Load News Data -->
+    <script src="data/news.js"></script>
+    <script>
+        // Load latest 3 news on index page
+        function loadLatestNews() {
+            try {
+                console.log('뉴스 로딩 시작...', newsData);
+
+                if (!newsData || newsData.length === 0) {
+                    console.error('뉴스 데이터가 없습니다.');
+                    return;
+                }
+
+                // Sort by year (descending) and then by month/day
+                const sortedNews = [...newsData].sort((a, b) => {
+                    if (b.year !== a.year) {
+                        return b.year - a.year;
+                    }
+                    if (b.month !== a.month) {
+                        return b.month - a.month;
+                    }
+                    return b.day - a.day;
+                });
+
+                console.log('정렬된 뉴스:', sortedNews);
+
+                // Get latest 3 news
+                const latestNews = sortedNews.slice(0, 3);
+                const container = document.getElementById('latest-news-container');
+
+                if (!container) {
+                    console.error('뉴스 컨테이너를 찾을 수 없습니다.');
+                    return;
+                }
+
+                let html = '';
+
+                const lang = (typeof currentLanguage !== 'undefined' ? currentLanguage : (localStorage.getItem('language') || 'ko'));
+
+                latestNews.forEach((news, index) => {
+                    const dateKey = `date_${lang}`;
+                    const titleKey = `title_${lang}`;
+                    const displayDate = news[dateKey] || news.date_ko || news.date_en || '';
+                    const displayTitle = news[titleKey] || news.title_ko || news.title_en || '';
+
+                    html += `
+                    <a href="topics.html?id=${news.id}"
+                        class="block mb-4 p-6 bg-white border border-gray-200 rounded-lg hover:border-terracotta/50 hover:shadow-lg transition-all cursor-pointer group">
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-8 items-start md:items-center">
+                            <div class="text-terracotta text-sm font-medium font-mono min-w-[120px]">
+                                ${displayDate}
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-gray-700 text-base leading-relaxed group-hover:text-gray-900 transition-colors">
+                                    ${displayTitle}
+                                </p>
+                            </div>
+                            <span class="iconify text-gray-400 group-hover:text-terracotta group-hover:translate-x-1 transition-all hidden md:block" data-icon="solar:arrow-right-linear"></span>
+                        </div>
+                    </a>
+                    `;
+                });
+
+                container.innerHTML = html;
+                console.log('뉴스 로딩 완료!');
+            } catch (error) {
+                console.error('최신 뉴스 로딩 실패:', error);
+            }
+        }
+
+        // Load news when page loads - ensure DOM is ready
+        window.addEventListener('load', function () {
+            console.log('페이지 로드 완료, 뉴스 로딩 시작');
+            loadLatestNews();
+        });
+    </script>
+
+    <!-- Language Translations and Switcher -->
+    <script src="js/translations/index.js"></script>
+    <script src="js/lang-switcher.js"></script>
 </body>
 
 </html>
